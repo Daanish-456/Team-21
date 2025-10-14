@@ -18,4 +18,13 @@ Function: This function takes two integers, subtracts the second one from the fi
     return x - y;
 }
 
+    /************************
+    Developer: Alfie Gayton
+    University ID: 240194305
+    Function: This function takes two integers, multiplies them together, then returns the product
+    ************************/
+    public int Multi(int x, int y) {
+        return x * y;
+    }
+
 }
