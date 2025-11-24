@@ -1,0 +1,58 @@
+.feature {
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("../images/necklace-banner-home.png");
+    max-width: 100%;
+    height: 45vh;
+    margin: 24px;
+
+    color: white;
+    text-align: center;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-link {
+    display: inline-block;
+    padding: .5rem 1rem;
+
+    border: 3px solid #e8dcc5;
+    background: none;
+    color: white;
+
+    width: 128px;
+
+    text-align: center;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.products {
+    display: flex;
+
+    gap: 64px;
+    align-items: center;
+    justify-content: center;
+}
+
+.about {
+    display: flex;
+
+    gap: 24px;
+    margin: 96px;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-logo {
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 50%;
+}
+
+.about-text {
+    max-width: 600px;
+}

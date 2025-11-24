@@ -1,0 +1,17 @@
+.productcard {
+    max-width: 300px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.productcard-title {
+    font-size: medium;
+}
+
+.productcard-description {
+    font-size: small;
+}
+
+.productcard .productcard-image {
+    width: 100%;
+}

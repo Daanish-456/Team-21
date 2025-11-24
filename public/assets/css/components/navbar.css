@@ -1,0 +1,40 @@
+.nav-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-img {
+    width: 100%;
+    height: 108px;
+    background-image: linear-gradient(to top, #e8dcc5, #906c60);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-img>img {
+    max-height: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-item {
+    color: inherit;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.nav-user-area {
+    margin-left: 25px;
+}
+
+.nav-icon {
+    width: 24px;
+    vertical-align: middle;
+}
