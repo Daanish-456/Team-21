@@ -24,9 +24,8 @@
     </header>
     <div class="content-container">
         @yield('content')
-
-        @include('components.footer')
     </div>
+    @include('components.footer')
     @stack('scripts')
 </body>
 

@@ -1,0 +1,44 @@
+.contact-container {
+    margin-top: 74px;
+    text-align: center;
+}
+
+.contact-field {
+    width: 512px;
+    height: 24px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#message {
+    height: 96px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: none;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-error {
+    color: red;
+    margin: 0;
+}
+
+.submit-btn {
+    border: 3px solid #e8dcc5;
+    background: none;
+    width: 128px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
