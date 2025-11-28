@@ -56,3 +56,231 @@
 .about-text {
     max-width: 600px;
 }
+/* -----------------------------------------------------
+   GENERAL / GLOBAL STYLES
+----------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #222;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Containers for spacing */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* -----------------------------------------------------
+   NAVIGATION BAR
+----------------------------------------------------- */
+nav {
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav ul li a {
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: #6f42c1; /* purple accent */
+}
+
+
+/* -----------------------------------------------------
+   HERO SECTION (large top area)
+----------------------------------------------------- */
+.hero {
+    width: 100%;
+    height: 380px;
+    background: url('../images/hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 42px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 3px 5px rgba(0,0,0,0.4);
+}
+
+
+/* -----------------------------------------------------
+   SECTION HEADINGS
+----------------------------------------------------- */
+.section-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 60px 0 30px;
+    color: #333;
+}
+
+
+/* -----------------------------------------------------
+   LOGO SECTION / BRAND PARTNERS
+----------------------------------------------------- */
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.partner-logos img {
+    height: 60px;   /* <<< MAIN FIX FOR YOUR ISSUE */
+    width: auto;
+    object-fit: contain;
+    transition: 0.2s;
+    filter: grayscale(40%);
+}
+
+.partner-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+
+/* -----------------------------------------------------
+   PRODUCT GRID (if used)
+----------------------------------------------------- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+/* -----------------------------------------------------
+   FOOTER
+----------------------------------------------------- */
+footer {
+    background: #111;
+    color: #eee;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer div {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 8px;
+}
+
+footer ul li a:hover {
+    color: #6f42c1;
+}
+
+
+/* -----------------------------------------------------
+   COPYRIGHT
+----------------------------------------------------- */
+.copyright {
+    text-align: center;
+    padding: 20px 0;
+    background: #0b0b0b;
+    color: #bbb;
+    font-size: 14px;
+}
+
+
+/* -----------------------------------------------------
+   MOBILE RESPONSIVE STYLES
+----------------------------------------------------- */
+@media (max-width: 800px) {
+    nav .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .partner-logos img {
+        height: 40px;  /* logos shrink on mobile */
+    }
+
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
