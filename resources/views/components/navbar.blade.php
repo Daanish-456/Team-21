@@ -10,9 +10,7 @@
         <a href="{{ route('shop') }}" class="nav-item">Rings</a>
         <a href="{{ route('contact') }}" class="nav-item">Contact Us</a>
         <div class="nav-user-area">
-            <a href="{{ route('basket') }}" class="nav-item">
-                <img src="{{ asset('assets/svg/cart.svg') }}" class="nav-icon" alt="Cart" />
-            </a>
+            <a href="{{ route('basket') }}" class="nav-item">Cart</a>
             <a href="{{ route('account') }}" class="nav-item">
                 <img src="{{ asset('assets/svg/person-sharp.svg') }}" class="nav-icon" alt="User Account">
             </a>
