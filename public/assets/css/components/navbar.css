@@ -5,7 +5,6 @@ nav-div {
     gap: 16px;
 }
 
-/* Banner area with gradient and centred logo */
 .nav-img {
     width: 100%;
     max-height: 120px;
@@ -16,14 +15,13 @@ nav-div {
     padding: 8px 0;
 }
 
-/* >>> THIS is what makes the logo smaller <<< */
 .nav-img img {
-    max-height: 50px;   /* reduce this to make it smaller */
+    max-height: 50px;  
     width: auto;
     display: block;
 }
 
-/* Main navbar row */
+
 .navbar {
     display: flex;
     align-items: center;
@@ -41,7 +39,6 @@ nav-div {
     position: relative;
 }
 
-/* Nice underline hover effect */
 .nav-item::after {
     content: "";
     position: absolute;
