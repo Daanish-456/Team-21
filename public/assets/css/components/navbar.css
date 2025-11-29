@@ -1,40 +1,70 @@
-.nav-div {
+nav-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
 }
 
+/* Banner area with gradient and centred logo */
 .nav-img {
     width: 100%;
-    height: 108px;
+    max-height: 120px;
     background-image: linear-gradient(to top, #e8dcc5, #906c60);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 8px 0;
 }
 
-.nav-img>img {
-    max-height: 100%;
+/* >>> THIS is what makes the logo smaller <<< */
+.nav-img img {
+    max-height: 80px;   /* reduce this to make it smaller */
+    width: auto;
+    display: block;
 }
 
+/* Main navbar row */
 .navbar {
     display: flex;
     align-items: center;
     gap: 18px;
+    padding: 12px 0;
 }
 
+/* Links */
 .nav-item {
-    color: inherit;
-    margin-left: 20px;
     text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Nice underline hover effect */
+.nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #906c60;
+    transition: width 0.2s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
 }
 
 .nav-user-area {
-    margin-left: 25px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .nav-icon {
-    width: 24px;
-    vertical-align: middle;
+    width: 20px;
+    height: 20px;
 }
