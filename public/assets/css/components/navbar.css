@@ -18,7 +18,7 @@ nav-div {
 
 /* >>> THIS is what makes the logo smaller <<< */
 .nav-img img {
-    max-height: 80px;   /* reduce this to make it smaller */
+    max-height: 50px;   /* reduce this to make it smaller */
     width: auto;
     display: block;
 }
