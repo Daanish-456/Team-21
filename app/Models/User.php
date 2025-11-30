@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
-
     protected $table = 'User';
     protected $primaryKey = 'UserID';
     public $timestamps = false; // no created_at/updated_at
