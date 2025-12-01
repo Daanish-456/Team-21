@@ -15,10 +15,8 @@ nav-div {
     padding: 8px 0;
 }
 
-.nav-img img {
-    max-height: 50px;
-    width: auto;
-    display: block;
+.nav-img>img {
+    max-height: 100%;
 }
 
 
