@@ -259,3 +259,19 @@ body {
         text-align: center;
     }
 }
+.nav-user-area img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain;
+    display: block;
+}
+
+/* just in case the icons don’t have that wrapper */
+.nav-div img[alt*="Basket"],
+.nav-div img[alt*="Cart"],
+.nav-div img[alt*="User"],
+.nav-div img[alt*="Account"] {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain;
+}
