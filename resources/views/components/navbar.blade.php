@@ -17,8 +17,8 @@
             <a href="{{ route('basket') }}" class="nav-icon-link" aria-label="Basket">
                 <img src="{{ asset('assets/svg/cart.svg') }}" class="nav-icon" alt="Basket">
             </a>
-            <a href="{{ route('account') }}" class="nav-icon-link" aria-label="Account">
-                <img src="{{ asset('assets/svg/person-sharp.svg') }}" class="nav-icon" alt="User Account">
+            <a href="{{ route('account') }}" aria-label="Account">
+                <img src="{{ asset('assets/svg/person-sharp.svg') }}"  alt="User Account">
             </a>
         </div>
     </nav>
