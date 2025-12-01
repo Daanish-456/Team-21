@@ -12,12 +12,11 @@
         rel="stylesheet">
 
     {{-- Global styles (body, layout, navbar, footer) --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-
     @stack('styles')
 </head>
 
