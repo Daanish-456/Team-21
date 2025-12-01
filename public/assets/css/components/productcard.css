@@ -5,11 +5,14 @@
 }
 
 .productcard-title {
+    padding-top: 12px;
     font-size: medium;
+    color: var(--charcoal);
 }
 
 .productcard-description {
     font-size: small;
+    color: var(--charcoal);
 }
 
 .productcard .productcard-image {

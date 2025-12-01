@@ -16,7 +16,7 @@ nav-div {
 }
 
 .nav-img img {
-    max-height: 50px;  
+    max-height: 50px;
     width: auto;
     display: block;
 }
@@ -27,6 +27,7 @@ nav-div {
     align-items: center;
     gap: 18px;
     padding: 12px 0;
+    margin: 12px;
 }
 
 /* Links */

@@ -21,7 +21,8 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.15); /* subtle dark overlay */
+    background: rgba(0, 0, 0, 0.15);
+    /* subtle dark overlay */
 }
 
 .feature-text,
@@ -36,6 +37,7 @@
 }
 
 .feature-text p {
+    color: #f5f5f5;
     font-size: 16px;
     margin-bottom: 24px;
 }
@@ -86,7 +88,7 @@
     margin: 0 64px 72px;
     padding: 32px 40px;
 
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
 }
 
 .about-logo {
@@ -97,13 +99,14 @@
 }
 
 .about-text h1 {
+    color: var(--charcoal);
     font-size: 24px;
     margin-bottom: 8px;
 }
 
 .about-text p {
     font-size: 15px;
-    color: #555;
+    color: var(--charcoal);
     max-width: 520px;
 }
 
@@ -169,6 +172,7 @@
         text-align: center;
     }
 }
+
 .nav-user-area img {
     width: 20px !important;
     height: 20px !important;
