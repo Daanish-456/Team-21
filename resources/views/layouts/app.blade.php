@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 
     @stack('styles')
 </head>
