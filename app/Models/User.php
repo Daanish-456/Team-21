@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'User';
     protected $primaryKey = 'UserID';
-    public $timestamps = false; // no created_at/updated_at
+    public $timestamps = false; // no created_at/updated_at columns
 
     protected $fillable = [
         'Name',
