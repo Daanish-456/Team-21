@@ -1,0 +1,183 @@
+.account-container {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.account-container h1 {
+    margin-bottom: 40px;
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.account-section {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border: 1px solid #e8dcc5;
+}
+
+.account-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.account-section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.info-card,
+.address-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    gap: 10px;
+}
+
+.info-label {
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.info-value {
+    color: #666;
+}
+
+.edit-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: white;
+    border: 2px solid #e8dcc5;
+    cursor: pointer;
+    font-family: 'Noto Serif', serif;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #e8dcc5;
+    color: #906c60;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #e8dcc5;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e8dcc5;
+}
+
+.order-number {
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.order-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.order-status {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.order-status.delivered {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.processing {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.order-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.order-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #e8dcc5;
+}
+
+.item-name {
+    margin: 0 0 5px 0;
+    font-weight: 500;
+}
+
+.item-price {
+    margin: 0;
+    color: #906c60;
+    font-size: 14px;
+}
+
+.order-total {
+    text-align: right;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #e8dcc5;
+}
+
+.address-card p {
+    margin: 5px 0;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Serif', serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c;
+}
+
+@media (max-width: 768px) {
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+}
