@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
 {
@@ -27,7 +28,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('pages.product.show', compact('product'));
+        return view('pages.product.product', compact('product'));
     }
 
 

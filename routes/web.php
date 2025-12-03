@@ -28,5 +28,4 @@ Route::view('/register', 'pages.auth.register')->name('register')->middleware(Us
 Route::post('/register', [UserController::class, 'register'])->middleware(UserNotLoginChecker::class);
 
 //Product Routes
-Route::view('/shop', 'pages.shop')->name('shop');
-Route::view('/product', 'pages.product.product')->name('product');
+Route::view('/product', 'pages.product.product')->name('product');Route::get('/shop', [ProductController::class, 'index'])->name('shop');
