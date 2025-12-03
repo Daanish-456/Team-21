@@ -10,7 +10,7 @@
 
 
     <div class="container">
-        <img src="{{ $product->Image_URL }}" alt="{{ $product->Product_Name }}" />
+        <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}" />
 
         <div class="product-details">
             <h1>{{ $product->Product_Name }}</h1>
