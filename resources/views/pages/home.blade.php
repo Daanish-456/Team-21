@@ -14,7 +14,7 @@
         </div>
         
         <a class="feature-link" href="{{ route('shop') }}">Explore Items</a>
-    </div>
+</div>
     <div class="products">
         @include('components.productcard')
         @include('components.productcard')
