@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}" />
 @endpush
 
-@section('content') 
+@section('content')
     <div class="feature">
         <div class="feature-text">
             <h1>Ethically Sourced. Soulfully Crafted.</h1>
             <p>Discover jewellery that honors the earth and elevates your spirit.</p>
         </div>
-        
+
         <a class="feature-link" href="{{ route('shop') }}">Explore Items</a>
-</div>
+    </div>
     <div class="products">
-        @include('components.productcard')
-        @include('components.productcard')
-        @include('components.productcard')
+        @foreach ($products as $product)
+            <a href={{ '/product/' . $product->ProductID }} class="productcard">
+                <img src="{{ asset($product->Image_URL) }}" class="productcard-image" alt="Product Image" />
+                <h1 class="productcard-title">{{ $product->Product_Name }}</h1>
+                <p class="productcard-description">{{ $product->Description }}</p>
+            </a>
+        @endforeach
     </div>
 
     <div class="about">

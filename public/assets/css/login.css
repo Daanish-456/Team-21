@@ -1,11 +1,18 @@
 .container {
     margin-top: 74px;
     text-align: center;
+    border: 3px solid var(--gold);
+    padding: 48px;
+}
+
+.container>h2 {
+    color: black;
 }
 
 .container>form {
     display: flex;
     flex-direction: column;
+    margin-top: 48px;
     align-items: center;
     gap: 24px;
 }

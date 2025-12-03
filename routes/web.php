@@ -8,7 +8,7 @@ use App\Http\Middleware\UserNotLoginChecker;
 use App\Http\Middleware\UserSessionChecker;
 use App\Models\User;
 
-Route::view('/', 'pages.home')->name('home');
+Route::get('/', [ProductController::class, 'home'])->name('home');
 
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact');

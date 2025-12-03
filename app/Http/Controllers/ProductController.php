@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function home()
     {
 
-        $products = Product::limit(8)->get();
+        $products = Product::limit(3)->get();
 
         return view('pages.home', compact('products'));
     }

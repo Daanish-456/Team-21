@@ -8,8 +8,8 @@
 
 @section('content')
     <div class="contact-container">
+        <h1>Contact Us</h1>
         <div class="contact-form-content">
-            <h1>Contact Us</h1>
             <p>If you are unsatisfied with a product or have any other queries please contact us below.</p>
 
             @if(Session::has("success"))
