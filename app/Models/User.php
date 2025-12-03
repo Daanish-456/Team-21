@@ -11,7 +11,7 @@ class User extends Authenticatable
 
     protected $table = 'User';
     protected $primaryKey = 'UserID';
-    public $timestamps = false; // no created_at/updated_at columns
+    public $timestamps = false;
 
     protected $fillable = [
         'Name',
@@ -37,5 +37,15 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(Review::class, 'UserID');
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'Email';
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->Password;
     }
 }
