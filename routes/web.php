@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\UserNotLoginChecker;
 use App\Http\Middleware\UserSessionChecker;
@@ -28,4 +29,7 @@ Route::view('/register', 'pages.auth.register')->name('register')->middleware(Us
 Route::post('/register', [UserController::class, 'register'])->middleware(UserNotLoginChecker::class);
 
 //Product Routes
-Route::view('/product', 'pages.product.product')->name('product');Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+Route::redirect('/product', '/shop');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');
+Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');

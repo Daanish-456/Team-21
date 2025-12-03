@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    justify-content: center;
+}
+
+.product-details {
+    color: black;
+    gap: 32px;
+}
+
+.product-details>h1,
+.product-details>h2,
+.product-details>p {
+    color: black;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+}
+
+.cart-button {
+    background-color: none;
+    fill: none;
+
+}
+
+.container img {
+    border: 3px solid var(--gold);
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+}

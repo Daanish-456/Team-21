@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}" />
 @endpush
+
 @section('content') 
     <div class="feature">
         <div class="feature-text">
