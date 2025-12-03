@@ -43,14 +43,16 @@
                                         <span class="order-number">Order #{{ $order->OrderID }}</span>
                                         <span class="order-date">Placed on: {{ date('d M Y', strtotime($order->OrderDate)) }}</span>
                                     </div>
-                                    <span class="order-status {{ strtolower($order->OrderStatus) }}">{{ $order->OrderStatus }}</span>
+                                    <span
+                                        class="order-status {{ strtolower($order->OrderStatus) }}">{{ $order->OrderStatus }}</span>
                                 </div>
                                 <div class="order-items">
                                     {{-- Backend: Loop through Order_Item WHERE OrderID = $order->OrderID --}}
                                     @if(isset($order->items) && count($order->items) > 0)
                                         @foreach($order->items as $item)
                                             <div class="order-item">
-                                                <img src="{{ asset('assets/images/' . ($item->product_image ?? 'example-necklace.png')) }}" alt="Product" />
+                                                <img src="{{ asset('assets/images/' . ($item->product_image ?? 'example-necklace.png')) }}"
+                                                    alt="Product" />
                                                 <div>
                                                     <p class="item-name">{{ $item->product_name ?? 'Product' }}</p>
                                                     <p class="item-price">£{{ number_format($item->price, 2) }}</p>
@@ -84,10 +86,7 @@
 
             {{-- Logout Section --}}
             <div class="account-section">
-                <form action="/logout" method="post">
-                    @csrf
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
+                <a href="{{ route('logout') }}" class="logout-btn">Logout</a>
             </div>
         </div>
     </div>
