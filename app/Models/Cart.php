@@ -10,15 +10,14 @@ class Cart extends Model
     protected $primaryKey = 'CartID';
     public $timestamps = false;
 
-    protected $fillable = ['UserID'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'UserID');
-    }
+    protected $fillable = [
+        'UserID',
+        'CreatedAt',
+    ];
 
     public function items()
     {
         return $this->hasMany(CartItem::class, 'CartID');
     }
 }
+

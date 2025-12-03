@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<<<<<<< HEAD
 @section('title', 'Stone & Soul - Home')
 
 @push('styles')
@@ -31,5 +32,15 @@
                 friendly.
             </p>
         </div>
+=======
+@section('title', 'Stone & Soul - Browse')
+
+@section('content')
+    <div>
+        {{-- test --}}
+        @foreach ($products as $product)
+            <p>{{ $product->Product_Name . $product->Price}}</p>
+        @endforeach
+>>>>>>> 6d232a86c05a9e47c0ce83e7dba22c0ba12d303d
     </div>
 @endsection
