@@ -4,17 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Middleware\UserNotLoginChecker;
 use App\Http\Middleware\UserSessionChecker;
 use App\Models\User;
 
+// Home
 Route::get('/', [ProductController::class, 'home'])->name('home');
 
+// Contact
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact');
 
-//User Routes
-Route::view('/basket', 'pages.basket')->name('basket');
+// User routes
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
 
@@ -25,11 +27,28 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::view('/login', 'pages.auth.login')->name('login')->middleware(UserNotLoginChecker::class);
 Route::post('/login', [UserController::class, 'login'])->middleware(UserNotLoginChecker::class);
+
 Route::view('/register', 'pages.auth.register')->name('register')->middleware(UserNotLoginChecker::class);
 Route::post('/register', [UserController::class, 'register'])->middleware(UserNotLoginChecker::class);
 
-//Product Routes
+// Product routes
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::redirect('/product', '/shop');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');
 Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');
+
+// Cart / Basket routes (requires logged-in user)
+Route::middleware(UserSessionChecker::class)->group(function () {
+    // Basket page (used by navbar: route('basket'))
+    Route::get('/basket', [CartController::class, 'show'])->name('basket');
+
+    // Cart actions
+    Route::post('/basket/add/{productId}', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/basket/update/{productId}', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/basket/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+
+    // Checkout page
+    Route::get('/checkout', function () {
+        return view('pages.checkout');
+    })->name('checkout');
+});
