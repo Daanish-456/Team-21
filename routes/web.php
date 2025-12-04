@@ -12,6 +12,9 @@ use App\Models\User;
 // Home
 Route::get('/', [ProductController::class, 'home'])->name('home');
 
+//About
+Route::view('/about', 'pages.about')->name('about');
+
 // Contact
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact');
