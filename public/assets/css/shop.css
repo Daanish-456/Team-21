@@ -2,6 +2,10 @@
     min-height: calc(100vh - 120px);
 }
 
+a {
+    text-decoration: none;
+}
+
 .shop-hero {
     max-width: 880px;
     margin: 0 auto;

@@ -7,28 +7,28 @@
 @endpush
 
 @section('content')
-<section class="shop-results">
-    @if(isset($query))
-        <h2>Search results for "{{ $query }}"</h2>
+    <section class="shop-results">
+        @if(isset($query))
+            <h2>Search results for "{{ $query }}"</h2>
 
-        <div class="product-track">
-            @forelse($products as $product)
-                <article class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">{{ $product->name }}</h3>
-                        <p class="product-price">£{{ $product->price }}</p>
-                        <p class="product-tagline">{{ $product->tagline }}</p>
-                    </div>
-                </article>
-            @empty
-                <p>No products found matching your search.</p>
-            @endforelse
-        </div>
-    @endif
-</section>
+            <div class="product-track">
+                @forelse($products as $product)
+                    <article class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">{{ $product->name }}</h3>
+                            <p class="product-price">£{{ $product->price }}</p>
+                            <p class="product-tagline">{{ $product->tagline }}</p>
+                        </div>
+                    </article>
+                @empty
+                    <p>No products found matching your search.</p>
+                @endforelse
+            </div>
+        @endif
+    </section>
 
 
 
@@ -52,57 +52,67 @@
                 </button>
 
                 <div class="product-track">
-
-                    <a href="/product/2">
-                        <article class="product-card" data-name="Luna Moon Pendant" data-price="£45.00"
-                            data-description="Delicate moon pendant on a fine gold-plated chain, perfect for everyday layering."
-                            data-image="{{ asset('assets/images/shop/necklaces/luna-moon.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/necklaces/luna-moon.png') }}"
-                                    alt="Luna Moon Pendant necklace">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Luna Moon Pendant</h3>
-                                <p class="product-price">£45.00</p>
-                                <p class="product-tagline">Subtle glow. Everyday magic.</p>
-                            </div>
-                        </article>
-                    </a>
-
-                    <a href="/product/3">
-                        <article class="product-card" data-name="Soulstone Bar Necklace" data-price="£52.00"
-                            data-description="A minimalist bar necklace set with a single ethically-sourced crystal."
-                            data-image="{{ asset('assets/images/shop/necklaces/soulstone-bar.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/necklaces/soulstone-bar.png') }}"
-                                    alt="Soulstone Bar Necklace">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Soulstone Bar Necklace</h3>
-                                <p class="product-price">£52.00</p>
-                                <p class="product-tagline">Minimal lines, maximum meaning.</p>
-                            </div>
-                        </article>
-                    </a>
-
-                    <a href="/product/4">
-                        <article class="product-card" data-name="Aura Coin Necklace" data-price="£60.00"
-                            data-description="Hand-hammered coin pendant symbolising protection and clarity."
-                            data-image="{{ asset('assets/images/shop/necklaces/aura-coin.jpg') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/necklaces/aura-coin.jpg') }}"
-                                    alt="Aura Coin Necklace">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Aura Coin Necklace</h3>
-                                <p class="product-price">£60.00</p>
-                                <p class="product-tagline">Protective, timeless, intentional.</p>
-                            </div>
-                        </article>
-                    </a>
+                    @foreach ($products as $product)
+                        @if ($product->CategoryID == 1)
+                            <a href="/product/{{$product->ProductID}}">
+                                <article class="product-card" data-name="{{ $product->Product_Name }}"
+                                    data-price="{{ $product->Price }}" data-description="{{ $product->Description }}"
+                                    data-image="{{ asset($product->Image_URL) }}">
+                                    <div class="product-image-wrapper">
+                                        <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">{{ $product->Product_Name }}</h3>
+                                        <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
+                                        <p class="product-tagline">{{ $product->Description }}</p>
+                                    </div>
+                                </article>
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
 
                 <button class="scroll-btn scroll-btn-right" aria-label="Scroll necklaces right">
+                    ›
+                </button>
+            </div>
+        </section>
+
+        <section class="category-block" id="earrings">
+            <div class="category-header">
+                <div>
+                    <h2>Earrings</h2>
+                    <p>Stackable chains and beadwork for every day.</p>
+                </div>
+            </div>
+
+            <div class="product-scroller" data-category="earrings">
+                <button class="scroll-btn scroll-btn-left" aria-label="Scroll bracelets left">
+                    ‹
+                </button>
+
+                <div class="product-track">
+                    @foreach ($products as $product)
+                        @if ($product->CategoryID == 2)
+                            <a href="/product/{{$product->ProductID}}">
+                                <article class="product-card" data-name="{{ $product->Product_Name }}"
+                                    data-price="{{ $product->Price }}" data-description="{{ $product->Description }}"
+                                    data-image="{{ asset($product->Image_URL) }}">
+                                    <div class="product-image-wrapper">
+                                        <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">{{ $product->Product_Name }}</h3>
+                                        <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
+                                        <p class="product-tagline">{{ $product->Description }}</p>
+                                    </div>
+                                </article>
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+
+                <button class="scroll-btn scroll-btn-right" aria-label="Scroll bracelets right">
                     ›
                 </button>
             </div>
@@ -116,59 +126,33 @@
                 </div>
             </div>
 
-            <div class="product-scroller" data-category="bracelets">
-                <button class="scroll-btn scroll-btn-left" aria-label="Scroll bracelets left">
+            <div class="product-scroller" data-category="rings">
+                <button class="scroll-btn scroll-btn-left" aria-label="Scroll rings left">
                     ‹
                 </button>
 
                 <div class="product-track">
-                    <a href="/product/5">
-                        <article class="product-card" data-name="Harmony Bead Bracelet" data-price="£35.00"
-                            data-description="Hand-strung gemstones chosen to promote balance and calm."
-                            data-image="{{ asset('assets/images/shop/bracelets/harmony-bead.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/bracelets/harmony-bead.png') }}"
-                                    alt="Harmony Bead Bracelet">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Harmony Bead Bracelet</h3>
-                                <p class="product-price">£35.00</p>
-                                <p class="product-tagline">Grounded energy on your wrist.</p>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="/product/6">
-                        <article class="product-card" data-name="Serenity Chain Bracelet" data-price="£40.00"
-                            data-description="Fine chain bracelet with subtle textured links for a soft shimmer."
-                            data-image="{{ asset('assets/images/shop/bracelets/serenity-chain.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/bracelets/serenity-chain.png') }}"
-                                    alt="Serenity Chain Bracelet">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Serenity Chain Bracelet</h3>
-                                <p class="product-price">£40.00</p>
-                                <p class="product-tagline">Delicate shine, everyday wear.</p>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="/product/7">
-                        <article class="product-card" data-name="Soul Cuff" data-price="£58.00"
-                            data-description="Adjustable cuff bracelet with a softly brushed finish."
-                            data-image="{{ asset('assets/images/shop/bracelets/soul-cuff.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/bracelets/soul-cuff.png') }}" alt="Soul Cuff">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Soul Cuff</h3>
-                                <p class="product-price">£58.00</p>
-                                <p class="product-tagline">Sculpted to sit softly on the wrist.</p>
-                            </div>
-                        </article>
-                    </a>
+                    @foreach ($products as $product)
+                        @if ($product->CategoryID == 3)
+                            <a href="/product/{{$product->ProductID}}">
+                                <article class="product-card" data-name="{{ $product->Product_Name }}"
+                                    data-price="{{ $product->Price }}" data-description="{{ $product->Description }}"
+                                    data-image="{{ asset($product->Image_URL) }}">
+                                    <div class="product-image-wrapper">
+                                        <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">{{ $product->Product_Name }}</h3>
+                                        <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
+                                        <p class="product-tagline">{{ $product->Description }}</p>
+                                    </div>
+                                </article>
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
 
-                <button class="scroll-btn scroll-btn-right" aria-label="Scroll bracelets right">
+                <button class="scroll-btn scroll-btn-right" aria-label="Scroll rings right">
                     ›
                 </button>
             </div>
@@ -188,53 +172,24 @@
                 </button>
 
                 <div class="product-track">
-
-                    <a>
-                        <article class="product-card" data-name="Eclipse Stacking Ring" data-price="£30.00"
-                            data-description="Slim band finished with a subtle hammered texture, perfect for stacking."
-                            data-image="{{ asset('assets/images/shop/rings/eclipse-stack.jpg') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/rings/eclipse-stack.jpg') }}"
-                                    alt="Eclipse Stacking Ring">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Eclipse Stacking Ring</h3>
-                                <p class="product-price">£30.00</p>
-                                <p class="product-tagline">Build your own constellation.</p>
-                            </div>
-                        </article>
-                    </a>
-
-                    <a>
-                        <article class="product-card" data-name="Solace Gemstone Ring" data-price="£55.00"
-                            data-description="Single gemstone ring in a classic claw setting."
-                            data-image="{{ asset('assets/images/shop/rings/solace-gemstone.png') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/rings/solace-gemstone.png') }}"
-                                    alt="Solace Gemstone Ring">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Solace Gemstone Ring</h3>
-                                <p class="product-price">£55.00</p>
-                                <p class="product-tagline">A focal point with quiet power.</p>
-                            </div>
-                        </article>
-                    </a>
-
-                    <a>
-                        <article class="product-card" data-name="Orbit Signet Ring" data-price="£65.00"
-                            data-description="A modern signet ring with softly rounded edges."
-                            data-image="{{ asset('assets/images/shop/rings/orbit-signet.jpg') }}">
-                            <div class="product-image-wrapper">
-                                <img src="{{ asset('assets/images/shop/rings/orbit-signet.jpg') }}" alt="Orbit Signet Ring">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-title">Orbit Signet Ring</h3>
-                                <p class="product-price">£65.00</p>
-                                <p class="product-tagline">Bold, but still wearable daily.</p>
-                            </div>
-                        </article>
-                    </a>
+                    @foreach ($products as $product)
+                        @if ($product->CategoryID == 4)
+                            <a href="/product/{{$product->ProductID}}">
+                                <article class="product-card" data-name="{{ $product->Product_Name }}"
+                                    data-price="{{ $product->Price }}" data-description="{{ $product->Description }}"
+                                    data-image="{{ asset($product->Image_URL) }}">
+                                    <div class="product-image-wrapper">
+                                        <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">{{ $product->Product_Name }}</h3>
+                                        <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
+                                        <p class="product-tagline">{{ $product->Description }}</p>
+                                    </div>
+                                </article>
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
 
                 <button class="scroll-btn scroll-btn-right" aria-label="Scroll rings right">
@@ -246,42 +201,42 @@
 @endsection
 
 @push('scripts')
-<script>
-(function() {
-    const params = new URLSearchParams(window.location.search);
-    const query = (params.get('q') || '').trim().toLowerCase();
-    if (!query) return;
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const query = (params.get('q') || '').trim().toLowerCase();
+            if (!query) return;
 
-    // Add a search results header
-    const hero = document.querySelector('.shop-hero');
-    if (hero) {
-        const header = document.createElement('div');
-        header.className = 'category-header';
-        header.innerHTML = `<h2>Search results for "${query}"</h2>`;
-        hero.insertAdjacentElement('afterend', header);
-    }
+            // Add a search results header
+            const hero = document.querySelector('.shop-hero');
+            if (hero) {
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.innerHTML = `<h2>Search results for "${query}"</h2>`;
+                hero.insertAdjacentElement('afterend', header);
+            }
 
-    let totalMatches = 0;
-    document.querySelectorAll('.product-card').forEach(card => {
-        const name = (card.dataset.name || '').toLowerCase();
-        const description = (card.dataset.description || '').toLowerCase();
-        const match = name.includes(query) || description.includes(query);
-        card.style.display = match ? '' : 'none';
-        if (match) totalMatches++;
-    });
+            let totalMatches = 0;
+            document.querySelectorAll('.product-card').forEach(card => {
+                const name = (card.dataset.name || '').toLowerCase();
+                const description = (card.dataset.description || '').toLowerCase();
+                const match = name.includes(query) || description.includes(query);
+                card.style.display = match ? '' : 'none';
+                if (match) totalMatches++;
+            });
 
-    // Hide empty category blocks
-    document.querySelectorAll('.category-block').forEach(block => {
-        const visibleCards = block.querySelectorAll('.product-card:not([style*="display: none"])');
-        if (visibleCards.length === 0) block.style.display = 'none';
-    });
+            // Hide empty category blocks
+            document.querySelectorAll('.category-block').forEach(block => {
+                const visibleCards = block.querySelectorAll('.product-card:not([style*="display: none"])');
+                if (visibleCards.length === 0) block.style.display = 'none';
+            });
 
-    if (totalMatches === 0) {
-        const msg = document.createElement('p');
-        msg.textContent = 'No products found matching your search.';
-        document.querySelector('.shop-page').appendChild(msg);
-    }
-})();
-</script>
-<script src="{{ asset('assets/js/shop.js') }}"></script>
+            if (totalMatches === 0) {
+                const msg = document.createElement('p');
+                msg.textContent = 'No products found matching your search.';
+                document.querySelector('.shop-page').appendChild(msg);
+            }
+        })();
+    </script>
+    <script src="{{ asset('assets/js/shop.js') }}"></script>
 @endpush

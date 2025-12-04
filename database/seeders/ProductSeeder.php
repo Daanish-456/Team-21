@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Elegant rose gold necklace with a minimalistic pendant.',
                 'Price' => 49.99,
                 'Stock' => 15,
-                'Image_URL' => 'uploads/products/necklace1.jpg',
+                'Image_URL' => 'assets/images/products/necklace1.jpg',
                 'CategoryID' => 1
             ],
             [
@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Classic diamond stud earrings perfect for daily wear.',
                 'Price' => 79.99,
                 'Stock' => 10,
-                'Image_URL' => 'uploads/products/earrings1.jpg',
+                'Image_URL' => 'assets/images/products/earrings1.jpg',
                 'CategoryID' => 2
             ],
             [
@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Handcrafted sterling silver bracelet with intricate design.',
                 'Price' => 35.50,
                 'Stock' => 20,
-                'Image_URL' => 'uploads/products/bracelet1.jpg',
+                'Image_URL' => 'assets/images/products/bracelet1.jpg',
                 'CategoryID' => 3
             ],
             [
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Adjustable gold plated ring with gemstone centerpiece.',
                 'Price' => 29.99,
                 'Stock' => 25,
-                'Image_URL' => 'uploads/products/ring1.jpg',
+                'Image_URL' => 'assets/images/products/ring1.jpg',
                 'CategoryID' => 4
             ],
             [
@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Elegant pearl drop earrings for special occasions.',
                 'Price' => 55.00,
                 'Stock' => 12,
-                'Image_URL' => 'uploads/products/earrings2.jpg',
+                'Image_URL' => 'assets/images/products/earrings2.jpg',
                 'CategoryID' => 2
             ]
         ]);
