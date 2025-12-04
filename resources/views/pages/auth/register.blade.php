@@ -31,7 +31,7 @@
             <label for="confirm_password">Confirm Password</label>
             <input type="password" name="confirm_password" class="form-field">
 
-            <a href="{{ route('register') }}">Don't have an account? Click here to register!</a>
+            <a href="{{ route('login') }}">Already have an account? Login here!</a>
 
             <button type="submit">Register</button>
         </form>
