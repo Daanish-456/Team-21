@@ -47,9 +47,7 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show products filtered by category.
-     */
+
     public function category($id)
     {
         $category = Category::findOrFail($id);
