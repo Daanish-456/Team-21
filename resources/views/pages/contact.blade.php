@@ -8,15 +8,15 @@
 
 @section('content')
     <div class="contact-container">
-        <h1>Contact Us</h1>
         <div class="contact-form-content">
+            <h1>Contact Us</h1>
             <p>If you are unsatisfied with a product or have any other queries please contact us below.</p>
 
             @if(Session::has("success"))
-                <p>{{ Session::get("success") }}</p>
+                <p class="form-success">{{ Session::get("success") }}</p>
             @endif
 
-            <form class="contact-form" action="/contact" method="post">
+            <form class="contact-form" action="/contact" method="post" id="contactForm">
                 @csrf
 
                 <div class="error-container">
@@ -39,11 +39,19 @@
                 <label for="email">Email</label>
                 <input type="email" class="contact-field" id="email" name="email" value="{{ old('email') }}">
 
-                <label for="contact-reason">Message</label>
-                <textarea name="message" class="contact-field" id="message" value="{{ old('message') }}"></textarea>
+                <label for="message">Message</label>
+                <textarea name="message" class="contact-field" id="message" rows="5">{{ old('message') }}</textarea>
+
+                <div class="message-meta">
+                    <small id="messageCounter">0 / 500</small>
+                </div>
 
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/contact.js') }}"></script>
+@endpush
