@@ -1,15 +1,12 @@
 .contact-container {
-    min-height: calc(100vh - 120px); 
+    min-height: calc(100vh - 120px);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 4rem 1.5rem;
-    background: radial-gradient(circle at top left, #f5e9dc 0, #fdfaf5 40%, #f3ebe0 100%);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .contact-form-content {
-    width: 100%;
     max-width: 600px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 24px;
@@ -29,7 +26,7 @@
     color: #3c2f2f;
 }
 
-.contact-form-content > p {
+.contact-form-content>p {
     margin-bottom: 1.5rem;
     color: #6b5c55;
     font-size: 0.95rem;
@@ -60,6 +57,7 @@
     font-size: 0.95rem;
     outline: none;
     transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, transform 0.08s ease;
+    font: inherit;
 }
 
 .contact-field::placeholder {
@@ -75,7 +73,8 @@
 
 
 .contact-field#message {
-    resize: vertical;
+    resize: none;
+    font: inherit;
     min-height: 140px;
 }
 
