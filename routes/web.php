@@ -36,6 +36,7 @@ Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::redirect('/product', '/shop');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');
 Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 // Cart / Basket routes (requires logged-in user)
 Route::middleware(UserSessionChecker::class)->group(function () {
