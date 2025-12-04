@@ -7,6 +7,31 @@
 @endpush
 
 @section('content')
+<section class="shop-results">
+    @if(isset($query))
+        <h2>Search results for "{{ $query }}"</h2>
+
+        <div class="product-track">
+            @forelse($products as $product)
+                <article class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ $product->name }}</h3>
+                        <p class="product-price">£{{ $product->price }}</p>
+                        <p class="product-tagline">{{ $product->tagline }}</p>
+                    </div>
+                </article>
+            @empty
+                <p>No products found matching your search.</p>
+            @endforelse
+        </div>
+    @endif
+</section>
+
+
+
     <div class="shop-page">
         <section class="shop-hero">
             <h1>Shop Jewellery</h1>
@@ -205,5 +230,42 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('assets/js/shop.js') }}"></script>
+<script>
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('q') || '').trim().toLowerCase();
+    if (!query) return;
+
+    // Add a search results header
+    const hero = document.querySelector('.shop-hero');
+    if (hero) {
+        const header = document.createElement('div');
+        header.className = 'category-header';
+        header.innerHTML = `<h2>Search results for "${query}"</h2>`;
+        hero.insertAdjacentElement('afterend', header);
+    }
+
+    let totalMatches = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+        const name = (card.dataset.name || '').toLowerCase();
+        const description = (card.dataset.description || '').toLowerCase();
+        const match = name.includes(query) || description.includes(query);
+        card.style.display = match ? '' : 'none';
+        if (match) totalMatches++;
+    });
+
+    // Hide empty category blocks
+    document.querySelectorAll('.category-block').forEach(block => {
+        const visibleCards = block.querySelectorAll('.product-card:not([style*="display: none"])');
+        if (visibleCards.length === 0) block.style.display = 'none';
+    });
+
+    if (totalMatches === 0) {
+        const msg = document.createElement('p');
+        msg.textContent = 'No products found matching your search.';
+        document.querySelector('.shop-page').appendChild(msg);
+    }
+})();
+</script>
+<script src="{{ asset('assets/js/shop.js') }}"></script>
 @endpush
