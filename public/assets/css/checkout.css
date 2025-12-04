@@ -1,0 +1,156 @@
+.checkout-wrapper {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.checkout-card {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px 24px 28px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.checkout-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.checkout-form label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.checkout-form input {
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+.checkout-form input:focus {
+    border-color: #111827;
+    box-shadow: 0 0 0 1px #11182711;
+}
+
+.card-number-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-number-wrapper input {
+    flex: 1;
+}
+
+.card-logos {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-chip {
+    width: 20px;
+    height: 14px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #fbbf24, #f97316);
+}
+
+.card-brand {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #4b5563;
+}
+
+/* Button */
+
+.checkout-btn {
+    margin-top: 8px;
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+.checkout-btn:hover:not(:disabled) {
+    background: #1f2937;
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.25);
+}
+
+.checkout-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.checkout-btn:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* Note */
+
+.checkout-note {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lock-icon {
+    font-size: 1rem;
+}
+
+/* Mobile tweaks */
+
+@media (max-width: 600px) {
+    .checkout-card {
+        padding: 20px 16px 24px;
+    }
+
+    .checkout-title {
+        font-size: 1.5rem;
+    }
+}

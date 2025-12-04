@@ -16,7 +16,12 @@
             <h1>{{ $product->Product_Name }}</h1>
             <p>{{ $product->Description }}</p>
             <h2>£{{ $product->Price }}</h2>
-            <button class="cart-button btn">Add To Cart</button>
-        </div>
+            <form action="{{ route('cart.add', $product->ProductID) }}" method="POST">
+    @csrf
+    <button type="submit" class="cart-button btn">
+        Add To Cart
+    </button>
+</form>
+
     </div>
 @endsection
