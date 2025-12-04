@@ -67,7 +67,6 @@
     display: block;
 }
 
-/* just in case the icons don’t have that wrapper */
 .nav-div img[alt*="Basket"],
 .nav-div img[alt*="Cart"],
 .nav-div img[alt*="User"],
@@ -75,4 +74,59 @@
     width: 20px !important;
     height: 20px !important;
     object-fit: contain;
+}
+
+/* Search Bar Styles */
+.nav-search-form {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 2px solid #e8dcc5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+}
+
+.nav-search-input {
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    font-family: 'Noto Serif', serif;
+    font-size: 14px;
+    width: 180px;
+}
+
+.nav-search-btn {
+    padding: 6px 10px;
+    background-color: #906c60;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-search-btn:hover {
+    background-color: #7a5a4f;
+}
+
+.nav-search-btn svg {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    
+    .nav-search-form {
+        width: 100%;
+        order: 1;
+    }
+    
+    .nav-search-input {
+        flex: 1;
+    }
 }
