@@ -10,6 +10,7 @@
         <a href="{{ route('about') }}" class=" nav-item">About</a>
         <a href="{{ route('shop') }}" class="nav-item">Shop All</a>
         <a href="{{ route('shop') }}#necklaces" class="nav-item">Necklaces</a>
+        <a href="{{ route('shop') }}#earrings" class="nav-item">Earrings</a>
         <a href="{{ route('shop') }}#bracelets" class="nav-item">Bracelets</a>
         <a href="{{ route('shop') }}#rings" class="nav-item">Rings</a>
         <a href="{{ route('contact') }}" class="nav-item">Contact</a>
