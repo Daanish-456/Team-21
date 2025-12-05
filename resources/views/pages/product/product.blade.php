@@ -15,13 +15,13 @@
         <div class="product-details">
             <h1>{{ $product->Product_Name }}</h1>
             <p>{{ $product->Description }}</p>
-            <h2>£{{ $product->Price }}</h2>
+            <h2>£{{ number_format($product->Price, 2) }}</h2>
             <form action="{{ route('cart.add', $product->ProductID) }}" method="POST">
-    @csrf
-    <button type="submit" class="cart-button btn">
-        Add To Cart
-    </button>
-</form>
+                @csrf
+                <button type="submit" class="cart-button btn">
+                    Add To Cart
+                </button>
+            </form>
 
-    </div>
+        </div>
 @endsection

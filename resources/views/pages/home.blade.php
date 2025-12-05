@@ -16,6 +16,7 @@
 
         <a class="feature-link" href="{{ route('shop') }}">Explore Items</a>
     </div>
+    <h2>Featured Products</h2>
     <div class="products">
         @foreach ($products as $product)
             <a href={{ '/product/' . $product->ProductID }} class="productcard">
