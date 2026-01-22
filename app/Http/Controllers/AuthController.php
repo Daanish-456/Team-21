@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:User,Email',
+            'email'    => 'required|email|unique:User,Email,NULL,UserID',
             'password' => 'required|min:6|confirmed',
         ]);
 
@@ -27,7 +27,7 @@ class AuthController extends Controller
             'Name'     => $request->name,
             'Email'    => $request->email,
             'Password' => Hash::make($request->password),
-            'Role'     => 'customer',
+            'Role'     => 'Customer',
         ]);
 
         Auth::login($user);
@@ -48,12 +48,10 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = [
+        if (Auth::attempt([
             'Email'    => $request->email,
             'password' => $request->password,
-        ];
-
-        if (Auth::attempt($credentials)) {
+        ])) {
             $request->session()->regenerate();
             return redirect()->route('account');
         }
@@ -78,4 +76,3 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 }
-
