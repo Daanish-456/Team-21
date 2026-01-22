@@ -22,3 +22,8 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Ignore local database
+laravel
+*.sqlite
+database.sqlite
