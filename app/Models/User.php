@@ -4,17 +4,15 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Cart;
-use App\Models\Order;
-use App\Models\Review;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    // Table name and primary key
-    protected $table = 'User';
+    protected $table = 'Users';
+
     protected $primaryKey = 'UserID';
+
     public $timestamps = false;
 
     // Mass assignable fields

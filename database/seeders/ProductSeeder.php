@@ -9,14 +9,14 @@ class ProductSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('product')->insert([
+        DB::table('Product')->insert([
             [
                 'Product_Name' => 'Luna Moon Pendant',
                 'Description' => 'Delicate moon pendant on a fine gold-plated chain, perfect for everyday layering.',
                 'Price' => 45.00,
                 'Stock' => 23,
                 'Image_URL' => 'assets/images/products/necklaces/luna-moon.png',
-                'CategoryID' => 1
+                'CategoryID' => 1,
             ],
             [
                 'Product_Name' => 'Soulstone Bar Necklace',
@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
                 'Price' => 52.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/necklaces/soulstone-bar.png',
-                'CategoryID' => 1
+                'CategoryID' => 1,
             ],
             [
                 'Product_Name' => 'Aura Coin Necklace',
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                 'Price' => 60.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/necklaces/aura-coin.jpg',
-                'CategoryID' => 1
+                'CategoryID' => 1,
             ],
 
             [
@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
                 'Price' => 35.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/bracelets/harmony-bead.png',
-                'CategoryID' => 3
+                'CategoryID' => 3,
             ],
             [
                 'Product_Name' => 'Serenity Chain Bracelet',
@@ -49,7 +49,7 @@ class ProductSeeder extends Seeder
                 'Price' => 40.00,
                 'Stock' => 17,
                 'Image_URL' => 'assets/images/products/bracelets/serenity-chain.png',
-                'CategoryID' => 3
+                'CategoryID' => 3,
             ],
             [
                 'Product_Name' => 'Soul Cuff',
@@ -57,7 +57,7 @@ class ProductSeeder extends Seeder
                 'Price' => 40.00,
                 'Stock' => 17,
                 'Image_URL' => 'assets/images/products/bracelets/soul-cuff.png',
-                'CategoryID' => 3
+                'CategoryID' => 3,
             ],
 
             [
@@ -66,7 +66,7 @@ class ProductSeeder extends Seeder
                 'Price' => 29.99,
                 'Stock' => 25,
                 'Image_URL' => 'assets/images/products/rings/eclipse-stack.jpg',
-                'CategoryID' => 4
+                'CategoryID' => 4,
             ],
             [
                 'Product_Name' => 'Solace Gemstone Ring',
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
                 'Price' => 55.75,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/rings/solace-gemstone.png',
-                'CategoryID' => 4
+                'CategoryID' => 4,
             ],
             [
                 'Product_Name' => 'Orbit Signet Ring',
@@ -82,7 +82,7 @@ class ProductSeeder extends Seeder
                 'Price' => 55.75,
                 'Stock' => 11,
                 'Image_URL' => 'assets/images/products/rings/orbit-signet.jpg',
-                'CategoryID' => 4
+                'CategoryID' => 4,
             ],
 
             [
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
                 'Price' => 35.50,
                 'Stock' => 20,
                 'Image_URL' => 'assets/images/products/bracelet1.jpg',
-                'CategoryID' => 3
+                'CategoryID' => 3,
             ],
             [
                 'Product_Name' => 'Pearl Drop Earrings',
@@ -99,8 +99,8 @@ class ProductSeeder extends Seeder
                 'Price' => 55.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/earrings2.jpg',
-                'CategoryID' => 2
-            ]
+                'CategoryID' => 2,
+            ],
         ]);
     }
 }

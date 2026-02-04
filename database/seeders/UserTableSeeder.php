@@ -10,23 +10,23 @@ class UserTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('user')->insert([
+        DB::table('Users')->insert([
             [
-                'Name'      => 'Zainab Mazahir',
-                'Email'     => 'zainab@example.com',
-                'Password'  => Hash::make('password123'),
-                'Phone'     => '07123456789',
-                'Addresss'   => '123 Aston Road, Birmingham',
-                'Role'      => 'customer',
+                'Name' => 'Zainab Mazahir',
+                'Email' => 'zainab@example.com',
+                'Password' => Hash::make('password123'),
+                'Phone' => '07123456789',
+                'Address' => '123 Aston Road, Birmingham',
+                'Role' => 'customer',
             ],
             [
-                'Name'      => 'Admin User',
-                'Email'     => 'admin@example.com',
-                'Password'  => Hash::make('admin123'),
-                'Phone'     => '07000000000',
-                'Addresss'   => 'Admin Street',
-                'Role'      => 'admin',
-            ]
+                'Name' => 'Admin User',
+                'Email' => 'admin@example.com',
+                'Password' => Hash::make('admin123'),
+                'Phone' => '07000000000',
+                'Address' => 'Admin Street',
+                'Role' => 'admin',
+            ],
         ]);
     }
 }
