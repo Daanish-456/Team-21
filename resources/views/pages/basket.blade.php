@@ -14,6 +14,10 @@
             <p class="basket-alert">{{ session('success') }}</p>
         @endif
 
+        @if (session('error'))
+            <p class="basket-alert basket-alert-error">{{ session('error') }}</p>
+        @endif
+
         @if ($items->isEmpty())
             <p class="basket-empty">Your basket is empty.</p>
         @else
@@ -33,22 +37,26 @@
                 <tbody>
                     @foreach ($items as $item)
                         @php
-                            $lineTotal = $item->Price * $item->Quantity;
+                            $lineTotal = $item->product->Price * $item->Quantity;
                             $total += $lineTotal;
                         @endphp
 
                         <tr>
                             <td class="basket-product">
-                                <strong>{{ $item->Product_Name }}</strong>
+                                <a href="{{ route('product', $item->ProductID) }}">
+                                    <strong>{{ $item->product->Product_Name }}</strong>
+                                </a>
                             </td>
 
-                            <td>£{{ number_format($item->Price, 2) }}</td>
+                            <td>£{{ number_format($item->product->Price, 2) }}</td>
 
                             {{-- Update Quantity --}}
                             <td>
-                                <form action="{{ route('cart.update', $item->ProductID) }}" method="POST" class="basket-inline-form">
+                                <form action="{{ route('cart.update', $item->ProductID) }}" method="POST"
+                                    class="basket-inline-form">
                                     @csrf
-                                    <input type="number" name="quantity" min="1" value="{{ $item->Quantity }}" class="basket-qty-input">
+                                    <input type="number" name="quantity" min="1" value="{{ $item->Quantity }}"
+                                        class="basket-qty-input">
                                     <button type="submit" class="basket-btn basket-btn-secondary">Update</button>
                                 </form>
                             </td>

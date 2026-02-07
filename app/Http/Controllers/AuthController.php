@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Routing\Controller;
 
 class AuthController extends Controller
 {
@@ -18,16 +18,16 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:User,Email,NULL,UserID',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:User,Email,NULL,UserID',
             'password' => 'required|min:6|confirmed',
         ]);
 
         $user = User::create([
-            'Name'     => $request->name,
-            'Email'    => $request->email,
+            'Name' => $request->name,
+            'Email' => $request->email,
             'Password' => Hash::make($request->password),
-            'Role'     => 'Customer',
+            'Role' => 'Customer',
         ]);
 
         Auth::login($user);
@@ -44,15 +44,16 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
         if (Auth::attempt([
-            'Email'    => $request->email,
+            'Email' => $request->email,
             'password' => $request->password,
         ])) {
             $request->session()->regenerate();
+
             return redirect()->route('account');
         }
 

@@ -7,27 +7,31 @@
 @endpush
 
 @section('content')
-    <div class="container">
-        <h2>Login</h2>
+    <div class="auth-container">
+        <div class="auth-form-content">
+            <h1>Login</h1>
 
-        <div class="error-container">
-            @if (Session::has('error'))
-                <p>{{ Session::get('error') }}</p>
-            @endif
+            <div class="error-container">
+                @if (Session::has('error'))
+                    <p class="form-error">{{ Session::get('error') }}</p>
+                @endif
+            </div>
+
+            <form class="auth-form" method="post" action="/login">
+                @csrf
+
+                <label for="email">Email</label>
+                <input type="email" name="email" class="auth-field">
+
+                <label for="password">Password</label>
+                <input type="password" name="password" class="auth-field">
+
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <p class="auth-link">
+                Don't have an account? <a href="{{ route('register') }}">Register here!</a>
+            </p>
         </div>
-
-        <form method="post" action="/login">
-            @csrf
-
-            <label for="email">Email</label>
-            <input type="email" name="email" class="form-field">
-
-            <label for="password">Password</label>
-            <input type="password" name="password" class="form-field">
-
-            <a href="{{ route('register') }}">Don't have an account? Click here to register!</a>
-
-            <button type="submit">Login</button>
-        </form>
     </div>
 @endsection

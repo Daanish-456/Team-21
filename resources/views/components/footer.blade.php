@@ -1,3 +1,5 @@
 <footer class="footer">
-    <p>{{ date('Y') }} Team 21 - Stone & Soul - Ethical & Sustainable Jewellery</p>
+    <div class="footer-content">
+        <p>&copy; {{ date('Y') }} Team 21 - Stone & Soul - Ethical & Sustainable Jewellery</p>
+    </div>
 </footer>

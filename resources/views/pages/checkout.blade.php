@@ -17,14 +17,14 @@
 
                 <div class="form-group">
                     <label for="card_name">Name on Card</label>
-                    <input type="text" id="card_name" name="card_name" placeholder="Zainab Mazahir" required>
+                    <input type="text" id="card_name" name="card_name" placeholder="John Smith" required>
                 </div>
 
                 <div class="form-group">
                     <label for="card_number">Card Number</label>
                     <div class="card-number-wrapper">
                         <input type="text" id="card_number" name="card_number" maxlength="19"
-                               placeholder="1234 5678 9012 3456" required>
+                            placeholder="1234 5678 9012 3456" required>
                         <div class="card-logos">
                             <span class="card-chip"></span>
                             <span class="card-brand">VISA</span>
@@ -46,8 +46,8 @@
 
                 <div class="form-group">
                     <label for="billing_address">Billing Address</label>
-                    <input type="text" id="billing_address" name="billing_address"
-                           placeholder="123 Aston Road, Birmingham" required>
+                    <input type="text" id="billing_address" name="billing_address" placeholder="123 Aston Road, Birmingham"
+                        required>
                 </div>
 
                 <button type="submit" class="checkout-btn">

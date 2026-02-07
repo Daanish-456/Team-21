@@ -14,6 +14,9 @@
 
         <div class="product-details">
             <h1>{{ $product->Product_Name }}</h1>
+            <p class="stock-info" style="{{ $product->Stock < 3 ? 'color: red;' : '' }}">
+                {{ $product->Stock }} in stock
+            </p>
             <p>{{ $product->Description }}</p>
             <h2>£{{ number_format($product->Price, 2) }}</h2>
             <form action="{{ route('cart.add', $product->ProductID) }}" method="POST">
@@ -24,4 +27,5 @@
             </form>
 
         </div>
+    </div>
 @endsection

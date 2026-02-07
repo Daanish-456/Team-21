@@ -3,20 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CartController
 {
     protected function getUserCart()
     {
-        // Your app stores the logged-in user ID in the session
         $userId = session('UserID');
 
-        if (!$userId) {
-            // Extra safety – middleware should normally catch this
+        if (! $userId) {
             abort(403, 'You must be logged in to use the basket.');
         }
 
@@ -25,69 +21,52 @@ class CartController
         ]);
     }
 
-  public function show()
-{
-    $cart = $this->getUserCart();
+    public function show()
+    {
+        $cart = $this->getUserCart();
 
-    $items = DB::table('cart_item')
-        ->join('Product', 'cart_item.ProductID', '=', 'Product.ProductID')
-        ->where('cart_item.CartID', $cart->CartID)
-        ->select(
-            'cart_item.CartID',
-            'cart_item.ProductID',
-            'cart_item.Quantity',
-            'Product.Product_Name',
-            'Product.Price',
-            'Product.Image_URL'
-        )
-        ->get();
+        $items = $cart->items()->with('product')->get();
 
-    return view('pages.basket', compact('cart', 'items'));
-}
-
-
-  public function add($productId, Request $request)
-{
-    $cart    = $this->getUserCart(); // ensures Cart row exists for this user
-    $product = Product::where('ProductID', $productId)->firstOrFail();
-
-    $quantity = max(1, (int) $request->input('quantity', 1));
-
-    // IMPORTANT: use your real table name here – I’ll keep 'cart_item' as before
-    $existingItem = DB::table('cart_item')
-        ->where('CartID', $cart->CartID)
-        ->where('ProductID', $product->ProductID)
-        ->first();
-
-    if ($existingItem) {
-        // We don't rely on CartItemID anymore, just update by CartID & ProductID
-        DB::table('cart_item')
-            ->where('CartID', $cart->CartID)
-            ->where('ProductID', $product->ProductID)
-            ->update([
-                'Quantity' => $existingItem->Quantity + $quantity,
-            ]);
-    } else {
-        // Insert new row
-        DB::table('cart_item')->insert([
-            'CartID'    => $cart->CartID,
-            'ProductID' => $product->ProductID,
-            'Quantity'  => $quantity,
-        ]);
+        return view('pages.basket', compact('cart', 'items'));
     }
 
-    return redirect()->route('basket')->with('success', 'Item added to basket.');
-}
+    public function add($productId, Request $request)
+    {
+        $cart = $this->getUserCart();
+        $product = Product::where('ProductID', $productId)->firstOrFail();
 
+        $quantity = max(1, (int) $request->input('quantity', 1));
+        $existingItem = $cart->items()->where('ProductID', $productId)->first();
+        $currentQuantity = $existingItem ? $existingItem->Quantity : 0;
+        $newQuantity = $currentQuantity + $quantity;
+
+        if ($newQuantity > $product->Stock) {
+            return redirect()->back()->with('error', "Cannot add more than {$product->Stock} items. You already have {$currentQuantity} in your basket.");
+        }
+
+        if ($existingItem) {
+            $existingItem->increment('Quantity', $quantity);
+        } else {
+            $cart->items()->create([
+                'ProductID' => $productId,
+                'Quantity' => $quantity,
+            ]);
+        }
+
+        return redirect()->route('basket')->with('success', 'Item added to basket.');
+    }
 
     public function update($productId, Request $request)
     {
         $cart = $this->getUserCart();
+        $product = Product::where('ProductID', $productId)->firstOrFail();
         $quantity = max(1, (int) $request->input('quantity', 1));
 
-        CartItem::where('CartID', $cart->CartID)
-            ->where('ProductID', $productId)
-            ->update(['Quantity' => $quantity]);
+        if ($quantity > $product->Stock) {
+            return redirect()->route('basket')->with('error', "Cannot set quantity higher than {$product->Stock} available in stock.");
+        }
+
+        $cart->items()->where('ProductID', $productId)->update(['Quantity' => $quantity]);
 
         return redirect()->route('basket')->with('success', 'Basket updated.');
     }
@@ -96,9 +75,7 @@ class CartController
     {
         $cart = $this->getUserCart();
 
-        CartItem::where('CartID', $cart->CartID)
-            ->where('ProductID', $productId)
-            ->delete();
+        $cart->items()->where('ProductID', $productId)->delete();
 
         return redirect()->route('basket')->with('success', 'Item removed from basket.');
     }

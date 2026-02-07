@@ -11,10 +11,19 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:Users,Email',
             'name' => 'required',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
+        ], [
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email is already registered.',
+            'name.required' => 'Name is required.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters.',
+            'confirm_password.required' => 'Please confirm your password.',
+            'confirm_password.same' => 'Passwords do not match.',
         ]);
 
         $password_hash = password_hash($credentials['password'], PASSWORD_BCRYPT);

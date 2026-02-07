@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Cart_Item', function(Blueprint $blue) {
-            $blue->id('CartID');
+        Schema::create('Cart_Item', function (Blueprint $blue) {
+            $blue->integer('CartID');
             $blue->integer('ProductID');
             $blue->integer('Quantity');
         });

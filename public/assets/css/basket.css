@@ -23,6 +23,11 @@
     font-size: 0.95rem;
 }
 
+.basket-alert-error {
+    color: #770000;
+    background-color: #f8a6a6;
+}
+
 .basket-empty {
     padding: 20px 0;
     font-size: 1rem;
@@ -54,6 +59,10 @@
 
 .basket-product {
     max-width: 260px;
+}
+
+.basket-product a {
+    text-decoration: none;
 }
 
 .basket-total-label {
