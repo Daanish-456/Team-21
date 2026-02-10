@@ -49,8 +49,8 @@
     color: #28a745;
 }
 
-.cart-button {
-    display: inline-block;
+.cart-button,
+.wishlist-button {
     padding: 16px 32px;
     font-size: 16px;
     font-weight: 600;
@@ -61,13 +61,4 @@
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
     margin-top: 1rem;
-}
-
-.cart-button:hover {
-    background-color: #555;
-    transform: translateY(-2px);
-}
-
-.cart-button:active {
-    transform: translateY(0);
 }
