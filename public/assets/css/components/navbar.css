@@ -131,3 +131,12 @@
         flex: 1;
     }
 }
+.theme-toggle {
+background: transparent;
+border: none;
+cursor: pointer;
+font-size: 18px;
+padding: 0;
+display: inline-flex;
+align-items: center;
+}
