@@ -11,8 +11,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Noto Serif', Arial, serif;
-    color: black;
-    background-color: white;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 .content-container {

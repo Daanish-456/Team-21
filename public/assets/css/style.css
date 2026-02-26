@@ -10,7 +10,23 @@
     --white: #ffffff;
 }
 
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #111111;
+  --surface: #f9f9f9;
+  --muted: #6b7280;
+  --link: #333333;
+  --border: rgba(17, 17, 17, 0.12);
+}
 
+html[data-theme="dark"] {
+  --bg: #0b0f14;
+  --text: #e5e7eb;
+  --surface: #111827;
+  --muted: #9ca3af;
+  --link: #e5e7eb;
+  --border: rgba(255, 255, 255, 0.14);
+}
 /* ---------------------------------------------------
    GLOBAL RESET
 --------------------------------------------------- */
@@ -77,4 +93,31 @@ p {
     background-color: var(--gold);
     color: var(--charcoal);
     cursor: pointer;
+}
+/* NAVBAR */
+html[data-theme="dark"] .nav-item {
+  color: var(--link);
+}
+
+html[data-theme="dark"] .nav-search {
+  background: var(--surface);
+}
+
+html[data-theme="dark"] .nav-search-input {
+  background: transparent;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .nav-search-input::placeholder {
+  color: var(--muted);
+}
+
+/* FOOTER */
+html[data-theme="dark"] .footer {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .footer a {
+  color: var(--link);
 }
