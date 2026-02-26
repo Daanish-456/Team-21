@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8" />
@@ -30,6 +30,32 @@
     </div>
 
     @include('components.footer')
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) toggle.checked = (theme === 'dark');
+            }
+
+            const saved = localStorage.getItem('theme');
+            applyTheme(saved || 'light');
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const toggle = document.getElementById('themeToggle');
+                if (!toggle) return;
+
+                toggle.addEventListener('change', () => {
+                    applyTheme(toggle.checked ? 'dark' : 'light');
+                });
+            });
+        })();
+    </script>
 
     @stack('scripts')
 </body>
