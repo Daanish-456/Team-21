@@ -40,8 +40,8 @@ html[data-theme="dark"] {
 html,
 body {
     font-family: "Noto Serif", serif;
-    background-color: white;
-    color: black;
+    background: var(--bg);
+    color: var(--text);
 }
 
 /* ---------------------------------------------------
@@ -94,6 +94,7 @@ p {
     color: var(--charcoal);
     cursor: pointer;
 }
+
 /* NAVBAR */
 html[data-theme="dark"] .nav-item {
   color: var(--link);

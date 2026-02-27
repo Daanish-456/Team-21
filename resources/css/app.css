@@ -9,8 +9,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Noto Serif', Arial, serif;
-    color: black;
-    background-color: white;
+    background: var(--bg);
+    color: var(--text);
 }
 
 .content-container {

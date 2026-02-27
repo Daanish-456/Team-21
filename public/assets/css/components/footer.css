@@ -3,6 +3,8 @@
     width: 100%;
     background-color: #f9f9f9;
     padding: 2rem 0;
+    background: var(--surface);
+    color: var(--text);
 }
 
 .footer-content {
@@ -15,4 +17,8 @@
 .footer p {
     margin: 0;
     font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--link);
 }
