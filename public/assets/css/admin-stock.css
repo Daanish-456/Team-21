@@ -1,0 +1,328 @@
+.admin-stock-page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 0 72px;
+}
+
+.admin-stock-hero,
+.admin-stock-panel,
+.admin-stock-alert,
+.admin-stock-product-card {
+    border: 1px solid #e8dcc5;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(249, 244, 236, 0.96));
+    box-shadow: 0 16px 40px rgba(62, 46, 39, 0.08);
+}
+
+.admin-stock-hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: end;
+    padding: 32px 36px;
+    margin-bottom: 22px;
+}
+
+.admin-stock-title {
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+    font-size: 12px;
+    color: #8c735f;
+}
+
+.admin-stock-hero h1 {
+    margin: 10px 0 12px;
+    color: #3b2d29;
+    font-size: 44px;
+    line-height: 1.05;
+}
+
+.admin-stock-link {
+    color: #906c60;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(144, 108, 96, 0.32);
+    min-width: max-content;
+}
+
+.admin-stock-alert {
+    padding: 14px 18px;
+    margin-bottom: 18px;
+}
+
+.admin-stock-alert-success {
+    color: #395544;
+}
+
+.admin-stock-alert-error {
+    color: #7b3f39;
+}
+
+.admin-stock-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.4fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.admin-stock-edit-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.7fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.admin-stock-panel {
+    padding: 28px;
+}
+
+.admin-stock-products-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-stock-panel-heading {
+    margin-bottom: 18px;
+}
+
+.admin-stock-panel-heading h2 {
+    margin-top: 8px;
+    color: #3b2d29;
+    font-size: 26px;
+}
+
+.admin-stock-form,
+.admin-stock-edit-form,
+.admin-stock-product-card {
+    display: grid;
+    gap: 16px;
+}
+
+.admin-stock-form label,
+.admin-stock-edit-form label,
+.admin-stock-product-card label {
+    display: grid;
+    gap: 8px;
+    color: #5f514b;
+    font-size: 15px;
+}
+
+.admin-stock-form input,
+.admin-stock-form select,
+.admin-stock-form textarea,
+.admin-stock-edit-form input,
+.admin-stock-edit-form select,
+.admin-stock-edit-form textarea,
+.admin-stock-product-card input,
+.admin-stock-product-card select,
+.admin-stock-product-card textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(144, 108, 96, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    font: inherit;
+    color: #2f2724;
+}
+
+.admin-stock-form textarea,
+.admin-stock-edit-form textarea,
+.admin-stock-product-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.admin-stock-form-split,
+.admin-stock-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.admin-stock-product-list {
+    display: grid;
+    gap: 18px;
+    max-height: 68vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-gutter: stable;
+}
+
+.admin-stock-product-card {
+    padding: 22px;
+}
+
+.admin-stock-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+}
+
+.admin-stock-product-id {
+    color: #8a7569;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.admin-stock-product-name {
+    color: #3b2d29;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-stock-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    background: #efe2cc;
+    color: #6f5247;
+    border-radius: 999px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.admin-stock-pill.is-low {
+    background: #f4ddd6;
+    color: #8a4134;
+}
+
+.admin-stock-card-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+.admin-stock-product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #8a7569;
+    font-size: 14px;
+}
+
+.admin-stock-product-meta span {
+    padding: 6px 10px;
+    border: 1px solid rgba(144, 108, 96, 0.18);
+    background: rgba(255, 255, 255, 0.64);
+}
+
+.admin-stock-card-footer form {
+    width: 100%;
+}
+
+.admin-stock-card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    min-width: 160px;
+}
+
+.admin-stock-primary-btn,
+.admin-stock-danger-btn {
+    border: 1px solid #e8dcc5;
+    padding: 12px 16px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.admin-stock-primary-btn {
+    background: #f8efe1;
+    color: #5c4538;
+}
+
+.admin-stock-danger-btn {
+    background: #f5dfdb;
+    color: #8c3e34;
+    width: 100%;
+}
+
+.admin-stock-summary {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.admin-stock-summary div {
+    padding: 16px 18px;
+    border: 1px solid rgba(144, 108, 96, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.admin-stock-summary span {
+    display: block;
+    margin-bottom: 8px;
+    color: #8a7569;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.28px;
+}
+
+.admin-stock-summary strong {
+    color: #3b2d29;
+    font-size: 1.05rem;
+}
+
+.admin-stock-primary-btn:hover,
+.admin-stock-danger-btn:hover,
+.admin-stock-link:hover {
+    opacity: 0.88;
+}
+
+html[data-theme="dark"] .admin-stock-hero,
+html[data-theme="dark"] .admin-stock-panel,
+html[data-theme="dark"] .admin-stock-alert,
+html[data-theme="dark"] .admin-stock-product-card,
+html[data-theme="dark"] .admin-stock-form input,
+html[data-theme="dark"] .admin-stock-form select,
+html[data-theme="dark"] .admin-stock-form textarea,
+html[data-theme="dark"] .admin-stock-edit-form input,
+html[data-theme="dark"] .admin-stock-edit-form select,
+html[data-theme="dark"] .admin-stock-edit-form textarea,
+html[data-theme="dark"] .admin-stock-product-card input,
+html[data-theme="dark"] .admin-stock-product-card select,
+html[data-theme="dark"] .admin-stock-product-card textarea {
+    background: rgba(17, 24, 39, 0.9);
+    border-color: rgba(232, 220, 197, 0.14);
+    box-shadow: none;
+    color: #f5efe9;
+}
+
+html[data-theme="dark"] .admin-stock-hero h1,
+html[data-theme="dark"] .admin-stock-panel-heading h2,
+html[data-theme="dark"] .admin-stock-product-name {
+    color: #f5efe9;
+}
+
+html[data-theme="dark"] .admin-stock-intro,
+html[data-theme="dark"] .admin-stock-form label,
+html[data-theme="dark"] .admin-stock-edit-form label,
+html[data-theme="dark"] .admin-stock-product-card label,
+html[data-theme="dark"] .admin-stock-link,
+html[data-theme="dark"] .admin-stock-product-id,
+html[data-theme="dark"] .admin-stock-product-meta,
+html[data-theme="dark"] .admin-stock-summary span {
+    color: #d2c3b8;
+}
+
+html[data-theme="dark"] .admin-stock-pill {
+    background: rgba(232, 220, 197, 0.12);
+    color: #f5efe9;
+}
+
+html[data-theme="dark"] .admin-stock-product-meta span,
+html[data-theme="dark"] .admin-stock-summary div,
+html[data-theme="dark"] .admin-stock-card-link {
+    background: rgba(17, 24, 39, 0.72);
+    border-color: rgba(232, 220, 197, 0.14);
+}
+
+html[data-theme="dark"] .admin-stock-pill.is-low,
+html[data-theme="dark"] .admin-stock-danger-btn {
+    background: rgba(196, 104, 85, 0.18);
+}
+
+html[data-theme="dark"] .admin-stock-primary-btn,
+html[data-theme="dark"] .admin-stock-summary strong {
+    background: rgba(232, 220, 197, 0.12);
+    color: #f5efe9;
+}
