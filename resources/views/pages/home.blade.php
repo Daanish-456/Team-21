@@ -8,6 +8,12 @@
 @endpush
 
 @section('content')
+    @if ($isAdmin)
+        <div class="home-admin-banner">
+            <a class="home-admin-button" href="{{ route('admin.dashboard') }}">Go to admin dashboard</a>
+        </div>
+    @endif
+
     <div class="feature">
         <div class="feature-text">
             <h1>Ethically Sourced. Soulfully Crafted.</h1>

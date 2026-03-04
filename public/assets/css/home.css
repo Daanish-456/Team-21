@@ -1,3 +1,54 @@
+.home-admin-banner {
+    display: flex;
+    justify-content: center;
+    margin: 24px 64px 0;
+}
+
+.home-admin-button {
+    --home-admin-button-bg: var(--charcoal);
+    --home-admin-button-text: #ffffff;
+    --home-admin-button-border: var(--charcoal);
+    --home-admin-button-hover-bg: transparent;
+    --home-admin-button-hover-text: var(--charcoal);
+    --home-admin-button-hover-border: var(--charcoal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: 1px solid var(--home-admin-button-border);
+    background-color: var(--home-admin-button-bg);
+    color: var(--home-admin-button-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.home-admin-button:hover {
+    background-color: var(--home-admin-button-hover-bg);
+    color: var(--home-admin-button-hover-text);
+    border-color: var(--home-admin-button-hover-border);
+}
+
+html[data-theme="light"] .home-admin-button {
+    --home-admin-button-bg: var(--charcoal);
+    --home-admin-button-text: #ffffff;
+    --home-admin-button-border: var(--charcoal);
+    --home-admin-button-hover-bg: transparent;
+    --home-admin-button-hover-text: var(--charcoal);
+    --home-admin-button-hover-border: var(--charcoal);
+}
+
+html[data-theme="dark"] .home-admin-button {
+    --home-admin-button-bg: var(--gold);
+    --home-admin-button-text: #111111;
+    --home-admin-button-border: var(--gold);
+    --home-admin-button-hover-bg: transparent;
+    --home-admin-button-hover-text: var(--gold);
+    --home-admin-button-hover-border: var(--gold);
+}
+
 .feature {
     position: relative;
     display: flex;
@@ -117,6 +168,10 @@ h2 {
 /* ============= RESPONSIVE ============= */
 
 @media (max-width: 900px) {
+    .home-admin-banner {
+        margin: 16px 24px 0;
+    }
+
     .nav-div {
         padding: 0 24px;
     }
@@ -140,6 +195,15 @@ h2 {
 }
 
 @media (max-width: 600px) {
+    .home-admin-banner {
+        margin: 16px 16px 0;
+    }
+
+    .home-admin-button {
+        width: 100%;
+        padding: 12px 18px;
+    }
+
     .nav-div {
         flex-direction: column;
         height: auto;
