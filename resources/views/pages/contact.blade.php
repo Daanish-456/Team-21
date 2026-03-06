@@ -16,7 +16,7 @@
                 <p class="form-success">{{ Session::get("success") }}</p>
             @endif
 
-            <form class="contact-form" action="/contact" method="post" id="contactForm">
+            <form class="contact-form" action="{{ route('contact.submit') }}" method="POST" id="contactForm">
                 @csrf
 
                 <div class="error-container">

@@ -21,9 +21,7 @@ Route::view('/about', 'pages.about')->name('about');
 
 // Contact
 Route::view('/contact', 'pages.contact')->name('contact');
-Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact');
-
-// User routes
+Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
 
