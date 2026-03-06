@@ -17,13 +17,13 @@ class ContactController extends Controller
         'message' => 'required'
     ]);
 
-    ContactMessage::create([
-        'Name' => $values['name'],
-        'Email' => $values['email'],
-        'Message' => $values['message'],
-        'UserID' => session('UserID'),
-        'CreatedAt' => now()
-    ]);
+    dd(ContactMessage::create([
+    'Name' => $values['name'],
+    'Email' => $values['email'],
+    'Message' => $values['message'],
+    'UserID' => session('UserID'),
+    'CreatedAt' => now()
+]));
 
     return redirect()->back()->with(
         'success',
