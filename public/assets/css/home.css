@@ -1,7 +1,7 @@
 .feature {
     position: relative;
     min-height: 560px;
-    margin: 0 48px;
+    margin: 0;
     background-image: url("../images/necklace-banner-home.png");
     background-size: cover;
     background-position: center;
@@ -34,7 +34,7 @@
 }
 
 .feature-text h1 {
-    font-size: 52px;
+    font-size: 56px;
     line-height: 1.1;
     margin-bottom: 16px;
 }
@@ -53,11 +53,14 @@
 }
 
 .feature-link {
-    text-decoration: none;
-    padding: 14px 28px;
+    display: inline-block;
+    padding: 14px 32px;
     font-size: 14px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid white;
+    color: white;
     transition: all 0.2s ease;
 }
 
@@ -74,7 +77,15 @@
 }
 
 .feature-link:hover {
-    transform: translateY(-2px);
+    background: white;
+    color: #111;
+}
+
+.feature::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
 }
 
 .trust-strip {
