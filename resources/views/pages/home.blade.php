@@ -9,9 +9,46 @@
 
 @section('content')
     <div class="feature">
+        <div class="feature-overlay"></div>
+
         <div class="feature-text">
+            <p class="feature-subtitle">Ethical Fine Jewellery</p>
             <h1>Ethically Sourced. Soulfully Crafted.</h1>
-            <p>Discover jewellery that honors the earth and elevates your spirit.</p>
+
+            <p class="feature-description">
+            Discover jewellery that honors the earth and elevates your spirit.
+            </p>
+
+            <div class="feature-buttons">
+            <a class="feature-link primary" href="{{ route('shop') }}">Shop Collection</a>
+            <a class="feature-link secondary" href="{{ route('about') }}">Our Story</a>
+        </div>
+        </div>
+    <section class="trust-strip">
+        <div class="trust-item">Secure Checkout</div>
+        <div class="trust-item">Ethically Sourced</div>
+        <div class="trust-item">Thoughtful Packaging</div>
+        <div class="trust-item">Fast Delivery</div>
+    </section>
+
+    <section class="category-section">
+        <div class="section-heading">
+            <h2>Shop by Category</h2>
+            <p>Explore timeless pieces designed for every occasion.</p>
+        </div>
+
+        <div class="category-grid">
+            <a href="{{ route('shop') }}?category=Rings" class="category-card">Rings</a>
+            <a href="{{ route('shop') }}?category=Necklaces" class="category-card">Necklaces</a>
+            <a href="{{ route('shop') }}?category=Bracelets" class="category-card">Bracelets</a>
+            <a href="{{ route('shop') }}?category=Earrings" class="category-card">Earrings</a>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="section-heading">
+            <h2>Featured Products</h2>
+            <p>Discover some of our most loved sustainable jewellery pieces.</p>
         </div>
 
         <a class="feature-link" href="{{ route('shop') }}">Explore Items</a>

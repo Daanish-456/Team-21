@@ -1,178 +1,244 @@
-.feature {
-    position: relative;
+main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    gap: 64px;
+    padding-bottom: 64px;
+}
 
-    margin: 24px 64px 40px;
-    height: 420px;
-
+.feature {
+    position: relative;
+    min-height: 560px;
+    margin: 0 48px;
     background-image: url("../images/necklace-banner-home.png");
     background-size: cover;
-    background-position: center center;
-
-    color: #ffffff;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     overflow: hidden;
 }
 
-.feature::before {
-    content: "";
+.feature-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.28);
 }
 
-.feature-text,
-.feature-link {
+.feature-text {
     position: relative;
     z-index: 1;
+    max-width: 760px;
+    padding: 0 24px;
+    color: white;
+}
+
+.feature-subtitle {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
 }
 
 .feature-text h1 {
-    font-size: 36px;
-    margin-bottom: 8px;
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 16px;
 }
 
-.feature-text p {
-    color: #f5f5f5;
-    font-size: 16px;
-    margin-bottom: 24px;
+.feature-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 28px;
 }
 
-.feature-link {
-    display: inline-block;
-    border: 1px solid #ffffff;
-    padding: 10px 28px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: transparent;
-    transition: all 0.2s ease;
-}
-
-.feature-link:hover {
-    background: #ffffff;
-    color: #333;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-/* ============= PRODUCTS SECTION ============= */
-
-.products {
+.feature-buttons {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    gap: 32px;
-    margin: 0 64px 56px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 
-/* productcard has its own file too, this just adds spacing */
-.productcard {
-    background-color: #f9f9f9;
-    padding-bottom: 16px;
+.feature-link {
+    text-decoration: none;
+    padding: 14px 28px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
 }
 
-/* ============= ABOUT SECTION (logo + text) ============= */
-
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-
-    margin: 0 64px 72px;
-    padding: 32px 40px;
-
-    background-color: #f5f5f5;
+.feature-link.primary {
+    background: white;
+    color: #111;
+    border: 1px solid white;
 }
 
-.about-logo {
-    max-width: 128px;
-    max-height: 128px;
-    width: 100%;
-    height: auto;
+.feature-link.secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
 }
 
-.about-text h1 {
-    color: var(--charcoal);
-    font-size: 24px;
+.feature-link:hover {
+    transform: translateY(-2px);
+}
+
+.trust-strip {
+    margin: -24px 48px 0;
+    background: #f7f2eb;
+    border: 1px solid #e7ded2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+.trust-item {
+    padding: 18px 12px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.category-section,
+.featured-section {
+    padding: 0 48px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
     margin-bottom: 8px;
 }
 
-.about-text p {
-    font-size: 15px;
-    color: var(--charcoal);
-    max-width: 520px;
+.section-heading p {
+    font-size: 16px;
+    color: #666;
 }
 
-/* ============= RESPONSIVE ============= */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
 
-@media (max-width: 900px) {
-    .nav-div {
-        padding: 0 24px;
-    }
+.category-card {
+    min-height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.45)),
+        url("../images/necklace-banner-home.png");
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .navbar {
-        gap: 18px;
-    }
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
 
-    .feature {
-        margin: 16px 24px 32px;
-        height: 360px;
-    }
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
 
+.about {
+    margin: 0 48px;
+    padding: 48px;
+    background: #f8f6f2;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.about-logo {
+    width: 100%;
+    max-width: 180px;
+    justify-self: center;
+}
+
+.about-subtitle {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #7a6a58;
+}
+
+.about-text h2 {
+    font-size: 34px;
+    margin-bottom: 16px;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-link {
+    text-decoration: none;
+    color: #111;
+    border-bottom: 1px solid #111;
+    padding-bottom: 2px;
+}
+
+@media (max-width: 1024px) {
+    .category-grid,
     .products {
-        margin: 0 24px 48px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-strip {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .about {
-        margin: 0 24px 56px;
-    }
-}
-
-@media (max-width: 600px) {
-    .nav-div {
-        flex-direction: column;
-        height: auto;
-        padding: 8px 16px 12px;
-        gap: 8px;
-    }
-
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 14px;
-    }
-
-    .nav-user-area {
-        margin-left: 0;
-    }
-
-    .feature {
-        margin: 16px;
-        height: 320px;
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .feature-text h1 {
-        font-size: 26px;
+        font-size: 40px;
     }
+}
 
-    .products {
-        margin: 0 16px 40px;
-    }
-
+@media (max-width: 640px) {
+    .feature,
+    .trust-strip,
+    .category-section,
+    .featured-section,
     .about {
-        margin: 0 16px 40px;
-        flex-direction: column;
-        text-align: center;
+        margin-left: 16px;
+        margin-right: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .feature {
+        min-height: 440px;
+    }
+
+    .feature-text h1 {
+        font-size: 32px;
+    }
+
+    .category-grid,
+    .products,
+    .trust-strip {
+        grid-template-columns: 1fr;
     }
 }
