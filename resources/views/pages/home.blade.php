@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <div class="feature">
+    <section class="feature">
         <div class="feature-overlay"></div>
 
         <div class="feature-text">
@@ -22,14 +22,16 @@
             <h1>Ethically Sourced. Soulfully Crafted.</h1>
 
             <p class="feature-description">
-            Discover jewellery that honors the earth and elevates your spirit.
+                Discover jewellery that honors the earth and elevates your spirit.
             </p>
 
             <div class="feature-buttons">
-            <a class="feature-link primary" href="{{ route('shop') }}">Shop Collection</a>
-            <a class="feature-link secondary" href="{{ route('about') }}">Our Story</a>
+                <a class="feature-link primary" href="{{ route('shop') }}">Shop Collection</a>
+                <a class="feature-link secondary" href="{{ route('about') }}">Our Story</a>
+            </div>
         </div>
-        </div>
+    </section>
+
     <section class="trust-strip">
         <div class="trust-item">Secure Checkout</div>
         <div class="trust-item">Ethically Sourced</div>
@@ -44,10 +46,10 @@
         </div>
 
         <div class="category-grid">
-            <a href="{{ route('shop') }}?category=Rings" class="category-card">Rings</a>
-            <a href="{{ route('shop') }}?category=Necklaces" class="category-card">Necklaces</a>
-            <a href="{{ route('shop') }}?category=Bracelets" class="category-card">Bracelets</a>
-            <a href="{{ route('shop') }}?category=Earrings" class="category-card">Earrings</a>
+            <a href="{{ route('shop') }}" class="category-card">Rings</a>
+            <a href="{{ route('shop') }}" class="category-card">Necklaces</a>
+            <a href="{{ route('shop') }}" class="category-card">Bracelets</a>
+            <a href="{{ route('shop') }}" class="category-card">Earrings</a>
         </div>
     </section>
 
@@ -57,27 +59,28 @@
             <p>Discover some of our most loved sustainable jewellery pieces.</p>
         </div>
 
-        <a class="feature-link" href="{{ route('shop') }}">Explore Items</a>
-    </div>
-    <h2>Featured Products</h2>
-    <div class="products">
-        @foreach ($products as $product)
-            <a href={{ '/product/' . $product->ProductID }} class="productcard">
-                <img src="{{ asset($product->Image_URL) }}" class="productcard-image" alt="Product Image" />
-                <h1 class="productcard-title">{{ $product->Product_Name }}</h1>
-                <p class="productcard-description">{{ $product->Description }}</p>
-            </a>
-        @endforeach
-    </div>
+        <div class="products">
+            @foreach ($products as $product)
+                <a href="{{ '/product/' . $product->ProductID }}" class="productcard">
+                    <img src="{{ asset($product->Image_URL) }}" class="productcard-image"
+                        alt="{{ $product->Product_Name }}" />
+                    <div class="productcard-body">
+                        <h3 class="productcard-title">{{ $product->Product_Name }}</h3>
+                        <p class="productcard-description">{{ $product->Description }}</p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </section>
 
-    <div class="about">
+    <section class="about">
         <img src="{{ asset('assets/images/logo.png') }}" alt="Stone & Soul Logo" class="about-logo" />
         <div class="about-text">
             <h1>Our Promise</h1>
             <p>
-                At Stone & Soul we promise that the products we list are high quality, ethically sourced and environmentally
-                friendly.
+                At Stone & Soul we promise that the products we list are high quality, ethically sourced and
+                environmentally friendly.
             </p>
         </div>
-    </div>
+    </section>
 @endsection
