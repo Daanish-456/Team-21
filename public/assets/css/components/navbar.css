@@ -54,6 +54,13 @@
     gap: 12px;
     margin-left: 25px;
 }
+
+
+[data-theme="dark"] .nav-user-area img {
+    filter: brightness(0) invert(1); /* flips to white in dark mode */
+}
+
+
 .theme-switch {
   display: inline-flex;
   align-items: center;

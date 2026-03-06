@@ -20,8 +20,8 @@ class UserTableSeeder extends Seeder
                 'Role' => 'customer',
             ],
             [
-                'Name' => 'Admin User',
-                'Email' => 'admin@example.com',
+                'Name' => 'Admin',
+                'Email' => 'admin@stoneandsoul.com',
                 'Password' => Hash::make('admin123'),
                 'Phone' => '07000000000',
                 'Address' => 'Admin Street',

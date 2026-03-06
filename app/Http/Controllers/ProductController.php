@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -12,10 +13,17 @@ class ProductController extends Controller
 
     public function home()
     {
-
         $products = Product::limit(3)->get();
+        $role = null;
 
-        return view('pages.home', compact('products'));
+        if (session()->has('UserID')) {
+            $role = User::where('UserID', session('UserID'))->value('Role');
+        }
+
+        return view('pages.home', [
+            'products' => $products,
+            'isAdmin' => strtolower((string) $role) === 'admin',
+        ]);
     }
 
     public function index()
@@ -60,5 +68,4 @@ class ProductController extends Controller
         ]);
     }
 }
-
 
