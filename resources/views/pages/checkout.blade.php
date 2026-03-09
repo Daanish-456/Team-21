@@ -12,8 +12,7 @@
             <h1 class="checkout-title">Secure Checkout</h1>
             <p class="checkout-subtitle">Enter your card details to complete your order.</p>
 
-            <form id="checkout-form" class="checkout-form">
-                @csrf
+                <form id="checkout-form" class="checkout-form" action="{{ route('checkout.process') }}" method="POST">                @csrf
 
                 <div class="form-group">
                     <label for="card_name">Name on Card</label>
@@ -63,17 +62,11 @@
     </div>
 
     <script>
-        document.getElementById('checkout-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const button = this.querySelector('.checkout-btn');
-            button.disabled = true;
-            button.textContent = 'Processing...';
-
-            setTimeout(function () {
-                alert('Order placed successfully! 🎉');
-                window.location.href = "{{ route('basket') }}";
-            }, 800);
-        });
-    </script>
+    document.getElementById('checkout-form').addEventListener('submit', function (e) {
+        const button = this.querySelector('.checkout-btn');
+        button.disabled = true;
+        button.textContent = 'Processing...';
+        // Form will now actually submit to backend
+    });
+</script>
 @endsection

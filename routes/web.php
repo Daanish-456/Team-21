@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -24,8 +25,13 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
+    
+    $orders = \App\Models\Order::where('UserID', session('UserID'))
+        ->with('items.product')
+        ->orderBy('OrderDate', 'desc')
+        ->get();
 
-    return view('pages.auth.account')->with('user', $user);
+    return view('pages.auth.account', compact('user', 'orders'));
 })->name('account')->middleware(UserSessionChecker::class);
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
@@ -57,9 +63,11 @@ Route::middleware(UserSessionChecker::class)->group(function () {
     Route::post('/basket/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 
     // Checkout page
-    Route::get('/checkout', function () {
-        return view('pages.checkout');
-    })->name('checkout');
+Route::get('/checkout', function () {
+    return view('pages.checkout');
+})->name('checkout');
+
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout.process');
 });
 
 // Admin only routes

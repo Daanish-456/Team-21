@@ -51,11 +51,11 @@
                                     @if(isset($order->items) && count($order->items) > 0)
                                         @foreach($order->items as $item)
                                             <div class="order-item">
-                                                <img src="{{ asset('assets/images/' . ($item->product_image ?? 'example-necklace.png')) }}"
+                                                <img src="{{ asset($item->product->Image_URL ?? 'assets/images/example-necklace.png') }}"
                                                     alt="Product" />
                                                 <div>
-                                                    <p class="item-name">{{ $item->product_name ?? 'Product' }}</p>
-                                                    <p class="item-price">£{{ number_format($item->price, 2) }}</p>
+                                                    <p class="item-name">{{ $item->product->Product_Name ?? 'Product' }}</p>
+                                                    <p class="item-price">£{{ number_format($item->Price, 2) }}</p>
                                                 </div>
                                             </div>
                                         @endforeach

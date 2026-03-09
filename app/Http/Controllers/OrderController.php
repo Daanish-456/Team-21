@@ -8,17 +8,18 @@ use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
 {
     public function checkout(Request $request)
     {
-        $cart = Cart::where('UserID', Auth::id())
+        $cart = Cart::where('UserID', session('UserID'))
             ->with(['items.product'])
             ->first();
 
         if (!$cart || $cart->items->isEmpty()) {
-            return redirect()->route('cart.show')->with('error', 'Your basket is empty.');
+            return redirect()->route('basket')->with('error', 'Your basket is empty.');
         }
 
         DB::beginTransaction();
@@ -27,7 +28,7 @@ class OrderController extends Controller
             $total = 0;
 
             $order = Order::create([
-                'UserID'      => Auth::id(),
+                'UserID'      => session('UserID'),
                 'OrderDate'   => now(),
                 'OrderStatus' => 'Pending',
                 'TotalAmount' => 0, // temp, update after calc
@@ -53,13 +54,12 @@ class OrderController extends Controller
             DB::commit();
 
             
-            return view('pages.checkout', compact('order'));
+            return view('pages.order-confirmation', compact('order'));
 
         } catch (\Throwable $e) {
-            DB::rollBack();
-            return redirect()->route('cart.show')
-                ->with('error', 'Could not place order. Please try again.');
-        }
+    DB::rollBack();
+    dd($e->getMessage()); // This will show the actual error
+}
     }
 }
 
