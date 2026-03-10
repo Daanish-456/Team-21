@@ -317,3 +317,53 @@ html[data-theme="dark"] a.admin-stock-item:hover {
         align-items: start;
     }
 }
+
+.admin-tickets-grid {
+    margin-top: 20px;
+}
+
+.admin-tickets-table {
+    display: grid;
+    gap: 12px;
+}
+
+.admin-tickets-row {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr 1.2fr 2fr 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(232, 220, 197, 0.95);
+}
+
+.admin-tickets-row-head {
+    background: transparent;
+    border: none;
+    padding: 0 4px 8px;
+    color: #8b7668;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+html[data-theme="dark"] .admin-tickets-row {
+    background: rgba(17, 24, 39, 0.9);
+    border-color: rgba(232, 220, 197, 0.14);
+    box-shadow: none;
+    color: #d2c3b8;
+}
+
+@media (max-width: 980px) {
+    .admin-tickets-row,
+    .admin-tickets-row-head {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-tickets-row,
+    .admin-tickets-row-head {
+        grid-template-columns: 1fr;
+    }
+}

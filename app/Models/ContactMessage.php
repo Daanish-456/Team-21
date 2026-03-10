@@ -10,13 +10,13 @@ class ContactMessage extends Model
 
     protected $primaryKey = 'MessageID';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'Name',
         'Email',
         'Message',
         'UserID',
-        'CreatedAt'
+        'CreatedAt',
     ];
 }

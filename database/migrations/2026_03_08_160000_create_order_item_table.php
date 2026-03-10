@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Orders', function (Blueprint $blueprint) {
-            $blueprint->id('OrderID');
-            $blueprint->integer('UserID');
-            $blueprint->dateTime('OrderDate');
-            $blueprint->string('OrderStatus', 50);
-            $blueprint->decimal('TotalAmount', 10, 2)->default(0.00);
+        Schema::create('Order_Item', function (Blueprint $table) {
+            $table->unsignedBigInteger('OrderID');
+            $table->unsignedBigInteger('ProductID');
+            $table->integer('Quantity');
+            $table->decimal('Price', 10, 2);
+
+            $table->primary(['OrderID', 'ProductID']);
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Orders');
+        Schema::dropIfExists('Order_Item');
     }
 };

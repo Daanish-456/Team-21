@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
+use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class AdminDashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::with('category')->get();
         $totalProducts = $products->count();
@@ -21,12 +27,48 @@ class AdminDashboardController extends Controller
             ['label' => 'Out of Stock', 'value' => $outOfStockProducts],
         ];
 
-        // to replace these with actual orders once done
-        $orders = [
-            ['id' => 1, 'customer' => 'Amelia Johnson', 'item' => 'Moonstone Pendant', 'status' => 'Packing', 'total' => '£84.00'],
-            ['id' => 2, 'customer' => 'Mia Patel', 'item' => 'Pearl Drop Earrings', 'status' => 'Ready to Ship', 'total' => '£64.00'],
-            ['id' => 3, 'customer' => 'Olivia Brown', 'item' => 'Sage Quartz Ring', 'status' => 'Awaiting Payment', 'total' => '£46.00'],
-        ];
+        $sort = $request->string('order_sort')->toString();
+        $sort = in_array($sort, ['newest', 'oldest', 'highest', 'lowest'], true) ? $sort : 'newest';
+
+        $ordersQuery = Order::query()
+            ->with([
+                'user:UserID,Name',
+                'items' => function ($query) {
+                    $query->with('product:ProductID,Product_Name');
+                },
+            ]);
+
+        if ($sort === 'oldest') {
+            $ordersQuery->orderBy('OrderDate', 'asc');
+        } elseif ($sort === 'highest') {
+            $ordersQuery->orderBy('TotalAmount', 'desc');
+        } elseif ($sort === 'lowest') {
+            $ordersQuery->orderBy('TotalAmount', 'asc');
+        } else {
+            $ordersQuery->orderBy('OrderDate', 'desc');
+        }
+
+        $orders = $ordersQuery
+            ->limit(6)
+            ->get()
+            ->map(function ($order) {
+                $firstItem = $order->items->first();
+                $extraItemsCount = max($order->items->count() - 1, 0);
+
+                $itemLabel = $firstItem?->product?->Product_Name ?? 'No items';
+                if ($extraItemsCount > 0) {
+                    $itemLabel .= " +{$extraItemsCount} more";
+                }
+
+                return [
+                    'id' => $order->OrderID,
+                    'customer' => $order->user?->Name ?? 'Guest',
+                    'item' => $itemLabel,
+                    'status' => $order->OrderStatus ?? 'Pending',
+                    'total' => '£'.number_format((float) $order->TotalAmount, 2),
+                ];
+            })
+            ->all();
 
         $inventory = $lowStockProducts->take(6)->map(function ($product) {
             return [
@@ -37,6 +79,25 @@ class AdminDashboardController extends Controller
             ];
         })->all();
 
-        return view('pages.admin.dashboard', compact('stats', 'orders', 'inventory'));
+        $ticketTimestampColumn = Schema::hasColumn('Contact_Message', 'created_at') ? 'created_at' : 'CreatedAt';
+
+        $tickets = ContactMessage::query()
+            ->orderByDesc($ticketTimestampColumn)
+            ->limit(6)
+            ->get()
+            ->map(function ($ticket) {
+                $message = $ticket->message ? $ticket->Message : '';
+
+                return [
+                    'id' => $ticket->id,
+                    'name' => $ticket->name ?? $ticket->Name ?? 'Unknown',
+                    'email' => $ticket->email ?? $ticket->Email ?? '-',
+                    'message' => Str::limit(trim((string) $message), 90),
+                    'submitted' => $ticket->created_at ? Carbon::parse($ticket->CreatedAt)->diffForHumans() : null,
+                ];
+            })
+            ->all();
+
+        return view('pages.admin.dashboard', compact('stats', 'orders', 'inventory', 'tickets', 'sort'));
     }
 }

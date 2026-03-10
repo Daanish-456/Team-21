@@ -25,7 +25,7 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
-    
+
     $orders = \App\Models\Order::where('UserID', session('UserID'))
         ->with('items.product')
         ->orderBy('OrderDate', 'desc')
@@ -63,11 +63,11 @@ Route::middleware(UserSessionChecker::class)->group(function () {
     Route::post('/basket/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 
     // Checkout page
-Route::get('/checkout', function () {
-    return view('pages.checkout');
-})->name('checkout');
+    Route::get('/checkout', function () {
+        return view('pages.checkout');
+    })->name('checkout');
 
-Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout.process');
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout.process');
 });
 
 // Admin only routes

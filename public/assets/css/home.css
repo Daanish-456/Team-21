@@ -1,7 +1,21 @@
-.feature {
+.home-page {
+    --home-section-gap: 72px;
+    --home-inline-gap: 0px;
+    --home-grid-gap: 24px;
+}
+
+.home-page section {
+    padding: 0;
+}
+
+.home-page .home-admin-banner {
+    margin-top: 24px;
+}
+
+.home-page .feature {
     position: relative;
     min-height: 560px;
-    margin: 0;
+    margin: 0 var(--home-inline-gap);
     background-image: url("../images/necklace-banner-home.png");
     background-size: cover;
     background-position: center;
@@ -12,13 +26,13 @@
     overflow: hidden;
 }
 
-.feature-overlay {
+.home-page .feature-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.28);
 }
 
-.feature-text {
+.home-page .feature-text {
     position: relative;
     z-index: 1;
     max-width: 760px;
@@ -26,33 +40,33 @@
     color: white;
 }
 
-.feature-subtitle {
+.home-page .feature-subtitle {
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.feature-text h1 {
+.home-page .feature-text h1 {
     font-size: 56px;
     line-height: 1.1;
     margin-bottom: 16px;
 }
 
-.feature-description {
+.home-page .feature-description {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 28px;
 }
 
-.feature-buttons {
+.home-page .feature-buttons {
     display: flex;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
 }
 
-.feature-link {
+.home-page .feature-link {
     display: inline-block;
     padding: 14px 32px;
     font-size: 14px;
@@ -64,32 +78,32 @@
     transition: all 0.2s ease;
 }
 
-.feature-link.primary {
+.home-page .feature-link.primary {
     background: white;
     color: #111;
     border: 1px solid white;
 }
 
-.feature-link.secondary {
+.home-page .feature-link.secondary {
     background: transparent;
     color: white;
     border: 1px solid white;
 }
 
-.feature-link:hover {
+.home-page .feature-link:hover {
     background: white;
     color: #111;
 }
 
-.feature::before {
+.home-page .feature::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
 }
 
-.trust-strip {
-    margin: -24px 48px 0;
+.home-page .trust-strip {
+    margin: -24px var(--home-inline-gap) 0;
     background: #f7f2eb;
     border: 1px solid #e7ded2;
     display: grid;
@@ -97,40 +111,41 @@
     text-align: center;
 }
 
-.trust-item {
+.home-page .trust-item {
     padding: 18px 12px;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.category-section,
-.featured-section {
-    padding: 0 48px;
+.home-page .category-section,
+.home-page .featured-section,
+.home-page .about {
+    margin: var(--home-section-gap) var(--home-inline-gap) 0;
 }
 
-.section-heading {
+.home-page .section-heading {
     text-align: center;
     margin-bottom: 28px;
 }
 
-.section-heading h2 {
+.home-page .section-heading h2 {
     font-size: 34px;
     margin-bottom: 8px;
 }
 
-.section-heading p {
+.home-page .section-heading p {
     font-size: 16px;
     color: #666;
 }
 
-.category-grid {
+.home-page .category-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: var(--home-grid-gap);
 }
 
-.category-card {
+.home-page .category-card {
     min-height: 220px;
     display: flex;
     align-items: flex-end;
@@ -147,19 +162,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.category-card:hover {
+.home-page .category-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.products {
+.home-page .products {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: var(--home-grid-gap);
 }
 
-.about {
-    margin: 0 48px;
+.home-page .about {
     padding: 48px;
     background: #f8f6f2;
     display: grid;
@@ -168,13 +182,13 @@
     align-items: center;
 }
 
-.about-logo {
+.home-page .about-logo {
     width: 100%;
     max-width: 180px;
     justify-self: center;
 }
 
-.about-subtitle {
+.home-page .about-subtitle {
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -182,12 +196,13 @@
     color: #7a6a58;
 }
 
-.about-text h2 {
+.home-page .about-text h1,
+.home-page .about-text h2 {
     font-size: 34px;
     margin-bottom: 16px;
 }
 
-.about-text p {
+.home-page .about-text p {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 20px;
@@ -196,6 +211,10 @@
 /* ============= RESPONSIVE ============= */
 
 @media (max-width: 900px) {
+    .home-page {
+        --home-section-gap: 56px;
+    }
+
     .nav-div {
         padding: 0 24px;
     }
@@ -204,26 +223,29 @@
         gap: 18px;
     }
 
-    .feature {
-        margin: 16px 24px 32px;
-        height: 360px;
+    .home-page .feature {
+        min-height: 460px;
     }
 
-    .trust-strip {
+    .home-page .trust-strip {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .about {
+    .home-page .about {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .feature-text h1 {
+    .home-page .feature-text h1 {
         font-size: 40px;
     }
 }
 
 @media (max-width: 600px) {
+    .home-page {
+        --home-section-gap: 40px;
+    }
+
     .nav-div {
         flex-direction: column;
         height: auto;
@@ -241,17 +263,21 @@
         margin-left: 0;
     }
 
-    .feature {
+    .home-page .feature {
         min-height: 440px;
     }
 
-    .feature-text h1 {
+    .home-page .feature-text h1 {
         font-size: 32px;
     }
 
-    .category-grid,
-    .products,
-    .trust-strip {
+    .home-page .about {
+        padding: 32px 24px;
+    }
+
+    .home-page .category-grid,
+    .home-page .products,
+    .home-page .trust-strip {
         grid-template-columns: 1fr;
     }
 }

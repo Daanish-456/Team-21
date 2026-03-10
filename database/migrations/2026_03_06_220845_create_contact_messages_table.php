@@ -9,22 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up(): void
-{
-    Schema::create('contact_messages', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->string('email');
-        $table->text('message');
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('Contact_Message', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->text('message');
+            $table->integer('UserID')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_messages');
+        Schema::dropIfExists('Contact_Message');
     }
 };
