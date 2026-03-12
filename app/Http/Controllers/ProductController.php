@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
 {
-
     public function home()
     {
         $products = Product::inRandomOrder()->limit(4)->get();
@@ -22,7 +21,7 @@ class ProductController extends Controller
 
         return view('pages.home', [
             'products' => $products,
-            'isAdmin' => strtolower((string) $role) === 'admin',
+            'isAdmin' => strtolower($role) === 'admin',
         ]);
     }
 
@@ -35,11 +34,21 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with([
+            'reviews' => function ($query) {
+                $query->orderBy('ReviewDate', 'desc');
+            },
+            'reviews.user',
+        ])->findOrFail($id);
+        $currentUserId = session('UserID');
+        $userReview = null;
 
-        return view('pages.product.product', compact('product'));
+        if ($currentUserId) {
+            $userReview = $product->reviews->firstWhere('UserID', $currentUserId);
+        }
+
+        return view('pages.product.product', compact('product', 'userReview', 'currentUserId'));
     }
-
 
     public function search(Request $request)
     {
@@ -54,7 +63,6 @@ class ProductController extends Controller
             'searchTerm' => $q,
         ]);
     }
-
 
     public function category($id)
     {

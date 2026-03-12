@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    protected $table = 'Review';
+    protected $table = 'Reviews';
+
     protected $primaryKey = 'ReviewID';
+
     public $timestamps = false;
 
     protected $fillable = [
