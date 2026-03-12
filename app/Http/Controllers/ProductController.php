@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function home()
     {
-        $products = Product::limit(3)->get();
+        $products = Product::inRandomOrder()->limit(4)->get();
         $role = null;
 
         if (session()->has('UserID')) {
@@ -68,4 +68,3 @@ class ProductController extends Controller
         ]);
     }
 }
-

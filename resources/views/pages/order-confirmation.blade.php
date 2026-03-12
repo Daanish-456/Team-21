@@ -7,6 +7,15 @@
 @endpush
 
 @section('content')
+    @php
+        $displayTotal = (float) $order->TotalAmount;
+        if ($displayTotal <= 0) {
+            $displayTotal = (float) $order->items->sum(function ($item) {
+                return (float) $item->Price * (int) $item->Quantity;
+            });
+        }
+    @endphp
+
     <div class="confirmation-wrapper">
         <div class="confirmation-card">
             {{-- Success Icon --}}
@@ -32,7 +41,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Total Amount:</span>
-                    <span class="detail-value total-amount">£{{ number_format($order->TotalAmount, 2) }}</span>
+                    <span class="detail-value total-amount">£{{ number_format($displayTotal, 2) }}</span>
                 </div>
             </div>
 

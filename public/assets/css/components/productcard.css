@@ -22,3 +22,15 @@
     height: 200px;
     object-fit: cover;
 }
+html[data-theme="dark"] .productcard {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+}
+
+html[data-theme="dark"] .productcard-title {
+    color: var(--text);
+}
+
+html[data-theme="dark"] .productcard-description {
+    color: var(--muted);
+}

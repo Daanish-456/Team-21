@@ -33,9 +33,7 @@ class AdminDashboardController extends Controller
         $ordersQuery = Order::query()
             ->with([
                 'user:UserID,Name',
-                'items' => function ($query) {
-                    $query->with('product:ProductID,Product_Name');
-                },
+                'items',
             ]);
 
         if ($sort === 'oldest') {
@@ -52,20 +50,22 @@ class AdminDashboardController extends Controller
             ->limit(6)
             ->get()
             ->map(function ($order) {
-                $firstItem = $order->items->first();
-                $extraItemsCount = max($order->items->count() - 1, 0);
+                $itemAmount = (int) $order->items->sum('Quantity');
+                $calculatedTotal = (float) $order->items->sum(function ($item) {
+                    return (float) $item->Price * (int) $item->Quantity;
+                });
+                $displayTotal = (float) $order->TotalAmount;
 
-                $itemLabel = $firstItem?->product?->Product_Name ?? 'No items';
-                if ($extraItemsCount > 0) {
-                    $itemLabel .= " +{$extraItemsCount} more";
+                if ($displayTotal <= 0 && $calculatedTotal > 0) {
+                    $displayTotal = $calculatedTotal;
                 }
 
                 return [
                     'id' => $order->OrderID,
                     'customer' => $order->user?->Name ?? 'Guest',
-                    'item' => $itemLabel,
+                    'item_amount' => $itemAmount,
                     'status' => $order->OrderStatus ?? 'Pending',
-                    'total' => '£'.number_format((float) $order->TotalAmount, 2),
+                    'total' => '£'.number_format($displayTotal, 2),
                 ];
             })
             ->all();
@@ -86,14 +86,15 @@ class AdminDashboardController extends Controller
             ->limit(6)
             ->get()
             ->map(function ($ticket) {
-                $message = $ticket->message ? $ticket->Message : '';
+                $message = $ticket->message ?? $ticket->Message ?? '';
+                $submittedAt = $ticket->created_at ?? $ticket->CreatedAt ?? null;
 
                 return [
-                    'id' => $ticket->id,
+                    'id' => $ticket->id ?? $ticket->MessageID ?? '-',
                     'name' => $ticket->name ?? $ticket->Name ?? 'Unknown',
                     'email' => $ticket->email ?? $ticket->Email ?? '-',
                     'message' => Str::limit(trim((string) $message), 90),
-                    'submitted' => $ticket->created_at ? Carbon::parse($ticket->CreatedAt)->diffForHumans() : null,
+                    'submitted' => $submittedAt ? Carbon::parse($submittedAt)->diffForHumans() : null,
                 ];
             })
             ->all();

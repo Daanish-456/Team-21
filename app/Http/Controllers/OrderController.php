@@ -64,6 +64,7 @@ class OrderController extends Controller
                 $product->decrement('Stock', $item->Quantity);
             }
 
+            $order->TotalAmount = $total;
             $order->save();
 
             $cart->items()->delete();
@@ -78,7 +79,6 @@ class OrderController extends Controller
                 return redirect()->route('basket')
                     ->with('error', 'One or more items are out of stock. Please review your basket.');
             }
-            dd($e->getMessage()); // This will show the actual error
 
             return redirect()->route('basket')
                 ->with('error', 'Could not place order. Please try again.');

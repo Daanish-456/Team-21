@@ -41,16 +41,16 @@
                     <div class="admin-orders-row admin-orders-row-head">
                         <span>Order</span>
                         <span>Customer</span>
-                        <span>Item</span>
+                        <span>Item Amount</span>
                         <span>Status</span>
-                        <span>Total</span>
+                        <span>Total Amount</span>
                     </div>
 
                     @forelse ($orders as $order)
                         <div class="admin-orders-row">
                             <span>#{{ $order['id'] }}</span>
                             <span>{{ $order['customer'] }}</span>
-                            <span>{{ $order['item'] }}</span>
+                            <span>{{ $order['item_amount'] }}</span>
                             <span class="admin-status">{{ $order['status'] }}</span>
                             <span>{{ $order['total'] }}</span>
                         </div>

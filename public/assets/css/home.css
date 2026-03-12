@@ -103,7 +103,7 @@
 }
 
 .home-page .trust-strip {
-    margin: -24px var(--home-inline-gap) 0;
+    margin: 0 var(--home-inline-gap) 0;
     background: #f7f2eb;
     border: 1px solid #e7ded2;
     display: grid;
@@ -119,9 +119,12 @@
 }
 
 .home-page .category-section,
-.home-page .featured-section,
-.home-page .about {
+.home-page .featured-section {
     margin: var(--home-section-gap) var(--home-inline-gap) 0;
+}
+
+.home-page .about {
+    margin: var(--home-section-gap) var(--home-inline-gap) var(--home-section-gap);
 }
 
 .home-page .section-heading {
@@ -169,8 +172,13 @@
 
 .home-page .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+    justify-content: center;
     gap: var(--home-grid-gap);
+}
+
+.home-page .products .productcard {
+    width: 100%;
 }
 
 .home-page .about {
@@ -206,6 +214,35 @@
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 20px;
+}
+
+/* ============= DARK MODE ============= */
+
+html[data-theme="dark"] .home-page .trust-strip {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+html[data-theme="dark"] .home-page .trust-item {
+    color: var(--text);
+}
+
+html[data-theme="dark"] .home-page .about {
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+html[data-theme="dark"] .home-page .about-subtitle {
+    color: var(--muted);
+}
+
+html[data-theme="dark"] .home-page .about-text h1,
+html[data-theme="dark"] .home-page .about-text h2 {
+    color: var(--text);
+}
+
+html[data-theme="dark"] .home-page .about-text p {
+    color: var(--muted);
 }
 
 /* ============= RESPONSIVE ============= */
@@ -280,4 +317,8 @@
     .home-page .trust-strip {
         grid-template-columns: 1fr;
     }
+}
+
+html[data-theme="dark"] .home-page .section-heading p {
+    color: var(--muted);
 }
