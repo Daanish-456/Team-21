@@ -1,36 +1,57 @@
 .productcard {
-    max-width: 300px;
-    text-align: center;
-    background-color: #f9f9f9;
-
+    display: block;
     text-decoration: none;
+    color: inherit;
+    background: transparent;
 }
 
-.productcard-title {
-    padding-top: 12px;
-    font-size: medium;
-    color: var(--charcoal);
-}
-
-.productcard-description {
-    font-size: small;
-    color: var(--charcoal);
+.productcard-image-wrap {
+    overflow: hidden;
+    background: #f5eee5;
+    margin-bottom: 16px;
 }
 
 .productcard .productcard-image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
 }
-html[data-theme="dark"] .productcard {
-    background-color: var(--surface);
-    border: 1px solid var(--border);
+
+.productcard:hover .productcard-image {
+    transform: scale(1.04);
+}
+
+.productcard-body {
+    text-align: left;
+    padding: 0 4px 6px;
+}
+
+.productcard-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 500;
+    color: #2f2521;
+    margin-bottom: 6px;
+}
+
+.productcard-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #7b695f;
+    margin: 0;
 }
 
 html[data-theme="dark"] .productcard-title {
-    color: var(--text);
+    color: #f4f1ec;
 }
 
 html[data-theme="dark"] .productcard-description {
-    color: var(--muted);
+    color: #c8c0b8;
+}
+
+html[data-theme="dark"] .productcard-image-wrap {
+    background: #1b1b1b;
 }
