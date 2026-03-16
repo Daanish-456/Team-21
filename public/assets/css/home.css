@@ -16,10 +16,13 @@
 
 .home-page .feature {
     position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     min-height: 80vh;
     background-image: url("../images/necklace-banner-home.png");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -127,6 +130,8 @@
 /* ---------- TRUST STRIP ---------- */
 
 .home-page .trust-strip {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     background: #f1e8dd;
     border-top: 1px solid var(--border-soft);
     border-bottom: 1px solid var(--border-soft);
