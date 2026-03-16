@@ -8,21 +8,15 @@
     --accent: #8a6b5d;
     --accent-dark: #6f5448;
     --section-gap: 88px;
-    --grid-gap: 24px;
+    --grid-gap: 34px;
     background: var(--bg-main);
 }
 
-.home-page section {
-    padding: 0;
-}
-
-.home-page .home-admin-banner {
-    margin-top: 24px;
-}
+/* ---------- HERO SECTION ---------- */
 
 .home-page .feature {
     position: relative;
-    min-height: 720px;
+    min-height: 80vh;
     background-image: url("../images/necklace-banner-home.png");
     background-size: cover;
     background-position: center;
@@ -35,7 +29,12 @@
 .home-page .feature-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(34, 24, 18, 0.56) 0%, rgba(34, 24, 18, 0.22) 50%, rgba(34, 24, 18, 0.10) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(34, 24, 18, 0.60) 0%,
+        rgba(34, 24, 18, 0.30) 50%,
+        rgba(34, 24, 18, 0.12) 100%
+    );
 }
 
 .home-page .feature-text {
@@ -58,10 +57,10 @@
 
 .home-page .feature-text h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.1rem, 5vw, 5.3rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     line-height: 0.96;
     font-weight: 500;
-    max-width: 640px;
+    letter-spacing: -0.02em;
     margin-bottom: 18px;
 }
 
@@ -71,8 +70,10 @@
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 34px;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255,255,255,0.92);
 }
+
+/* ---------- HERO BUTTONS ---------- */
 
 .home-page .feature-buttons {
     display: flex;
@@ -93,11 +94,11 @@
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    transition: all 0.25s ease;
+    transition: all .25s ease;
 }
 
 .home-page .feature-link.primary {
-    background: #ffffff;
+    background: #fff;
     color: #2a211d;
 }
 
@@ -106,13 +107,12 @@
 }
 
 .home-page .feature-link.secondary {
-    background: transparent;
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.85);
+    color: #fff;
+    border-color: rgba(255,255,255,0.85);
 }
 
 .home-page .feature-link.secondary:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255,255,255,0.12);
 }
 
 .home-page .feature-link.dark {
@@ -124,12 +124,14 @@
     background: #2f2521;
 }
 
+/* ---------- TRUST STRIP ---------- */
+
 .home-page .trust-strip {
     background: #f1e8dd;
     border-top: 1px solid var(--border-soft);
     border-bottom: 1px solid var(--border-soft);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 }
 
 .home-page .trust-item {
@@ -145,6 +147,8 @@
     text-transform: uppercase;
     color: #5f4a40;
 }
+
+/* ---------- SECTIONS ---------- */
 
 .home-page .category-section,
 .home-page .featured-section,
@@ -169,229 +173,222 @@
 
 .home-page .section-heading h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.3rem, 3vw, 3.4rem);
-    line-height: 1;
+    font-size: clamp(2.3rem,3vw,3.4rem);
     font-weight: 500;
     color: var(--text-main);
 }
 
-.home-page .text-link {
-    text-decoration: none;
-    color: var(--accent-dark);
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(111, 84, 72, 0.4);
-    padding-bottom: 4px;
-}
+/* ---------- CATEGORY GRID ---------- */
 
 .home-page .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: var(--grid-gap);
 }
 
 .home-page .category-card {
     position: relative;
-    min-height: 430px;
+    min-height: 420px;
     text-decoration: none;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
     padding: 28px;
-    border-radius: 0;
-    transition: transform 0.35s ease;
+    transition: transform .35s ease;
     background-size: cover;
     background-position: center;
 }
 
-.home-page .category-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(25, 18, 15, 0.48) 0%, rgba(25, 18, 15, 0.12) 58%, rgba(25, 18, 15, 0.05) 100%);
+.home-page .category-card:hover {
+    transform: translateY(-6px) scale(1.02);
 }
 
-.home-page .category-card:hover {
-    transform: translateY(-4px);
+.home-page .category-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        to top,
+        rgba(25,18,15,0.48) 0%,
+        rgba(25,18,15,0.12) 58%,
+        rgba(25,18,15,0.05) 100%
+    );
 }
 
 .home-page .category-card-content {
     position: relative;
-    z-index: 1;
-    color: #fff;
+    z-index:1;
+    color:#fff;
 }
 
 .home-page .category-card-content p {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    opacity: 0.92;
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:10px;
 }
 
 .home-page .category-card-content h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 500;
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
 }
 
+/* ---------- CATEGORY IMAGES ---------- */
+
 .home-page .category-rings {
-    background-image: url("../images/necklace-banner-home.png");
+    background-image: url("../images/category-rings.jpg");
 }
 
 .home-page .category-necklaces {
-    background-image: url("../images/necklace-banner-home.png");
+    background-image: url("../images/category-necklaces.jpg");
 }
 
 .home-page .category-bracelets {
-    background-image: url("../images/necklace-banner-home.png");
+    background-image: url("../images/category-bracelets.jpg");
 }
 
 .home-page .category-earrings {
-    background-image: url("../images/necklace-banner-home.png");
+    background-image: url("../images/category-earrings.jpg");
 }
+
+/* ---------- PRODUCTS ---------- */
 
 .home-page .products {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 26px;
+    display:grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap:34px;
 }
 
+/* ---------- STORY SECTION ---------- */
+
 .home-page .story-section {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
-    align-items: stretch;
-    margin-bottom: var(--section-gap);
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:stretch;
+    margin-bottom:var(--section-gap);
 }
 
 .home-page .story-image {
-    min-height: 560px;
-    background-image: url("../images/necklace-banner-home.png");
-    background-size: cover;
-    background-position: center;
+    min-height:560px;
+    background-image:url("../images/necklace-banner-home.png");
+    background-size:cover;
+    background-position:center;
 }
 
 .home-page .story-copy {
-    background: var(--bg-card);
-    padding: 56px 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid var(--border-soft);
+    background:var(--bg-card);
+    padding:56px 48px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border:1px solid var(--border-soft);
 }
 
 .home-page .story-copy h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 3vw, 3.2rem);
-    line-height: 1.02;
-    font-weight: 500;
-    color: var(--text-main);
-    margin-bottom: 22px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.2rem,3vw,3.2rem);
+    font-weight:500;
+    margin-bottom:22px;
 }
 
 .home-page .story-copy p:last-of-type {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 1.9;
-    color: var(--text-soft);
-    margin-bottom: 28px;
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    line-height:1.9;
+    color:var(--text-soft);
+    margin-bottom:28px;
 }
 
+/* ---------- DARK MODE ---------- */
+
 html[data-theme="dark"] .home-page {
-    background: #0f0f0f;
+    background:#0f0f0f;
 }
 
 html[data-theme="dark"] .home-page .trust-strip,
 html[data-theme="dark"] .home-page .story-copy {
-    background: #181818;
-    border-color: #2a2a2a;
+    background:#181818;
+    border-color:#2a2a2a;
 }
 
-html[data-theme="dark"] .home-page .story-copy h2,
-html[data-theme="dark"] .home-page .section-heading h2 {
-    color: #f4f1ec;
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width:1100px){
+
+.home-page .category-grid,
+.home-page .products{
+grid-template-columns:repeat(2,1fr);
 }
 
-html[data-theme="dark"] .home-page .story-copy p:last-of-type,
-html[data-theme="dark"] .home-page .text-link,
-html[data-theme="dark"] .home-page .trust-item span {
-    color: #c8c0b8;
+.home-page .story-section{
+grid-template-columns:1fr;
 }
 
-@media (max-width: 1100px) {
-    .home-page .category-grid,
-    .home-page .products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .home-page .story-section {
-        grid-template-columns: 1fr;
-    }
-
-    .home-page .story-image {
-        min-height: 420px;
-    }
+.home-page .story-image{
+min-height:420px;
 }
 
-@media (max-width: 760px) {
-    .home-page {
-        --section-gap: 56px;
-    }
-
-    .home-page .feature {
-        min-height: 580px;
-    }
-
-    .home-page .feature-text {
-        padding: 0 24px;
-    }
-
-    .home-page .trust-strip {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .home-page .category-section,
-    .home-page .featured-section,
-    .home-page .story-section {
-        padding: 0 18px;
-    }
-
-    .home-page .split-heading {
-        display: block;
-    }
-
-    .home-page .text-link {
-        display: inline-block;
-        margin-top: 16px;
-    }
-
-    .home-page .story-copy {
-        padding: 36px 26px;
-    }
 }
 
-@media (max-width: 560px) {
-    .home-page .category-grid,
-    .home-page .products,
-    .home-page .trust-strip {
-        grid-template-columns: 1fr;
-    }
+@media (max-width:760px){
 
-    .home-page .category-card {
-        min-height: 340px;
-    }
+.home-page{
+--section-gap:56px;
+}
 
-    .home-page .feature-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
+.home-page .feature{
+min-height:65vh;
+}
 
-    .home-page .feature-link {
-        width: 100%;
-    }
+.home-page .feature-text{
+padding:0 24px;
+}
+
+.home-page .trust-strip{
+grid-template-columns:repeat(2,1fr);
+}
+
+.home-page .category-section,
+.home-page .featured-section,
+.home-page .story-section{
+padding:0 18px;
+}
+
+.home-page .split-heading{
+display:block;
+}
+
+.home-page .text-link{
+display:inline-block;
+margin-top:16px;
+}
+
+.home-page .story-copy{
+padding:36px 26px;
+}
+
+}
+
+@media (max-width:560px){
+
+.home-page .category-grid,
+.home-page .products,
+.home-page .trust-strip{
+grid-template-columns:1fr;
+}
+
+.home-page .category-card{
+min-height:320px;
+}
+
+.home-page .feature-buttons{
+flex-direction:column;
+}
+
+.home-page .feature-link{
+width:100%;
+}
+
 }
