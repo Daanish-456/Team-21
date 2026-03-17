@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}">
-    @stack('styles')
+    @stack('styles')    
 </head>
 
 <body>
@@ -24,9 +24,13 @@
         @include('components.navbar')
     </header>
 
+    @if(request()->is('/'))
+    @yield('content')
+@else
     <div class="content-container">
         @yield('content')
     </div>
+@endif
 
     @include('components.footer')
 
