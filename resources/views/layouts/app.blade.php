@@ -9,14 +9,19 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/logo-stone-soul.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/components/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}">
-    @stack('styles')    
+    @stack('styles')
 </head>
 
 <body>
@@ -25,12 +30,12 @@
     </header>
 
     @if(request()->is('/'))
-    @yield('content')
-@else
-    <div class="content-container">
         @yield('content')
-    </div>
-@endif
+    @else
+        <div class="content-container">
+            @yield('content')
+        </div>
+    @endif
 
     @include('components.footer')
 

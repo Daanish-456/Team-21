@@ -26,14 +26,33 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
+    $addressLines = preg_split("/\r\n|\n|\r/", (string) ($user->Address ?? ''));
+    $addressLines = array_pad(array_map('trim', array_values($addressLines ?: [])), 6, '');
 
     $orders = \App\Models\Order::where('UserID', session('UserID'))
         ->with('items.product')
         ->orderBy('OrderDate', 'desc')
         ->get();
 
-    return view('pages.auth.account', compact('user', 'orders'));
+    return view('pages.auth.account', [
+        'user' => $user,
+        'orders' => $orders,
+        'addressFields' => [
+            'address_line_1' => $addressLines[0] ?? '',
+            'address_line_2' => $addressLines[1] ?? '',
+            'city' => $addressLines[2] ?? '',
+            'county' => $addressLines[3] ?? '',
+            'postcode' => $addressLines[4] ?? '',
+            'country' => $addressLines[5] ?? '',
+        ],
+    ]);
 })->name('account')->middleware(UserSessionChecker::class);
+Route::post('/account/details', [UserController::class, 'updateProfile'])
+    ->name('account.details.update')
+    ->middleware(UserSessionChecker::class);
+Route::post('/account/address', [UserController::class, 'updateAddress'])
+    ->name('account.address.update')
+    ->middleware(UserSessionChecker::class);
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -65,10 +84,26 @@ Route::middleware(UserSessionChecker::class)->group(function () {
 
     // Checkout page
     Route::get('/checkout', function () {
-        return view('pages.checkout');
+        $user = User::where('UserID', session('UserID'))->first();
+
+        $addressLines = preg_split("/\r\n|\n|\r/", (string) ($user->Address ?? ''));
+        $addressLines = array_pad(array_map('trim', array_values($addressLines ?: [])), 6, '');
+
+        return view('pages.checkout', [
+            'user' => $user,
+            'addressFields' => [
+                'address_line_1' => $addressLines[0] ?? '',
+                'address_line_2' => $addressLines[1] ?? '',
+                'city' => $addressLines[2] ?? '',
+                'county' => $addressLines[3] ?? '',
+                'postcode' => $addressLines[4] ?? '',
+                'country' => $addressLines[5] ?? '',
+            ],
+        ]);
     })->name('checkout');
 
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout.process');
+    Route::post('/checkout/address', [UserController::class, 'saveCheckoutAddress'])->name('checkout.address.save');
 
     // Review actions
     Route::post('/product/{productId}/reviews', [ReviewController::class, 'store'])->name('reviews.store');

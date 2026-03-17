@@ -8,32 +8,145 @@
 
 @section('content')
     <div class="account-container">
-        <h1>My Account</h1>
-
-        <div class="account-grid">
-            {{-- Account Info Section --}}
-            <div class="account-section">
-                <h2>Account Information</h2>
-                <div class="info-card">
-                    <div class="info-row">
-                        <span class="info-label">Name:</span>
-                        <span class="info-value">{{ $user->Name ?? 'N/A' }}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Email:</span>
-                        <span class="info-value">{{ $user->Email ?? 'N/A' }}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Phone:</span>
-                        <span class="info-value">{{ $user->Phone ?? 'N/A' }}</span>
-                    </div>
-                    <button class="edit-btn">Edit Profile</button>
+        <div class="account-layout">
+            <section class="account-card account-section">
+                <div class="card-heading">
+                    <p class="card-kicker">Profile</p>
+                    <h2>Account Details</h2>
                 </div>
-            </div>
 
-            {{-- Order History Section - Data from Orders and Order_Item tables --}}
-            <div class="account-section full-width">
-                <h2>Order History</h2>
+                @if(session('profile_success'))
+                    <div class="form-alert form-alert-success">{{ session('profile_success') }}</div>
+                @endif
+
+                @if($errors->profile->any())
+                    <div class="form-alert form-alert-error">Please fix the highlighted details and try again.</div>
+                @endif
+
+                <form action="{{ route('account.details.update') }}" method="POST"
+                    class="account-form account-form-profile">
+                    @csrf
+
+                    <label class="form-field" for="account-name">
+                        <span class="detail-label">Name</span>
+                        <input id="account-name" type="text" name="name" value="{{ old('name', $user->Name) }}" required />
+                        @error('name', 'profile')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="account-email">
+                        <span class="detail-label">Email</span>
+                        <input id="account-email" type="email" name="email" value="{{ old('email', $user->Email) }}"
+                            required />
+                        @error('email', 'profile')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="account-phone">
+                        <span class="detail-label">Phone</span>
+                        <input id="account-phone" type="text" name="phone" value="{{ old('phone', $user->Phone) }}"
+                            placeholder="Add a phone number" />
+                        @error('phone', 'profile')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <div class="form-actions form-actions-split">
+                        <a href="{{ route('logout') }}" class="account-btn account-btn-danger">Logout</a>
+                        <button type="submit" class="account-btn account-btn-primary">Save Details</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="account-card account-section">
+                <div class="card-heading">
+                    <h2>Address</h2>
+                </div>
+
+                @if(session('address_success'))
+                    <div class="form-alert form-alert-success">{{ session('address_success') }}</div>
+                @endif
+
+                @if($errors->address->any())
+                    <div class="form-alert form-alert-error">Please fix the highlighted address fields and try again.</div>
+                @endif
+
+                <form action="{{ route('account.address.update') }}" method="POST"
+                    class="account-form account-form-address">
+                    @csrf
+
+                    <label class="form-field form-field-wide" for="address-line-1">
+                        <span class="detail-label">Address Line 1</span>
+                        <input id="address-line-1" type="text" name="address_line_1"
+                            value="{{ old('address_line_1', $addressFields['address_line_1']) }}" required />
+                        @error('address_line_1', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field form-field-wide" for="address-line-2">
+                        <span class="detail-label">Address Line 2</span>
+                        <input id="address-line-2" type="text" name="address_line_2"
+                            value="{{ old('address_line_2', $addressFields['address_line_2']) }}" />
+                        @error('address_line_2', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="address-city">
+                        <span class="detail-label">Town / City</span>
+                        <input id="address-city" type="text" name="city" value="{{ old('city', $addressFields['city']) }}"
+                            required />
+                        @error('city', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="address-county">
+                        <span class="detail-label">County / State</span>
+                        <input id="address-county" type="text" name="county"
+                            value="{{ old('county', $addressFields['county']) }}" />
+                        @error('county', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="address-postcode">
+                        <span class="detail-label">Postcode</span>
+                        <input id="address-postcode" type="text" name="postcode"
+                            value="{{ old('postcode', $addressFields['postcode']) }}" required />
+                        @error('postcode', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <label class="form-field" for="address-country">
+                        <span class="detail-label">Country</span>
+                        <input id="address-country" type="text" name="country"
+                            value="{{ old('country', $addressFields['country']) }}" required />
+                        @error('country', 'address')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+
+                    <div class="form-actions">
+                        <button type="submit" class="account-btn account-btn-secondary">Save Address</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="account-card account-main account-section">
+                <div class="orders-heading">
+                    <div>
+                        <p class="card-kicker">Purchase History</p>
+                        <h2>Recent Orders</h2>
+                    </div>
+                    <a href="{{ route('shop') }}" class="account-btn account-btn-secondary orders-action">Continue
+                        Shopping</a>
+                </div>
+
                 <div class="orders-list">
                     @if(isset($orders) && count($orders) > 0)
                         @foreach($orders as $order)
@@ -41,22 +154,25 @@
                                 <div class="order-header">
                                     <div>
                                         <span class="order-number">Order #{{ $order->OrderID }}</span>
-                                        <span class="order-date">Placed on: {{ date('d M Y', strtotime($order->OrderDate)) }}</span>
+                                        <span class="order-date">Placed on {{ date('d M Y', strtotime($order->OrderDate)) }}</span>
                                     </div>
-                                    <span
-                                        class="order-status {{ strtolower($order->OrderStatus) }}">{{ $order->OrderStatus }}</span>
+                                    <div class="order-header-meta">
+                                        <span class="order-total-inline">£{{ number_format($order->TotalAmount, 2) }}</span>
+                                        <span
+                                            class="order-status {{ strtolower($order->OrderStatus) }}">{{ $order->OrderStatus }}</span>
+                                    </div>
                                 </div>
                                 <div class="order-items">
-                                    {{-- Backend: Loop through Order_Item WHERE OrderID = $order->OrderID --}}
                                     @if(isset($order->items) && count($order->items) > 0)
                                         @foreach($order->items as $item)
                                             <div class="order-item">
                                                 <img src="{{ asset($item->product->Image_URL ?? 'assets/images/example-necklace.png') }}"
                                                     alt="Product" />
-                                                <div>
+                                                <div class="order-item-copy">
                                                     <p class="item-name">{{ $item->product->Product_Name ?? 'Product' }}</p>
                                                     <p class="item-price">£{{ number_format($item->Price, 2) }}</p>
                                                 </div>
+                                                <span class="item-qty">Amount {{ $item->Quantity }}</span>
                                             </div>
                                         @endforeach
                                     @endif
@@ -65,29 +181,14 @@
                             </div>
                         @endforeach
                     @else
-                        <p style="text-align: center; padding: 40px; color: #666;">No orders yet</p>
+                        <div class="empty-state">
+                            <p class="empty-title">No orders yet</p>
+                            <p class="empty-copy">Once you place an order, it will appear here with item details and totals.</p>
+                            <a href="{{ route('shop') }}" class="account-btn account-btn-primary">Browse Jewellery</a>
+                        </div>
                     @endif
                 </div>
-            </div>
-
-            {{-- Addresses Section --}}
-            <div class="account-section">
-                <h2>Saved Address</h2>
-                <div class="address-card">
-                    @if($user->Address)
-                        <p><strong>Your Address</strong></p>
-                        <p>{{ $user->Address }}</p>
-                    @else
-                        <p>No address saved</p>
-                    @endif
-                    <button class="edit-btn">Edit</button>
-                </div>
-            </div>
-
-            {{-- Logout Section --}}
-            <div class="account-section">
-                <a href="{{ route('logout') }}" class="logout-btn">Logout</a>
-            </div>
+            </section>
         </div>
     </div>
 @endsection

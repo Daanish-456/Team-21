@@ -8,7 +8,7 @@
 
 .checkout-card {
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
     background: #ffffff;
     border-radius: 20px;
     padding: 24px 24px 28px;
@@ -30,7 +30,51 @@
 .checkout-form {
     display: flex;
     flex-direction: column;
+    gap: 18px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
     gap: 14px;
+    padding-top: 8px;
+}
+
+.form-section + .form-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.section-heading p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.checkout-alert {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.checkout-alert-success {
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid #a7f3d0;
+}
+
+.checkout-alert-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
 }
 
 .form-group {
@@ -46,6 +90,24 @@
 
 .form-row .form-group {
     flex: 1;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-row input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.checkbox-row span {
+    font-size: 0.9rem;
+    color: #374151;
 }
 
 .checkout-form label {
@@ -101,7 +163,6 @@
 /* Button */
 
 .checkout-btn {
-    margin-top: 8px;
     width: 100%;
     border: none;
     border-radius: 999px;
@@ -112,6 +173,24 @@
     font-weight: 500;
     cursor: pointer;
     transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+.secondary-btn {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: #f9fafb;
+    border-color: #9ca3af;
 }
 
 .checkout-btn:hover:not(:disabled) {

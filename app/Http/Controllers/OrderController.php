@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,19 @@ class OrderController extends Controller
 {
     public function checkout(Request $request)
     {
+        $validated = $request->validate([
+            'card_name' => 'required|string|max:255',
+            'card_number' => 'required|string|max:19',
+            'expiry' => 'required|string|max:5',
+            'cvv' => 'required|string|max:4',
+            'address_line_1' => 'required|string|max:255',
+            'address_line_2' => 'nullable|string|max:255',
+            'city' => 'required|string|max:120',
+            'county' => 'nullable|string|max:120',
+            'postcode' => 'required|string|max:20',
+            'country' => 'required|string|max:120',
+        ]);
+
         $userId = session('UserID');
 
         $cart = Cart::where('UserID', $userId)
@@ -29,6 +43,7 @@ class OrderController extends Controller
         try {
             $total = 0;
             $productsById = [];
+            $user = User::where('UserID', $userId)->first();
 
             foreach ($cart->items as $item) {
                 $product = Product::where('ProductID', $item->ProductID)
@@ -40,6 +55,18 @@ class OrderController extends Controller
                 }
 
                 $productsById[$item->ProductID] = $product;
+            }
+
+            if ($user && $request->boolean('save_address')) {
+                $user->Address = rtrim(implode("\n", [
+                    $validated['address_line_1'],
+                    $validated['address_line_2'] ?? '',
+                    $validated['city'],
+                    $validated['county'] ?? '',
+                    strtoupper($validated['postcode']),
+                    $validated['country'],
+                ]), "\n");
+                $user->save();
             }
 
             $order = Order::create([
