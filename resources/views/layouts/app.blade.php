@@ -92,13 +92,14 @@
     const body = document.querySelector(".chat-body");
     const sendBtn = document.getElementById("send-btn");
 
-    toggle.onclick = () => {
-    chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
-    };
+toggle.onclick = () => {
+    chatbot.style.display =
+        chatbot.style.display === "flex" ? "none" : "flex";
+};
 
-    function sendMessage() {
-        const msg = input.value.trim();
-        if (!msg) return;
+function sendMessage() {
+    const msg = input.value.trim();
+    if (!msg) return;
 
     body.innerHTML += `<div class="user-message">${msg}</div>`;
 
