@@ -10,7 +10,7 @@
                 <h3>Customer Care</h3>
                 <ul>
                     <li><a href="{{ url('/faqs') }}">FAQs</a></li>
-                    <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
+                    <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                     <li><a href="{{ url('/easy-returns') }}">Returns &amp; Exchanges</a></li>
                     <li><a href="{{ url('/fast-delivery') }}">Delivery Information</a></li>
                 </ul>

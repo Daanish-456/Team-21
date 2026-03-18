@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/info-pages.css') }}">
+
 <div class="info-page">
     <div class="info-page-header">
         <h1>Our Commitment to Ethical Sourcing</h1>
