@@ -17,3 +17,51 @@ body {
     flex: 1 0 auto;
     padding: 0 64px;
 }
+
+/* FOOTER STYLES */
+.footer {
+    background-color: #f8f5f1;
+    color: #3e2f27;
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    margin-bottom: 10px;
+}
+
+.footer-column p {
+    color: #6b5b52;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 8px;
+    color: #6b5b52;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: #3e2f27;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}

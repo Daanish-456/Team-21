@@ -24,6 +24,13 @@ Route::view('/about', 'pages.about')->name('about');
 // Contact
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
+
+// Information pages
+Route::view('/ethical-sourcing', 'pages.ethical-sourcing')->name('ethical-sourcing');
+Route::view('/easy-returns', 'pages.easy-returns')->name('easy-returns');
+Route::view('/fast-delivery', 'pages.fast-delivery')->name('fast-delivery');
+Route::view('/faqs', 'pages.faqs')->name('faqs');
+
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
     $addressLines = preg_split("/\r\n|\n|\r/", (string) ($user->Address ?? ''));
