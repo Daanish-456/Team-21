@@ -1,35 +1,41 @@
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-columns">
-            <div class="footer-column">
-                <h3>Stone & Soul</h3>
-                <p>Ethical & Sustainable Jewellery designed with meaning.</p>
-            </div>
-
-            <div class="footer-column">
-                <h4>Customer Care</h4>
-                <a href="{{ route('faqs') }}">FAQs</a>
-                <a href="{{ route('contact') }}">Contact Us</a>
-                <a href="{{ route('easy-returns') }}">Returns & Exchanges</a>
-                <a href="{{ route('fast-delivery') }}">Delivery Information</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>About</h4>
-                <a href="{{ route('about') }}">About Us</a>
-                <a href="{{ route('ethical-sourcing') }}">Ethical Sourcing</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>Follow Us</h4>
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
-                <a href="#">Pinterest</a>
-            </div>
+<footer class="site-footer">
+    <div class="site-footer-container">
+        <div class="site-footer-brand">
+            <h2>Stone &amp; Soul</h2>
+            <p>Ethical &amp; Sustainable Jewellery designed with meaning.</p>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; {{ date('Y') }} Team 21 - Stone & Soul - Ethical & Sustainable Jewellery</p>
+        <div class="site-footer-links">
+            <div class="footer-column">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="{{ route('faqs') }}">FAQs</a></li>
+                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                    <li><a href="{{ route('returns') }}">Returns &amp; Exchanges</a></li>
+                    <li><a href="{{ route('delivery') }}">Delivery Information</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('ethical') }}">Ethical Sourcing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
         </div>
+    </div>
+
+    <div class="site-footer-bottom">
+        <p>&copy; 2026 Team 21 - Stone &amp; Soul - Ethical &amp; Sustainable Jewellery</p>
     </div>
 </footer>
