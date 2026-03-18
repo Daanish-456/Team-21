@@ -30,7 +30,7 @@
         @include('components.navbar')
     </header>
 
-    @if(request()->is('/'))
+    @if(request()->is(''))
         @yield('content')
     @else
         <div class="content-container">
