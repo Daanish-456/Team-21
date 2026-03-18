@@ -12,7 +12,7 @@
 
                 <div class="footer-contact-block">
                     <p class="footer-contact-title">Need help?</p>
-                    <a href="tel:+447000000000">+44 (0)7XXX XXXXXX</a>
+                    <a href="tel:+447000000000">+44 (0)7999 999999</a>
                     <a href="mailto:customercare@stoneandsoul.co.uk">customercare@stoneandsoul.co.uk</a>
                 </div>
 
@@ -25,10 +25,9 @@
             <div class="footer-links-column">
                 <h3>About Us</h3>
                 <ul>
-                    <li><a href="{{ url('/about-us') }}">Our Story</a></li>
+                    <li><a href="{{ url('/about') }}">Our Story</a></li>
                     <li><a href="{{ url('/ethical-sourcing') }}">Ethical Sourcing</a></li>
-                    <li><a href="{{ url('/about-us') }}">Our Values</a></li>
-                    <li><a href="{{ url('/about-us') }}">Meet The Team</a></li>
+                    <li><a href="{{ url('/about') }}">Our Values</a></li>
                 </ul>
             </div>
 
