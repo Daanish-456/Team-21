@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+@push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/info-pages.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/faqs.css') }}">
+@endpush
+
 <div class="info-page">
     <div class="info-page-header">
         <h1>Frequently Asked Questions</h1>

@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+@push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/info-pages.css') }}">
+@endpush
 
 <div class="info-page">
     <div class="info-page-header">
