@@ -17,11 +17,12 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/components/navbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/chatbot.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/productcard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
+    
     @stack('styles')
 </head>
 
