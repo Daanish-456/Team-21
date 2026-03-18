@@ -9,18 +9,18 @@
             <div class="footer-column">
                 <h3>Customer Care</h3>
                 <ul>
-                    <li><a href="{{ route('faqs') }}">FAQs</a></li>
-                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                    <li><a href="{{ route('returns') }}">Returns &amp; Exchanges</a></li>
-                    <li><a href="{{ route('delivery') }}">Delivery Information</a></li>
+                    <li><a href="{{ url('/faqs') }}">FAQs</a></li>
+                    <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
+                    <li><a href="{{ url('/easy-returns') }}">Returns &amp; Exchanges</a></li>
+                    <li><a href="{{ url('/fast-delivery') }}">Delivery Information</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h3>About</h3>
                 <ul>
-                    <li><a href="{{ route('about') }}">About Us</a></li>
-                    <li><a href="{{ route('ethical') }}">Ethical Sourcing</a></li>
+                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                    <li><a href="{{ url('/ethical-sourcing') }}">Ethical Sourcing</a></li>
                 </ul>
             </div>
 
