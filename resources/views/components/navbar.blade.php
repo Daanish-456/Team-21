@@ -2,7 +2,7 @@
     Handcrafted jewellery inspired by nature, soul, and timeless design.
 </div>
 
-<div class="nav-div">
+<header class="nav-div">
     <div class="nav-shell">
         <div class="nav-left">
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu">
@@ -11,7 +11,7 @@
                 <span></span>
             </button>
 
-            <nav class="navbar desktop-nav">
+            <nav class="desktop-nav">
                 <a href="{{ route('home') }}" class="nav-item">Home</a>
                 <a href="{{ route('about') }}" class="nav-item">About</a>
                 <a href="{{ route('shop') }}" class="nav-item">Shop All</a>
@@ -31,8 +31,7 @@
             <form action="{{ route('search') }}" method="GET" class="nav-search-form">
                 <input type="text" name="q" placeholder="Search products..." class="nav-search-input">
                 <button type="submit" class="nav-search-btn" aria-label="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
@@ -40,17 +39,17 @@
             </form>
 
             <a href="{{ route('wishlist') }}" class="icon-link" aria-label="Wishlist">
-                <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
             </a>
 
             <a href="{{ route('basket') }}" class="icon-link" aria-label="Basket">
-                <img src="{{ asset('assets/svg/cart.svg') }}" class="nav-icon" alt="Basket">
+                <img src="{{ asset('assets/svg/cart.svg') }}" class="nav-icon-img" alt="Basket">
             </a>
 
             <a href="{{ route('account') }}" class="icon-link" aria-label="Account">
-                <img src="{{ asset('assets/svg/person-sharp.svg') }}" class="nav-icon" alt="User Account">
+                <img src="{{ asset('assets/svg/person-sharp.svg') }}" class="nav-icon-img" alt="User Account">
             </a>
 
             <label class="theme-switch" aria-label="Toggle dark mode">
@@ -59,7 +58,7 @@
             </label>
         </div>
     </div>
-</div>
+</header>
 
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
@@ -82,7 +81,7 @@
 </aside>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById("mobileMenuToggle");
     const closeBtn = document.getElementById("closeMobileMenu");
     const drawer = document.getElementById("mobileDrawer");
