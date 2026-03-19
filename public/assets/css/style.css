@@ -1,7 +1,3 @@
-/* ---------------------------------------------------
-   COLOUR VARIABLES (BRAND PALETTE)
---------------------------------------------------- */
-
 :root {
   --gold: #e8dcc5;
   --gold-dark: #c8bfa8;
@@ -28,10 +24,6 @@ html[data-theme="dark"] {
   --border: rgba(255, 255, 255, 0.14);
 }
 
-/* ---------------------------------------------------
-   GLOBAL RESET
---------------------------------------------------- */
-
 * {
   margin: 0;
   padding: 0;
@@ -44,10 +36,6 @@ body {
   background: var(--bg);
   color: var(--text);
 }
-
-/* ---------------------------------------------------
-   GLOBAL LAYOUT
---------------------------------------------------- */
 
 .container {
   max-width: 1200px;
@@ -64,21 +52,12 @@ img {
   display: block;
 }
 
-/* ---------------------------------------------------
-   TYPOGRAPHY
---------------------------------------------------- */
-
 p {
   line-height: 1.7;
   font-size: 1.05rem;
 }
 
-/* ---------------------------------------------------
-   BUTTONS
---------------------------------------------------- */
-
-.btn,
-.feature-link {
+.btn {
   display: inline-block;
   padding: 0.75rem 1.6rem;
   border: 2px solid var(--gold);
@@ -89,14 +68,12 @@ p {
   transition: 0.3s ease;
 }
 
-.btn:hover,
-.feature-link:hover {
+.btn:hover {
   background-color: var(--gold);
   color: var(--charcoal);
   cursor: pointer;
 }
 
-/* NAVBAR */
 html[data-theme="dark"] .nav-item {
   color: var(--link);
 }
@@ -114,7 +91,6 @@ html[data-theme="dark"] .nav-search-input::placeholder {
   color: var(--muted);
 }
 
-/* FOOTER */
 html[data-theme="dark"] .footer {
   background-color: var(--surface);
   color: var(--text);
@@ -123,10 +99,6 @@ html[data-theme="dark"] .footer {
 html[data-theme="dark"] .footer a {
   color: var(--link);
 }
-
-/* ---------------------------------------------------
-   FOOTER
---------------------------------------------------- */
 
 .footer {
   background: var(--surface);
@@ -186,10 +158,6 @@ html[data-theme="dark"] .footer a {
   color: var(--muted);
 }
 
-/* ---------------------------------------------------
-   INFO PAGES
---------------------------------------------------- */
-
 .info-page {
   max-width: 1100px;
   margin: 60px auto;
@@ -252,10 +220,6 @@ html[data-theme="dark"] .footer a {
 .info-card ol {
   padding-left: 20px;
 }
-
-/* ---------------------------------------------------
-   RESPONSIVE
---------------------------------------------------- */
 
 @media (max-width: 900px) {
   .footer-container,
@@ -276,102 +240,6 @@ html[data-theme="dark"] .footer a {
 
 @media (max-width: 640px) {
   .footer-columns,
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .info-page {
-    margin: 40px auto;
-  }
-
-  .info-page-header h1 {
-    font-size: 2rem;
-  }
-
-  .info-card {
-    padding: 22px;
-  }
-}
-
-.info-page {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 64px;
-}
-
-.info-page-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.info-page-header h1 {
-  font-size: 3rem;
-  margin-bottom: 14px;
-  color: var(--text);
-}
-
-.info-page-header p {
-  font-size: 1.1rem;
-  color: var(--muted);
-  max-width: 760px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(280px, 1fr));
-  gap: 28px;
-}
-
-.info-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.info-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
-.info-card h2 {
-  font-size: 1.6rem;
-  margin-bottom: 14px;
-  color: var(--text);
-}
-
-.info-card p,
-.info-card li {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 1rem;
-}
-
-.info-card ul,
-.info-card ol {
-  padding-left: 20px;
-}
-
-@media (max-width: 900px) {
-  .info-page {
-    padding: 0 24px;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .info-page-header h1 {
-    font-size: 2.3rem;
-  }
-}
-
-@media (max-width: 640px) {
   .info-grid {
     grid-template-columns: 1fr;
   }
