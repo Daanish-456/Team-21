@@ -31,7 +31,7 @@
         @include('components.navbar')
     </header>
 
-    @if(request()->is(''))
+    @if(request()->routeIs('home'))
         @yield('content')
     @else
         <div class="content-container">
