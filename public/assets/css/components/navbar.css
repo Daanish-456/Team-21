@@ -12,6 +12,12 @@
     border-bottom: 1px solid #e5dbcf;
 }
 
+.nav-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 /* NAV WRAPPER */
 
 .nav-div {
@@ -34,11 +40,6 @@
     gap: 12px;
 }
 
-/* HIDE LEFT (OLD STRUCTURE) */
-
-.nav-left {
-    display: none;
-}
 
 /* LOGO */
 
