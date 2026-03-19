@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminOrdersController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrderController;
@@ -127,4 +128,8 @@ Route::middleware(IsAdminUserVerifier::class)->group(function () {
     Route::post('/admin/stock', [AdminProductController::class, 'store'])->name('admin.stock.store');
     Route::put('/admin/stock/{product}', [AdminProductController::class, 'update'])->name('admin.stock.update');
     Route::delete('/admin/stock/{product}', [AdminProductController::class, 'destroy'])->name('admin.stock.destroy');
+
+    Route::get('/admin/orders', [AdminOrdersController::class, 'index'])->name('admin.orders');
+    Route::get('/admin/orders/{order}', [AdminOrdersController::class, 'show'])->name('admin.orders.show');
+    Route::put('/admin/orders/{order}', [AdminOrdersController::class, 'update'])->name('admin.orders.update');
 });

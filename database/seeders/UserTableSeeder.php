@@ -12,11 +12,11 @@ class UserTableSeeder extends Seeder
     {
         DB::table('Users')->insert([
             [
-                'Name' => 'Zainab Mazahir',
-                'Email' => 'zainab@example.com',
+                'Name' => 'John Smith',
+                'Email' => 'johnsmith@example.com',
                 'Password' => Hash::make('password123'),
                 'Phone' => '07123456789',
-                'Address' => '123 Aston Road, Birmingham',
+                'Address' => '',
                 'Role' => 'customer',
             ],
             [

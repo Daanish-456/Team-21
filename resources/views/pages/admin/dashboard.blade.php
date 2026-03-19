@@ -33,7 +33,7 @@
                                 <option value="lowest" {{ ($sort ?? 'newest') === 'lowest' ? 'selected' : '' }}>Lowest total</option>
                             </select>
                         </form>
-                        <a href="{{ route('shop') }}" class="admin-inline-link">View storefront</a>
+                        <a href="{{ route('admin.orders') }}" class="admin-inline-link">Manage all orders</a>
                     </div>
                 </div>
 
@@ -47,6 +47,7 @@
                     </div>
 
                     @forelse ($orders as $order)
+                    <a href="{{ route('admin.orders.show', $order['id']) }}" class="admin-inline-link">
                         <div class="admin-orders-row">
                             <span>#{{ $order['id'] }}</span>
                             <span>{{ $order['customer'] }}</span>
@@ -54,6 +55,7 @@
                             <span class="admin-status">{{ $order['status'] }}</span>
                             <span>{{ $order['total'] }}</span>
                         </div>
+                    </a>
                     @empty
                         <div class="admin-orders-row">
                             <span>-</span>
