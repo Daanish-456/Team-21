@@ -25,59 +25,19 @@ class ProductController extends Controller
         ]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('ProductID', 'desc')->get();
+        $query = Product::orderBy('ProductID', 'desc');
+
+        $query = $this->applyFilters($query, $request);
+
+        $products = $query->get();
 
         return view('pages.shop', [
             'products' => $products,
             'pageTitle' => 'Shop All',
             'pageDescription' => 'Explore our full handcrafted jewellery collection.',
             'activeCategory' => 'all',
-            'searchTerm' => null,
-        ]);
-    }
-
-    public function shopCategory($slug)
-    {
-        $categories = [
-            'necklaces' => [
-                'id' => 1,
-                'title' => 'Necklaces',
-                'description' => 'Elegant everyday layers and statement pieces.',
-            ],
-            'earrings' => [
-                'id' => 2,
-                'title' => 'Earrings',
-                'description' => 'Studs, hoops and drops designed for every style.',
-            ],
-            'bracelets' => [
-                'id' => 3,
-                'title' => 'Bracelets',
-                'description' => 'Stackable chains and beadwork for every day.',
-            ],
-            'rings' => [
-                'id' => 4,
-                'title' => 'Rings',
-                'description' => 'Stacks, solitaires and statement pieces.',
-            ],
-        ];
-
-        if (!array_key_exists($slug, $categories)) {
-            abort(404);
-        }
-
-        $categoryData = $categories[$slug];
-
-        $products = Product::where('CategoryID', $categoryData['id'])
-            ->orderBy('ProductID', 'desc')
-            ->get();
-
-        return view('pages.shop', [
-            'products' => $products,
-            'pageTitle' => $categoryData['title'],
-            'pageDescription' => $categoryData['description'],
-            'activeCategory' => $slug,
             'searchTerm' => null,
         ]);
     }
@@ -108,7 +68,7 @@ class ProductController extends Controller
         $products = Product::query()
             ->when($q, function ($query) use ($q) {
                 $query->where('Product_Name', 'LIKE', "%{$q}%")
-                    ->orWhere('Description', 'LIKE', "%{$q}%");
+                      ->orWhere('Description', 'LIKE', "%{$q}%");
             })
             ->orderBy('ProductID', 'desc')
             ->get();
@@ -122,13 +82,16 @@ class ProductController extends Controller
         ]);
     }
 
-    public function category($id)
+    public function category($id, Request $request)
     {
         $category = Category::findOrFail($id);
 
-        $products = Product::where('CategoryID', $id)
-            ->orderBy('ProductID', 'desc')
-            ->get();
+        $query = Product::where('CategoryID', $id)
+            ->orderBy('ProductID', 'desc');
+
+        $query = $this->applyFilters($query, $request);
+
+        $products = $query->get();
 
         return view('pages.shop', [
             'products' => $products,
@@ -138,55 +101,89 @@ class ProductController extends Controller
             'searchTerm' => null,
         ]);
     }
-public function earrings()
-{
-    $products = Product::where('CategoryID', 2)->orderBy('ProductID', 'desc')->get();
 
-    return view('pages.shop', [
-        'products' => $products,
-        'pageTitle' => 'Earrings',
-        'pageDescription' => 'Discover our collection of handcrafted earrings.',
-        'activeCategory' => 'earrings',
-        'searchTerm' => null,
-    ]);
-}
+    public function necklaces(Request $request)
+    {
+        $query = Product::where('CategoryID', 1)->orderBy('ProductID', 'desc');
+        $query = $this->applyFilters($query, $request);
 
-public function necklaces()
-{
-    $products = Product::where('CategoryID', 1)->orderBy('ProductID', 'desc')->get();
+        return view('pages.shop', [
+            'products' => $query->get(),
+            'pageTitle' => 'Necklaces',
+            'pageDescription' => 'Explore elegant handcrafted necklaces for every occasion.',
+            'activeCategory' => 'necklaces',
+            'searchTerm' => null,
+        ]);
+    }
 
-    return view('pages.shop', [
-        'products' => $products,
-        'pageTitle' => 'Necklaces',
-        'pageDescription' => 'Explore elegant handcrafted necklaces for every occasion.',
-        'activeCategory' => 'necklaces',
-        'searchTerm' => null,
-    ]);
-}
+    public function earrings(Request $request)
+    {
+        $query = Product::where('CategoryID', 2)->orderBy('ProductID', 'desc');
+        $query = $this->applyFilters($query, $request);
 
-public function bracelets()
-{
-    $products = Product::where('CategoryID', 3)->orderBy('ProductID', 'desc')->get();
+        return view('pages.shop', [
+            'products' => $query->get(),
+            'pageTitle' => 'Earrings',
+            'pageDescription' => 'Discover our collection of handcrafted earrings.',
+            'activeCategory' => 'earrings',
+            'searchTerm' => null,
+        ]);
+    }
 
-    return view('pages.shop', [
-        'products' => $products,
-        'pageTitle' => 'Bracelets',
-        'pageDescription' => 'Browse our handcrafted bracelet collection.',
-        'activeCategory' => 'bracelets',
-        'searchTerm' => null,
-    ]);
-}
+    public function bracelets(Request $request)
+    {
+        $query = Product::where('CategoryID', 3)->orderBy('ProductID', 'desc');
+        $query = $this->applyFilters($query, $request);
 
-public function rings()
-{
-    $products = Product::where('CategoryID', 4)->orderBy('ProductID', 'desc')->get();
+        return view('pages.shop', [
+            'products' => $query->get(),
+            'pageTitle' => 'Bracelets',
+            'pageDescription' => 'Browse our handcrafted bracelet collection.',
+            'activeCategory' => 'bracelets',
+            'searchTerm' => null,
+        ]);
+    }
 
-    return view('pages.shop', [
-        'products' => $products,
-        'pageTitle' => 'Rings',
-        'pageDescription' => 'Find handcrafted rings designed for everyday wear and special moments.',
-        'activeCategory' => 'rings',
-        'searchTerm' => null,
-    ]);
-}
+    public function rings(Request $request)
+    {
+        $query = Product::where('CategoryID', 4)->orderBy('ProductID', 'desc');
+        $query = $this->applyFilters($query, $request);
+
+        return view('pages.shop', [
+            'products' => $query->get(),
+            'pageTitle' => 'Rings',
+            'pageDescription' => 'Find handcrafted rings designed for everyday wear and special moments.',
+            'activeCategory' => 'rings',
+            'searchTerm' => null,
+        ]);
+    }
+
+    private function applyFilters($query, Request $request)
+    {
+        if ($request->has('availability')) {
+            $query->whereIn('Availability', $request->availability);
+        }
+
+        if ($request->has('shape')) {
+            $query->whereIn('StoneShape', $request->shape);
+        }
+
+        if ($request->has('stone')) {
+            $query->whereIn('Stone', $request->stone);
+        }
+
+        if ($request->has('metal')) {
+            $query->whereIn('Metal', $request->metal);
+        }
+
+        if ($request->filled('min_price')) {
+            $query->where('Price', '>=', $request->min_price);
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('Price', '<=', $request->max_price);
+        }
+
+        return $query;
+    }
 }

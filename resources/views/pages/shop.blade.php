@@ -187,7 +187,76 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
-        }
+        } 
+
+        .shop-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filters {
+    border-right: 1px solid #e4d7c4;
+    padding-right: 1rem;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    background: #3c2f2f;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        border-right: none;
+        border-bottom: 1px solid #e4d7c4;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+       .filters-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+}
+
+.filter-header {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.price-inputs input {
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
     </style>
 @endpush
 
@@ -233,30 +302,113 @@
             @endif
         </div>
 
-        <div class="shop-grid-wrap">
-            @if($products->count())
-                <div class="products-grid">
-                    @foreach ($products as $product)
-                        <a href="{{ route('product', $product->ProductID) }}" class="product-card-link">
-                            <article class="product-card">
-                                <div class="product-image-wrapper">
-                                    <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
-                                </div>
+        <div class="shop-layout">
 
-                                <div class="product-info">
-                                    <h3 class="product-title">{{ $product->Product_Name }}</h3>
-                                    <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
-                                    <p class="product-tagline">{{ $product->Description }}</p>
-                                </div>
-                            </article>
-                        </a>
-                    @endforeach
-                </div>
-            @else
-                <div class="no-products">
-                    <p>No products found.</p>
-                </div>
-            @endif
+    <!-- FILTER SIDEBAR -->
+  <aside class="filters">
+
+    <form method="GET" action="{{ route('shop') }}">
+
+        <h3 class="filters-title">FILTERS</h3>
+
+        <!-- Availability -->
+        <div class="filter-group">
+            <div class="filter-header">Availability</div>
+
+            <label>
+                <input type="checkbox" name="availability[]" value="ready"
+                    {{ in_array('ready', request('availability', [])) ? 'checked' : '' }}>
+                Ready To Ship
+            </label>
+
+            <label>
+                <input type="checkbox" name="availability[]" value="made"
+                    {{ in_array('made', request('availability', [])) ? 'checked' : '' }}>
+                Made To Order
+            </label>
         </div>
+
+        <!-- Stone Shape -->
+        <div class="filter-group">
+            <div class="filter-header">Stone Shape</div>
+
+            @foreach (['Oval','Pear','Baguette','Cushion','Emerald','Geometric','Hexagonal','Kite','Marquise','Princess'] as $shape)
+                <label>
+                    <input type="checkbox" name="shape[]" value="{{ $shape }}"
+                        {{ in_array($shape, request('shape', [])) ? 'checked' : '' }}>
+                    {{ $shape }}
+                </label>
+            @endforeach
+        </div>
+
+        <!-- Precious Stone -->
+        <div class="filter-group">
+            <div class="filter-header">Precious Stone</div>
+
+            @foreach (['Diamond','Emerald','Blue Sapphire','Green Sapphire','Aquamarine'] as $stone)
+                <label>
+                    <input type="checkbox" name="stone[]" value="{{ $stone }}"
+                        {{ in_array($stone, request('stone', [])) ? 'checked' : '' }}>
+                    {{ $stone }}
+                </label>
+            @endforeach
+        </div>
+
+        <!-- Metal -->
+        <div class="filter-group">
+            <div class="filter-header">Metal</div>
+
+            @foreach (['9ct Yellow Gold','14ct Yellow Gold','18ct Yellow Gold','Sterling Silver','Platinum'] as $metal)
+                <label>
+                    <input type="checkbox" name="metal[]" value="{{ $metal }}"
+                        {{ in_array($metal, request('metal', [])) ? 'checked' : '' }}>
+                    {{ $metal }}
+                </label>
+            @endforeach
+        </div>
+
+        <!-- PRICE -->
+        <div class="filter-group">
+            <div class="filter-header">Price</div>
+
+            <div class="price-inputs">
+                <input type="number" name="min_price" placeholder="£ 0" value="{{ request('min_price') }}">
+                <span>-</span>
+                <input type="number" name="max_price" placeholder="£ 5000" value="{{ request('max_price') }}">
+            </div>
+        </div>
+
+        <button type="submit" class="filter-btn">Apply Filters</button>
+
+    </form>
+
+</aside>
+
+    <!-- YOUR EXISTING GRID -->
+    <div class="shop-grid-wrap">
+        @if($products->count())
+            <div class="products-grid">
+                @foreach ($products as $product)
+                    <a href="{{ route('product', $product->ProductID) }}" class="product-card-link">
+                        <article class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="{{ asset($product->Image_URL) }}" alt="{{ $product->Product_Name }}">
+                            </div>
+
+                            <div class="product-info">
+                                <h3 class="product-title">{{ $product->Product_Name }}</h3>
+                                <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
+                                <p class="product-tagline">{{ $product->Description }}</p>
+                            </div>
+                        </article>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div class="no-products">
+                <p>No products found.</p>
+            </div>
+        @endif
     </div>
+</div>
 @endsection
