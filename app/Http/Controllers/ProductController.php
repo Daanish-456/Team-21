@@ -138,28 +138,55 @@ class ProductController extends Controller
             'searchTerm' => null,
         ]);
     }
+public function earrings()
+{
+    $products = Product::where('CategoryID', 2)->orderBy('ProductID', 'desc')->get();
 
-   public function earrings()
-    {
-    $products = Product::where('CategoryID', 2)->get();
-    return view('pages.earrings', compact('products'));
-    }
+    return view('pages.shop', [
+        'products' => $products,
+        'pageTitle' => 'Earrings',
+        'pageDescription' => 'Discover our collection of handcrafted earrings.',
+        'activeCategory' => 'earrings',
+        'searchTerm' => null,
+    ]);
+}
 
-    public function necklaces()
-    {
-    $products = Product::where('CategoryID', 1)->get();
-    return view('pages.necklaces', compact('products'));
-    }
+public function necklaces()
+{
+    $products = Product::where('CategoryID', 1)->orderBy('ProductID', 'desc')->get();
 
-    public function bracelets()
-    {
-    $products = Product::where('CategoryID', 3)->get();
-    return view('pages.bracelets', compact('products'));
-    }
+    return view('pages.shop', [
+        'products' => $products,
+        'pageTitle' => 'Necklaces',
+        'pageDescription' => 'Explore elegant handcrafted necklaces for every occasion.',
+        'activeCategory' => 'necklaces',
+        'searchTerm' => null,
+    ]);
+}
 
-    public function rings()
-    {
-    $products = Product::where('CategoryID', 4)->get();
-    return view('pages.rings', compact('products'));
-    }
+public function bracelets()
+{
+    $products = Product::where('CategoryID', 3)->orderBy('ProductID', 'desc')->get();
+
+    return view('pages.shop', [
+        'products' => $products,
+        'pageTitle' => 'Bracelets',
+        'pageDescription' => 'Browse our handcrafted bracelet collection.',
+        'activeCategory' => 'bracelets',
+        'searchTerm' => null,
+    ]);
+}
+
+public function rings()
+{
+    $products = Product::where('CategoryID', 4)->orderBy('ProductID', 'desc')->get();
+
+    return view('pages.shop', [
+        'products' => $products,
+        'pageTitle' => 'Rings',
+        'pageDescription' => 'Find handcrafted rings designed for everyday wear and special moments.',
+        'activeCategory' => 'rings',
+        'searchTerm' => null,
+    ]);
+}
 }
