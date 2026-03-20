@@ -38,6 +38,7 @@
                     <li><a href="{{ url('/fast-delivery') }}">Delivery Information</a></li>
                     <li><a href="{{ url('/easy-returns') }}">Returns &amp; Exchanges</a></li>
                     <li><a href="{{ url('/faqs') }}">FAQs</a></li>
+                    <li><a href="{{ url('/ring-sizing-guide') }}">Ring Sizing Guide</a></li>
                 </ul>
             </div>
 
