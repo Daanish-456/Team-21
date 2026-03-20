@@ -120,7 +120,7 @@
                     If you are unsure about sizing or need help after ordering, our customer care team
                     can guide you to the best fit.
                 </p>
-                <a href="{{ url('/contact') }}" class="ring-guide-btn">Contact Us</a>
+                <a href="{{ route('contact') }}" class="ring-guide-btn">Contact Us</a>
             </div>
         </div>
     </section>
@@ -141,7 +141,7 @@
                 <div class="ring-guide-faq-item">
                     <h3>Can I measure my size at home?</h3>
                     <p>
-                        Yes. Measuring a ring you already own or using string/paper around your finger
+                        Yes. Measuring a ring you already own or using string or paper around your finger
                         are both simple ways to estimate your size from home.
                     </p>
                 </div>
