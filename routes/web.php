@@ -31,6 +31,7 @@ Route::view('/ethical-sourcing', 'pages.ethical-sourcing')->name('ethical-sourci
 Route::view('/easy-returns', 'pages.easy-returns')->name('easy-returns');
 Route::view('/fast-delivery', 'pages.fast-delivery')->name('fast-delivery');
 Route::view('/faqs', 'pages.faqs')->name('faqs');
+Route::view('/ring-sizing-guide', 'pages.ring-sizing-guide')->name('ring-sizing-guide');
 
 Route::get('/account', function () {
     $user = User::where('UserID', '=', session('UserID'))->first();
