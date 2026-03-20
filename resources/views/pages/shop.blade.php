@@ -204,22 +204,22 @@
                 Shop All
             </a>
 
-            <a href="{{ route('shop.category', 'necklaces') }}"
+            <a href="{{ route('shop.necklaces') }}"
                class="shop-category-link {{ ($activeCategory ?? '') === 'necklaces' ? 'active' : '' }}">
                 Necklaces
             </a>
 
-            <a href="{{ route('shop.category', 'earrings') }}"
+            <a href="{{ route('shop.earrings') }}"
                class="shop-category-link {{ ($activeCategory ?? '') === 'earrings' ? 'active' : '' }}">
                 Earrings
             </a>
 
-            <a href="{{ route('shop.category', 'bracelets') }}"
+            <a href="{{ route('shop.bracelets') }}"
                class="shop-category-link {{ ($activeCategory ?? '') === 'bracelets' ? 'active' : '' }}">
                 Bracelets
             </a>
 
-            <a href="{{ route('shop.category', 'rings') }}"
+            <a href="{{ route('shop.rings') }}"
                class="shop-category-link {{ ($activeCategory ?? '') === 'rings' ? 'active' : '' }}">
                 Rings
             </a>

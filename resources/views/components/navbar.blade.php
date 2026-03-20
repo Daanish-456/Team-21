@@ -61,17 +61,10 @@
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('about') }}">About</a>
         <a href="{{ route('shop') }}">Shop All</a>
-<<<<<<< HEAD
         <a href="{{ route('shop.necklaces') }}">Necklaces</a>
         <a href="{{ route('shop.earrings') }}">Earrings</a>
         <a href="{{ route('shop.bracelets') }}">Bracelets</a>
         <a href="{{ route('shop.rings') }}">Rings</a>
-=======
-        <a href="{{ route('shop.category', 'necklaces') }}">Necklaces</a>
-        <a href="{{ route('shop.category', 'earrings') }}">Earrings</a>
-        <a href="{{ route('shop.category', 'bracelets') }}">Bracelets</a>
-        <a href="{{ route('shop.category', 'rings') }}">Rings</a>
->>>>>>> c7161b93da30fe8bdc05cf60b87a6c73e7c646c2
         <a href="{{ route('contact') }}">Contact</a>
     </nav>
 </aside>
