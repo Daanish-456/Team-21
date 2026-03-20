@@ -55,9 +55,11 @@ Route::get('/account', function () {
         ],
     ]);
 })->name('account')->middleware(UserSessionChecker::class);
+
 Route::post('/account/details', [UserController::class, 'updateProfile'])
     ->name('account.details.update')
     ->middleware(UserSessionChecker::class);
+
 Route::post('/account/address', [UserController::class, 'updateAddress'])
     ->name('account.address.update')
     ->middleware(UserSessionChecker::class);
@@ -72,17 +74,19 @@ Route::post('/register', [UserController::class, 'register'])->middleware(UserNo
 
 // Product routes
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+Route::get('/shop/{slug}', [ProductController::class, 'shopCategory'])->name('shop.category');
 Route::redirect('/product', '/shop');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');
 Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+
 Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist')->middleware(UserSessionChecker::class);
 Route::post('/wishlist/add/{id}', [WishlistController::class, 'add'])->name('wishlist.add')->middleware(UserSessionChecker::class);
 Route::post('/wishlist/remove/{id}', [WishlistController::class, 'remove'])->name('wishlist.remove')->middleware(UserSessionChecker::class);
 
 // Cart / Basket routes (requires logged-in user)
 Route::middleware(UserSessionChecker::class)->group(function () {
-    // Basket page (used by navbar: route('basket'))
+    // Basket page
     Route::get('/basket', [CartController::class, 'show'])->name('basket');
 
     // Cart actions

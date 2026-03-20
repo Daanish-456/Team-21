@@ -27,9 +27,59 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('ProductID', 'desc')->get();
 
-        return view('pages.shop', compact('products'));
+        return view('pages.shop', [
+            'products' => $products,
+            'pageTitle' => 'Shop All',
+            'pageDescription' => 'Explore our full handcrafted jewellery collection.',
+            'activeCategory' => 'all',
+            'searchTerm' => null,
+        ]);
+    }
+
+    public function shopCategory($slug)
+    {
+        $categories = [
+            'necklaces' => [
+                'id' => 1,
+                'title' => 'Necklaces',
+                'description' => 'Elegant everyday layers and statement pieces.',
+            ],
+            'earrings' => [
+                'id' => 2,
+                'title' => 'Earrings',
+                'description' => 'Studs, hoops and drops designed for every style.',
+            ],
+            'bracelets' => [
+                'id' => 3,
+                'title' => 'Bracelets',
+                'description' => 'Stackable chains and beadwork for every day.',
+            ],
+            'rings' => [
+                'id' => 4,
+                'title' => 'Rings',
+                'description' => 'Stacks, solitaires and statement pieces.',
+            ],
+        ];
+
+        if (!array_key_exists($slug, $categories)) {
+            abort(404);
+        }
+
+        $categoryData = $categories[$slug];
+
+        $products = Product::where('CategoryID', $categoryData['id'])
+            ->orderBy('ProductID', 'desc')
+            ->get();
+
+        return view('pages.shop', [
+            'products' => $products,
+            'pageTitle' => $categoryData['title'],
+            'pageDescription' => $categoryData['description'],
+            'activeCategory' => $slug,
+            'searchTerm' => null,
+        ]);
     }
 
     public function show($id)
@@ -40,6 +90,7 @@ class ProductController extends Controller
             },
             'reviews.user',
         ])->findOrFail($id);
+
         $currentUserId = session('UserID');
         $userReview = null;
 
@@ -52,14 +103,21 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $q = $request->input('q');
+        $q = trim($request->input('q'));
 
-        $products = Product::where('Product_Name', 'LIKE', "%{$q}%")
-            ->orWhere('Description', 'LIKE', "%{$q}%")
+        $products = Product::query()
+            ->when($q, function ($query) use ($q) {
+                $query->where('Product_Name', 'LIKE', "%{$q}%")
+                    ->orWhere('Description', 'LIKE', "%{$q}%");
+            })
+            ->orderBy('ProductID', 'desc')
             ->get();
 
         return view('pages.shop', [
             'products' => $products,
+            'pageTitle' => $q ? 'Search Results' : 'Shop All',
+            'pageDescription' => $q ? 'Showing results for "' . $q . '"' : 'Explore our full handcrafted jewellery collection.',
+            'activeCategory' => 'all',
             'searchTerm' => $q,
         ]);
     }
@@ -68,11 +126,16 @@ class ProductController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $products = Product::where('CategoryID', $id)->get();
+        $products = Product::where('CategoryID', $id)
+            ->orderBy('ProductID', 'desc')
+            ->get();
 
         return view('pages.shop', [
             'products' => $products,
-            'category' => $category,
+            'pageTitle' => $category->Category_Name ?? 'Category',
+            'pageDescription' => 'Browse our curated jewellery collection.',
+            'activeCategory' => 'all',
+            'searchTerm' => null,
         ]);
     }
 }

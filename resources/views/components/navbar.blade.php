@@ -10,7 +10,6 @@
                 <span></span>
                 <span></span>
             </button>
-
         </div>
 
         <a href="{{ route('home') }}" class="nav-brand" aria-label="Stone and Soul home">
@@ -62,10 +61,10 @@
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('about') }}">About</a>
         <a href="{{ route('shop') }}">Shop All</a>
-        <a href="{{ route('shop') }}#necklaces">Necklaces</a>
-        <a href="{{ route('shop') }}#earrings">Earrings</a>
-        <a href="{{ route('shop') }}#bracelets">Bracelets</a>
-        <a href="{{ route('shop') }}#rings">Rings</a>
+        <a href="{{ route('shop.category', 'necklaces') }}">Necklaces</a>
+        <a href="{{ route('shop.category', 'earrings') }}">Earrings</a>
+        <a href="{{ route('shop.category', 'bracelets') }}">Bracelets</a>
+        <a href="{{ route('shop.category', 'rings') }}">Rings</a>
         <a href="{{ route('contact') }}">Contact</a>
     </nav>
 </aside>
