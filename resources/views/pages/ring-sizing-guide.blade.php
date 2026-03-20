@@ -14,9 +14,9 @@
             <p class="ring-guide-eyebrow">Stone &amp; Soul</p>
             <h1>Ring Sizing Guide</h1>
             <p class="ring-guide-intro">
-                We want to ensure you'll be happy with your ring as soon as you receive it, so it's important
-                to get your ring size right the first time. Read our ring sizing guide below to easily find
-                your ring size.
+                We want you to love your ring the moment it arrives, so getting the right 
+                size from the start is essential. Use our ring sizing guide below to quickly 
+                and easily find your perfect fit.
             </p>
         </div>
     </section>
@@ -25,10 +25,11 @@
         <div class="ring-guide-shell ring-guide-narrow">
             <h2>How to find your ring size</h2>
             <p class="ring-guide-subtext">
-                We find the best way to find your ring size at home is to measure the internal diameter of a
-                ring you already own.<br>
-                Simply place a ring that already fits on top of a ruler or measuring tape to find your size.<br>
-                If you come up between two sizes, for example the diameter is 18.2mm, choose the half size.
+                "The easiest way to find your ring size at home is to measure the internal 
+                diameter of a ring you already wear.
+                <br>
+                Place a well-fitting ring on top of a ruler or measuring tape and note the inside diameter.
+                If your measurement falls between two sizes—for example, 18.2 mm—choose the half size.
             </p>
         </div>
     </section>
@@ -85,8 +86,8 @@
                     </div>
                     <h3>Measure by circumference</h3>
                     <p>
-                        Wrap some string or paper around your finger, and mark where it overlaps to find estimated
-                        circumference.
+                    Wrap a piece of string or paper around your finger, mark where the ends meet, 
+                    and use that measurement to estimate your finger’s circumference.
                     </p>
                     <p>
                         Then, <a href="#">download our ring size conversion guide</a> to find your ring size.
@@ -97,13 +98,13 @@
                     <div class="ring-guide-tip-icon">
                         &#9729;
                     </div>
-                    <h3>Are you hot or cold?</h3>
+                    <h3>Are you hot or cold in general?</h3>
                     <p>
                         Your fingers can swell when you're warm, or shrink when you're cold.
                     </p>
                     <p>
-                        Try to avoid measuring when you're too hot or feeling chilly - wait until you're at normal
-                        body temperature.
+                        Avoid measuring your finger when you're too warm or too cold—wait until you're at a comfortable, 
+                        normal temperature for the most accurate result.
                     </p>
                 </article>
 
@@ -113,10 +114,10 @@
                     </div>
                     <h3>Consider ring thickness</h3>
                     <p>
-                        Chunkier and wider ring styles may fit tighter than daintier designs.
+                       Chunkier or wider ring styles can feel more snug than slimmer, daintier designs.
                     </p>
                     <p>
-                        If you're choosing a chunky ring, we recommend choosing half a size up from your normal size
+                        If you're choosing a chunky ring, we recommend to pick one up a size up from your normal size
                         for comfort.
                     </p>
                 </article>
@@ -135,12 +136,12 @@
                     <span class="ring-guide-resize-label">Need a different size?</span>
                     <h2>Ring Re-sizing</h2>
                     <p>
-                        To be as environmentally-friendly as possible, we make everything to order meaning we don't
-                        have spare rings to exchange, however we can resize your ring if you need a different size.
+                        To minimise waste and stay as environmentally friendly as possible, we make each ring to order, so we don’t keep spare sizes for exchanges. 
+                        However, we’re always happy to resize your ring if you need a different fit.
                     </p>
                     <p>
                         Please note, we may charge a small fee to cover the time and materials it takes to resize your
-                        ring. If you need a resize, get in touch.
+                        ring. If you need a resize, get in touch with us, always happy to help our customers.
                     </p>
                     <a href="{{ route('contact') }}" class="ring-guide-btn">Contact Us</a>
                 </div>
@@ -186,8 +187,8 @@
                     </button>
                     <div class="ring-guide-faq-answer">
                         <p>
-                            No problem. Visit our contact page and our team will be happy to help you choose the best
-                            size before placing your order.
+                            No problem, you are part of the family now. Visit our contact page and our team will be happy to help you choose the best
+                            size before placing your order and ensure your decision is perfect before buying.
                         </p>
                     </div>
                 </div>
