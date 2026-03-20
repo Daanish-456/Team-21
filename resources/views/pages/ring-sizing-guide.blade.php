@@ -8,13 +8,15 @@
 
 @section('content')
 <div class="ring-guide-page">
+
     <section class="ring-guide-hero">
         <div class="ring-guide-shell">
             <p class="ring-guide-eyebrow">Stone &amp; Soul</p>
             <h1>Ring Sizing Guide</h1>
             <p class="ring-guide-intro">
-                Finding your perfect fit matters. Use our simple guide below to measure your ring size
-                from home and shop with confidence.
+                We want to ensure you'll be happy with your ring as soon as you receive it, so it's important
+                to get your ring size right the first time. Read our ring sizing guide below to easily find
+                your ring size.
             </p>
         </div>
     </section>
@@ -22,14 +24,11 @@
     <section class="ring-guide-section">
         <div class="ring-guide-shell ring-guide-narrow">
             <h2>How to find your ring size</h2>
-            <p>
-                The easiest way to estimate your size at home is to measure the internal diameter of a
-                ring that already fits comfortably. Place the ring over a ruler and measure straight
-                across the centre in millimetres.
-            </p>
-            <p>
-                If your measurement falls between sizes, it is usually best to choose the next size up
-                for a more comfortable fit.
+            <p class="ring-guide-subtext">
+                We find the best way to find your ring size at home is to measure the internal diameter of a
+                ring you already own.<br>
+                Simply place a ring that already fits on top of a ruler or measuring tape to find your size.<br>
+                If you come up between two sizes, for example the diameter is 18.2mm, choose the half size.
             </p>
         </div>
     </section>
@@ -37,16 +36,11 @@
     <section class="ring-guide-section">
         <div class="ring-guide-shell">
             <div class="ring-guide-card">
-                <h2>Ring size conversion chart</h2>
-                <p class="ring-guide-subtext">
-                    Match your internal diameter measurement to the closest ring size below.
-                </p>
-
                 <div class="ring-guide-table-wrap">
                     <table class="ring-guide-table">
                         <thead>
                             <tr>
-                                <th>Diameter (mm)</th>
+                                <th>Internal Diameter (mm)</th>
                                 <th>UK</th>
                                 <th>US</th>
                                 <th>EU</th>
@@ -80,47 +74,76 @@
         </div>
     </section>
 
-    <section class="ring-guide-section">
+    <section class="ring-guide-section ring-guide-tips-section">
         <div class="ring-guide-shell">
-            <h2 class="section-heading-centre">Ring sizing tips</h2>
+            <h2 class="section-heading-centre">Ring Sizing Tips</h2>
 
             <div class="ring-guide-tips-grid">
                 <article class="ring-guide-tip-card">
+                    <div class="ring-guide-tip-icon">
+                        &#8635;
+                    </div>
                     <h3>Measure by circumference</h3>
                     <p>
-                        Wrap a thin strip of paper or string around your finger, mark where it overlaps,
-                        then measure the length in millimetres and compare it to a size chart.
+                        Wrap some string or paper around your finger, and mark where it overlaps to find estimated
+                        circumference.
                     </p>
-                </article>
-
-                <article class="ring-guide-tip-card">
-                    <h3>Avoid hot or cold hands</h3>
                     <p>
-                        Fingers naturally expand in the heat and can shrink in the cold, so measure when
-                        your hands are at a normal temperature.
+                        Then, <a href="#">download our ring size conversion guide</a> to find your ring size.
                     </p>
                 </article>
 
                 <article class="ring-guide-tip-card">
+                    <div class="ring-guide-tip-icon">
+                        &#9729;
+                    </div>
+                    <h3>Are you hot or cold?</h3>
+                    <p>
+                        Your fingers can swell when you're warm, or shrink when you're cold.
+                    </p>
+                    <p>
+                        Try to avoid measuring when you're too hot or feeling chilly - wait until you're at normal
+                        body temperature.
+                    </p>
+                </article>
+
+                <article class="ring-guide-tip-card">
+                    <div class="ring-guide-tip-icon">
+                        &#8990;
+                    </div>
                     <h3>Consider ring thickness</h3>
                     <p>
-                        Wider or chunkier rings often feel tighter than delicate bands, so sizing up
-                        slightly can sometimes give a better fit.
+                        Chunkier and wider ring styles may fit tighter than daintier designs.
+                    </p>
+                    <p>
+                        If you're choosing a chunky ring, we recommend choosing half a size up from your normal size
+                        for comfort.
                     </p>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="ring-guide-section">
-        <div class="ring-guide-shell ring-guide-narrow">
-            <div class="ring-guide-help-box">
-                <h2>Need a different size?</h2>
-                <p>
-                    If you are unsure about sizing or need help after ordering, our customer care team
-                    can guide you to the best fit.
-                </p>
-                <a href="{{ route('contact') }}" class="ring-guide-btn">Contact Us</a>
+    <section class="ring-guide-resize-section">
+        <div class="ring-guide-resize-grid">
+            <div class="ring-guide-resize-image">
+                <img src="{{ asset('assets/images/products/rings/ring-resizing.jpg') }}" alt="Ring resizing">
+            </div>
+
+            <div class="ring-guide-resize-content">
+                <div class="ring-guide-resize-inner">
+                    <span class="ring-guide-resize-label">Need a different size?</span>
+                    <h2>Ring Re-sizing</h2>
+                    <p>
+                        To be as environmentally-friendly as possible, we make everything to order meaning we don't
+                        have spare rings to exchange, however we can resize your ring if you need a different size.
+                    </p>
+                    <p>
+                        Please note, we may charge a small fee to cover the time and materials it takes to resize your
+                        ring. If you need a resize, get in touch.
+                    </p>
+                    <a href="{{ route('contact') }}" class="ring-guide-btn">Contact Us</a>
+                </div>
             </div>
         </div>
     </section>
@@ -131,30 +154,59 @@
 
             <div class="ring-guide-faq-list">
                 <div class="ring-guide-faq-item">
-                    <h3>What if I am between two sizes?</h3>
-                    <p>
-                        We recommend choosing the larger size for a more comfortable fit, especially for
-                        thicker ring styles.
-                    </p>
+                    <button class="ring-guide-faq-question" type="button">
+                        <span>Can you re-size a ring I didn't purchase from Stone &amp; Soul?</span>
+                        <span>&#8964;</span>
+                    </button>
+                    <div class="ring-guide-faq-answer">
+                        <p>
+                            In most cases we only resize rings purchased from Stone &amp; Soul, but contact us and we
+                            can let you know whether we may be able to help.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="ring-guide-faq-item">
-                    <h3>Can I measure my size at home?</h3>
-                    <p>
-                        Yes. Measuring a ring you already own or using string or paper around your finger
-                        are both simple ways to estimate your size from home.
-                    </p>
+                    <button class="ring-guide-faq-question" type="button">
+                        <span>How much does it cost to re-size a ring?</span>
+                        <span>&#8964;</span>
+                    </button>
+                    <div class="ring-guide-faq-answer">
+                        <p>
+                            Resize costs can vary depending on the design and material. Please contact us with your
+                            order details and we will advise you.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="ring-guide-faq-item">
-                    <h3>Still unsure?</h3>
-                    <p>
-                        Visit our contact page and our team will be happy to help you choose the most
-                        suitable size before you order.
-                    </p>
+                    <button class="ring-guide-faq-question" type="button">
+                        <span>I still need some help!</span>
+                        <span>&#8964;</span>
+                    </button>
+                    <div class="ring-guide-faq-answer">
+                        <p>
+                            No problem. Visit our contact page and our team will be happy to help you choose the best
+                            size before placing your order.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const faqItems = document.querySelectorAll('.ring-guide-faq-item');
+
+        faqItems.forEach(item => {
+            const button = item.querySelector('.ring-guide-faq-question');
+
+            button.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
 @endsection
