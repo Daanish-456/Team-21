@@ -138,7 +138,6 @@ class ProductController extends Controller
             'searchTerm' => null,
         ]);
     }
-<<<<<<< HEAD
 
    public function earrings()
     {
@@ -164,6 +163,3 @@ class ProductController extends Controller
     return view('pages.rings', compact('products'));
     }
 }
-=======
-}
->>>>>>> c7161b93da30fe8bdc05cf60b87a6c73e7c646c2
