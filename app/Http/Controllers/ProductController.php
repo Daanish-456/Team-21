@@ -75,4 +75,28 @@ class ProductController extends Controller
             'category' => $category,
         ]);
     }
+
+   public function earrings()
+    {
+    $products = Product::where('CategoryID', 2)->get();
+    return view('pages.earrings', compact('products'));
+    }
+
+    public function necklaces()
+    {
+    $products = Product::where('CategoryID', 1)->get();
+    return view('pages.necklaces', compact('products'));
+    }
+
+    public function bracelets()
+    {
+    $products = Product::where('CategoryID', 3)->get();
+    return view('pages.bracelets', compact('products'));
+    }
+
+    public function rings()
+    {
+    $products = Product::where('CategoryID', 4)->get();
+    return view('pages.rings', compact('products'));
+    }
 }

@@ -71,7 +71,13 @@ Route::view('/register', 'pages.auth.register')->name('register')->middleware(Us
 Route::post('/register', [UserController::class, 'register'])->middleware(UserNotLoginChecker::class);
 
 // Product routes
-Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+oute::get('/shop', [ProductController::class, 'index'])->name('shop');
+
+Route::get('/shop/earrings', [ProductController::class, 'earrings'])->name('shop.earrings');
+Route::get('/shop/necklaces', [ProductController::class, 'necklaces'])->name('shop.necklaces');
+Route::get('/shop/bracelets', [ProductController::class, 'bracelets'])->name('shop.bracelets');
+Route::get('/shop/rings', [ProductController::class, 'rings'])->name('shop.rings');
+
 Route::redirect('/product', '/shop');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');
 Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');
