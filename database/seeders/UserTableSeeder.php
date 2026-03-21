@@ -27,6 +27,22 @@ class UserTableSeeder extends Seeder
                 'Address' => 'Admin Street',
                 'Role' => 'admin',
             ],
+            [
+                'Name' => 'Emily Carter',
+                'Email' => 'emily.carter@example.com',
+                'Password' => Hash::make('password123'),
+                'Phone' => '07222333444',
+                'Address' => '18 Oak Avenue, Bristol',
+                'Role' => 'customer',
+            ],
+            [
+                'Name' => 'Daniel Hughes',
+                'Email' => 'daniel.hughes@example.com',
+                'Password' => Hash::make('password123'),
+                'Phone' => '07333444555',
+                'Address' => '44 King Street, York',
+                'Role' => 'customer',
+            ],
         ]);
     }
 }
