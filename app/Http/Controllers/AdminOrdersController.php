@@ -106,16 +106,16 @@ class AdminOrdersController extends Controller
 
     private function mapOrder(Order $order): array
     {
-        $itemCount = (int) $order->items->sum('Quantity');
-        $total = (float) $order->TotalAmount;
+        $itemCount = $order->items->sum('Quantity');
+        $total = $order->TotalAmount;
 
         if ($total <= 0) {
-            $total = (float) $order->items->sum(function ($item) {
-                return (float) $item->Price * (int) $item->Quantity;
+            $total = $order->items->sum(function ($item) {
+                return  $item->Price * $item->Quantity;
             });
         }
 
-        $addressLines = preg_split("/\r\n|\n|\r/", (string) ($order->user?->Address ?? ''));
+        $addressLines = preg_split("/\r\n|\n|\r/", ($order->Address ?? $order->user?->Address ?? ''));
         $addressLines = array_filter(array_map('trim', $addressLines ?: []));
 
         return [
@@ -132,9 +132,9 @@ class AdminOrdersController extends Controller
                 return [
                     'product_name' => $item->product?->Product_Name ?? 'Product unavailable',
                     'image_url' => $item->product?->Image_URL,
-                    'quantity' => (int) $item->Quantity,
-                    'price' => (float) $item->Price,
-                    'line_total' => (float) $item->Price * (int) $item->Quantity,
+                    'quantity' => $item->Quantity,
+                    'price' => $item->Price,
+                    'line_total' => $item->Price * $item->Quantity,
                 ];
             })->all(),
         ];

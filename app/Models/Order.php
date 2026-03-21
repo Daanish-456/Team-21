@@ -17,6 +17,7 @@ class Order extends Model
         'OrderDate',
         'OrderStatus',
         'TotalAmount',
+        'Address',
     ];
 
     public function user()

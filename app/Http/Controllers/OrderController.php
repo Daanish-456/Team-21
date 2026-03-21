@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    private function formatAddress(array $validated): string
+    {
+        return rtrim(implode("\n", [
+            $validated['address_line_1'],
+            $validated['address_line_2'] ?? '',
+            $validated['city'],
+            $validated['county'] ?? '',
+            strtoupper($validated['postcode']),
+            $validated['country'],
+        ]), "\n");
+    }
+
     public function checkout(Request $request)
     {
         $validated = $request->validate([
@@ -44,6 +56,7 @@ class OrderController extends Controller
             $total = 0;
             $productsById = [];
             $user = User::where('UserID', $userId)->first();
+            $formattedAddress = $this->formatAddress($validated);
 
             foreach ($cart->items as $item) {
                 $product = Product::where('ProductID', $item->ProductID)
@@ -58,14 +71,7 @@ class OrderController extends Controller
             }
 
             if ($user && $request->boolean('save_address')) {
-                $user->Address = rtrim(implode("\n", [
-                    $validated['address_line_1'],
-                    $validated['address_line_2'] ?? '',
-                    $validated['city'],
-                    $validated['county'] ?? '',
-                    strtoupper($validated['postcode']),
-                    $validated['country'],
-                ]), "\n");
+                $user->Address = $formattedAddress;
                 $user->save();
             }
 
@@ -73,6 +79,7 @@ class OrderController extends Controller
                 'UserID' => $userId,
                 'OrderDate' => now(),
                 'OrderStatus' => 'Pending',
+                'Address' => $formattedAddress,
             ]);
 
             foreach ($cart->items as $item) {

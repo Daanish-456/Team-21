@@ -17,6 +17,7 @@ class OrderSeeder extends Seeder
                 'OrderDate' => Date::now(),
                 'OrderStatus' => 'Pending',
                 'TotalAmount' => 97.00,
+                'Address' => "12 Market Street\nFlat 2B\nManchester\nGreater Manchester\nM1 4AB\nUnited Kingdom",
             ],
             [
                 'OrderID' => 2,
@@ -24,6 +25,7 @@ class OrderSeeder extends Seeder
                 'OrderDate' => Date::now(),
                 'OrderStatus' => 'Processing',
                 'TotalAmount' => 115.75,
+                'Address' => "12 Market Street\nFlat 2B\nManchester\nGreater Manchester\nM1 4AB\nUnited Kingdom",
             ],
             [
                 'OrderID' => 3,
@@ -31,6 +33,7 @@ class OrderSeeder extends Seeder
                 'OrderDate' => Date::now(),
                 'OrderStatus' => 'Completed',
                 'TotalAmount' => 130.00,
+                'Address' => "27 Willow Lane\n\nLeeds\nWest Yorkshire\nLS1 8DT\nUnited Kingdom",
             ],
         ]);
 

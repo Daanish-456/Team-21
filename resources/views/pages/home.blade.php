@@ -54,28 +54,28 @@
             </div>
 
             <div class="category-grid">
-                <a href="{{ route('shop') }}#rings" class="category-card category-rings">
+                <a href="{{ route('shop.rings') }}" class="category-card category-rings">
                     <div class="category-card-content">
                         <p>Stone & Soul</p>
                         <h3>Rings</h3>
                     </div>
                 </a>
 
-                <a href="{{ route('shop') }}#necklaces" class="category-card category-necklaces">
+                <a href="{{ route('shop.necklaces') }}" class="category-card category-necklaces">
                     <div class="category-card-content">
                         <p>Stone & Soul</p>
                         <h3>Necklaces</h3>
                     </div>
                 </a>
 
-                <a href="{{ route('shop') }}#bracelets" class="category-card category-bracelets">
+                <a href="{{ route('shop.bracelets') }}" class="category-card category-bracelets">
                     <div class="category-card-content">
                         <p>Stone & Soul</p>
                         <h3>Bracelets</h3>
                     </div>
                 </a>
 
-                <a href="{{ route('shop') }}#earrings" class="category-card category-earrings">
+                <a href="{{ route('shop.earrings') }}" class="category-card category-earrings">
                     <div class="category-card-content">
                         <p>Stone & Soul</p>
                         <h3>Earrings</h3>

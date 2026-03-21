@@ -50,11 +50,11 @@ class AdminDashboardController extends Controller
             ->limit(6)
             ->get()
             ->map(function ($order) {
-                $itemAmount = (int) $order->items->sum('Quantity');
-                $calculatedTotal = (float) $order->items->sum(function ($item) {
-                    return (float) $item->Price * (int) $item->Quantity;
+                $itemAmount = $order->items->sum('Quantity');
+                $calculatedTotal = $order->items->sum(function ($item) {
+                    return $item->Price * $item->Quantity;
                 });
-                $displayTotal = (float) $order->TotalAmount;
+                $displayTotal = $order->TotalAmount;
 
                 if ($displayTotal <= 0 && $calculatedTotal > 0) {
                     $displayTotal = $calculatedTotal;
@@ -93,7 +93,7 @@ class AdminDashboardController extends Controller
                     'id' => $ticket->id ?? $ticket->MessageID ?? '-',
                     'name' => $ticket->name ?? $ticket->Name ?? 'Unknown',
                     'email' => $ticket->email ?? $ticket->Email ?? '-',
-                    'message' => Str::limit(trim((string) $message), 90),
+                    'message' => Str::limit(trim($message), 90),
                     'submitted' => $submittedAt ? Carbon::parse($submittedAt)->diffForHumans() : null,
                 ];
             })
