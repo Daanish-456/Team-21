@@ -143,7 +143,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function category($id, Request $request)
+    private function category(Request $request, int $id, string $activeCategory = 'all')
     {
         $category = Category::findOrFail($id);
 
@@ -156,25 +156,47 @@ class ProductController extends Controller
 
         return view('pages.shop', [
             'products' => $products,
-            'pageTitle' => $category->Category_Name ?? 'Category',
+            'pageTitle' => $category->CategoryName ?? 'Category',
             'pageDescription' => 'Browse our curated jewellery collection.',
-            'activeCategory' => 'all',
+            'activeCategory' => $activeCategory,
             'searchTerm' => null,
         ]);
     }
 
+    public function earrings(Request $request)
+    {
+        return $this->category($request, 2, 'earrings');
+    }
+
     public function necklaces(Request $request)
     {
-        $query = Product::where('CategoryID', 1)
+        return $this->category($request, 1, 'necklaces');
+    }
+
+    public function bracelets(Request $request)
+    {
+        return $this->category($request, 3, 'bracelets');
+    }
+
+    public function rings(Request $request)
+    {
+        return $this->category($request, 4, 'rings');
+    }
+
+    public function bestsellers(Request $request)
+    {
+        $query = Product::query()
+            ->withCount('reviews')
+            ->orderByDesc('reviews_count')
             ->orderBy('ProductID', 'desc');
 
         $query = $this->applyFilters($query, $request);
 
         return view('pages.shop', [
             'products' => $query->get(),
-            'pageTitle' => 'Necklaces',
-            'pageDescription' => 'Explore elegant handcrafted necklaces for every occasion.',
-            'activeCategory' => 'necklaces',
+            'pageTitle' => 'Bestsellers',
+            'pageDescription' => 'Discover the pieces our customers return to most.',
+            'activeCategory' => 'all',
             'searchTerm' => null,
         ]);
     }
