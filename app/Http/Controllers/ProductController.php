@@ -183,21 +183,21 @@ class ProductController extends Controller
         return $this->category($request, 4, 'rings');
     }
 
-    public function bestsellers(Request $request)
-    {
-        $query = Product::query()
-            ->withCount('reviews')
-            ->orderByDesc('reviews_count')
-            ->orderBy('ProductID', 'desc');
+public function bestsellers(Request $request)
+{
+    $bestsellerIds = [29, 22, 17, 40, 39, 27, 33, 34];
 
-        $query = $this->applyFilters($query, $request);
+    $query = Product::whereIn('ProductID', $bestsellerIds)
+        ->orderByRaw('FIELD(ProductID, ' . implode(',', $bestsellerIds) . ')');
 
-        return view('pages.shop', [
-            'products' => $query->get(),
-            'pageTitle' => 'Bestsellers',
-            'pageDescription' => 'Discover the pieces our customers return to most.',
-            'activeCategory' => 'all',
-            'searchTerm' => null,
-        ]);
-    }
+    $query = $this->applyFilters($query, $request);
+
+    return view('pages.shop', [
+        'products' => $query->get(),
+        'pageTitle' => 'Bestsellers',
+        'pageDescription' => 'Discover the pieces our customers return to most.',
+        'activeCategory' => 'bestsellers',
+        'searchTerm' => null,
+    ]);
+}
 }
