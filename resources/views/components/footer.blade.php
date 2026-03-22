@@ -1,6 +1,8 @@
 <footer class="site-footer">
     <div class="site-footer-container">
         <div class="site-footer-grid">
+
+          
             <div class="footer-brand-column">
                 <h2 class="footer-logo">Stone &amp; Soul</h2>
 
@@ -13,7 +15,9 @@
                 <div class="footer-contact-block">
                     <p class="footer-contact-title">Need help?</p>
                     <a href="tel:+447000000000">+44 (0)7999 999999</a>
-                    <a href="mailto:customercare@stoneandsoul.co.uk">customercare@stoneandsoul.co.uk</a>
+                    <a href="mailto:customercare@stoneandsoul.co.uk">
+                        customercare@stoneandsoul.co.uk
+                    </a>
                 </div>
 
                 <p class="footer-note">
@@ -22,6 +26,7 @@
                 </p>
             </div>
 
+           
             <div class="footer-links-column">
                 <h3>About Us</h3>
                 <ul>
@@ -31,6 +36,7 @@
                 </ul>
             </div>
 
+           
             <div class="footer-links-column">
                 <h3>Customer Care</h3>
                 <ul>
@@ -42,6 +48,7 @@
                 </ul>
             </div>
 
+           
             <div class="footer-newsletter-column">
                 <h3>Newsletter</h3>
 
@@ -50,11 +57,42 @@
                     and early access to new collections.
                 </p>
 
-                <form class="footer-newsletter-form" action="#" method="POST">
+                <form class="footer-newsletter-form" action="{{ route('newsletter.store') }}" method="POST">
                     @csrf
-                    <input type="text" name="name" placeholder="Name">
-                    <input type="email" name="email" placeholder="Email">
+
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Name" 
+                        value="{{ old('name') }}" 
+                        required
+                    >
+
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Email" 
+                        value="{{ old('email') }}" 
+                        required
+                    >
+
                     <button type="submit">Sign Up</button>
+
+                    
+                    @if(session('newsletter_success'))
+                        <p class="newsletter-success">
+                            {{ session('newsletter_success') }}
+                        </p>
+                    @endif
+
+                    
+                    @error('name')
+                        <p class="newsletter-error">{{ $message }}</p>
+                    @enderror
+
+                    @error('email')
+                        <p class="newsletter-error">{{ $message }}</p>
+                    @enderror
                 </form>
 
                 <div class="footer-socials">
@@ -63,6 +101,7 @@
                     <a href="#" aria-label="Pinterest">Pinterest</a>
                 </div>
             </div>
+
         </div>
 
         <div class="site-footer-bottom">

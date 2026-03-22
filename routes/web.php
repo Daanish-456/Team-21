@@ -14,6 +14,7 @@ use App\Http\Middleware\IsAdminUserVerifier;
 use App\Http\Middleware\UserNotLoginChecker;
 use App\Http\Middleware\UserSessionChecker;
 use App\Models\User;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -25,6 +26,9 @@ Route::view('/about', 'pages.about')->name('about');
 // Contact
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'createTicket'])->name('contact.submit');
+
+//Newsletter part on footer
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 
 // Information pages
 Route::view('/ethical-sourcing', 'pages.ethical-sourcing')->name('ethical-sourcing');
