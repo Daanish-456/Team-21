@@ -22,7 +22,7 @@ class OrderController extends Controller
             $validated['city'],
             $validated['county'] ?? '',
             strtoupper($validated['postcode']),
-            $validated['country'],
+            $validated['country'] ?? '',
         ]), "\n");
     }
 
@@ -31,14 +31,11 @@ class OrderController extends Controller
         $validated = $request->validate([
             'card_name' => 'required|string|max:255',
             'card_number' => 'required|string|max:19',
-            'expiry' => 'required|string|max:5',
+            'expiry' => 'required|string',
             'cvv' => 'required|string|max:4',
             'address_line_1' => 'required|string|max:255',
-            'address_line_2' => 'nullable|string|max:255',
             'city' => 'required|string|max:120',
-            'county' => 'nullable|string|max:120',
             'postcode' => 'required|string|max:20',
-            'country' => 'required|string|max:120',
         ]);
 
         $userId = session('UserID');
@@ -135,8 +132,10 @@ class OrderController extends Controller
                     ->with('error', 'One or more items are out of stock. Please review your basket.');
             }
 
+            print($e->getMessage());
+
             return redirect()->route('basket')
-                ->with('error', 'Could not place order. Please try again.');
+                ->with('error', 'Could not place order. Please try again.' . $e->getMessage());
         }
     }
 }
