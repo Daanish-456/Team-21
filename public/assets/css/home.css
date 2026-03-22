@@ -262,7 +262,7 @@
 }
 
 .home-page .category-earrings {
-    background-image: url("../images/products/earrings/earrings1.jpg");
+    background-image: url("../images/products/earrings1.jpg");
 }
 
 /* PRODUCTS */
@@ -340,7 +340,7 @@
     border-radius: 32px;
     background:
         linear-gradient(rgba(36, 25, 20, 0.08), rgba(36, 25, 20, 0.08)),
-        url("../images/new-image.jpg") center/cover no-repeat;
+        url("/assets/images/new-image.jpg") center/cover no-repeat;
     border: 1px solid var(--border-soft);
 }
 

@@ -202,6 +202,20 @@
     padding-right: 1rem;
 }
 
+.filter-search {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d8cfc3;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #fff;
+}
+
+.filter-search:focus {
+    outline: none;
+    border-color: #3c2f2f;
+}
+
 .filter-group {
     margin-bottom: 1.5rem;
 }
@@ -214,6 +228,63 @@
     color: white;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.filters-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    color: #3c2f2f;
+}
+
+.filter-header {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #6b5c55;
+    text-transform: uppercase;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: #4d3d36;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+}
+
+.filter-group input[type="radio"],
+.filter-group input[type="checkbox"] {
+    accent-color: #3c2f2f;
+    cursor: pointer;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.price-inputs input {
+    width: 100%;
+    padding: 0.45rem;
+    border: 1px solid #d8cfc3;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.filter-btn:hover {
+    opacity: 0.9;
+}
+
+.clear-btn {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: #84726a;
+    text-decoration: underline;
 }
 
 /* MOBILE FIX */
@@ -306,85 +377,99 @@
 
     <!-- FILTER SIDEBAR -->
   <aside class="filters">
+<form method="GET" action="{{ route('shop') }}">
 
-    <form method="GET" action="{{ route('shop') }}">
+    <h3 class="filters-title">FILTER & SORT</h3>
 
-        <h3 class="filters-title">FILTERS</h3>
+    <!-- SEARCH -->
+    <div class="filter-group">
+        <div class="filter-header">Search</div>
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Product name..." 
+            value="{{ request('q') }}"
+            class="filter-search"
+        >
+    </div>
 
-        <!-- Availability -->
-        <div class="filter-group">
-            <div class="filter-header">Availability</div>
+    <!-- METAL -->
+    <div class="filter-group">
+        <div class="filter-header">Metal</div>
 
-            <label>
-                <input type="checkbox" name="availability[]" value="ready"
-                    {{ in_array('ready', request('availability', [])) ? 'checked' : '' }}>
-                Ready To Ship
-            </label>
+        <label>
+            <input type="radio" name="metal" value=""
+            {{ request('metal') == null ? 'checked' : '' }}>
+            All
+        </label>
 
-            <label>
-                <input type="checkbox" name="availability[]" value="made"
-                    {{ in_array('made', request('availability', [])) ? 'checked' : '' }}>
-                Made To Order
-            </label>
+        <label>
+            <input type="radio" name="metal" value="Gold"
+            {{ request('metal') == 'Gold' ? 'checked' : '' }}>
+            Gold
+        </label>
+
+        <label>
+            <input type="radio" name="metal" value="Silver"
+            {{ request('metal') == 'Silver' ? 'checked' : '' }}>
+            Silver
+        </label>
+
+        <label>
+            <input type="radio" name="metal" value="Rose Gold"
+            {{ request('metal') == 'Rose Gold' ? 'checked' : '' }}>
+            Rose Gold
+        </label>
+    </div>
+
+    <!-- PRICE -->
+    <div class="filter-group">
+        <div class="filter-header">Price</div>
+
+        <div class="price-inputs">
+            <input type="number" name="min_price" placeholder="£0" value="{{ request('min_price') }}">
+            <span>-</span>
+            <input type="number" name="max_price" placeholder="£5000" value="{{ request('max_price') }}">
         </div>
+    </div>
 
-        <!-- Stone Shape -->
-        <div class="filter-group">
-            <div class="filter-header">Stone Shape</div>
+    <!-- RATING -->
+<div class="filter-group">
+    <div class="filter-header">Rating</div>
 
-            @foreach (['Oval','Pear','Baguette','Cushion','Emerald','Geometric','Hexagonal','Kite','Marquise','Princess'] as $shape)
-                <label>
-                    <input type="checkbox" name="shape[]" value="{{ $shape }}"
-                        {{ in_array($shape, request('shape', [])) ? 'checked' : '' }}>
-                    {{ $shape }}
-                </label>
-            @endforeach
-        </div>
+    <label>
+        <input type="radio" name="rating" value=""
+        {{ request('rating') == null ? 'checked' : '' }}>
+        Any rating
+    </label>
 
-        <!-- Precious Stone -->
-        <div class="filter-group">
-            <div class="filter-header">Precious Stone</div>
+    <label>
+        <input type="radio" name="rating" value="4"
+        {{ request('rating') == '4' ? 'checked' : '' }}>
+        <span style="color:#c7a87c;">★★★★☆</span>
+    </label>
 
-            @foreach (['Diamond','Emerald','Blue Sapphire','Green Sapphire','Aquamarine'] as $stone)
-                <label>
-                    <input type="checkbox" name="stone[]" value="{{ $stone }}"
-                        {{ in_array($stone, request('stone', [])) ? 'checked' : '' }}>
-                    {{ $stone }}
-                </label>
-            @endforeach
-        </div>
+    <label>
+        <input type="radio" name="rating" value="3"
+        {{ request('rating') == '3' ? 'checked' : '' }}>
+        <span style="color:#c7a87c;">★★★☆☆</span>
+    </label>
 
-        <!-- Metal -->
-        <div class="filter-group">
-            <div class="filter-header">Metal</div>
+    <label>
+        <input type="radio" name="rating" value="2"
+        {{ request('rating') == '2' ? 'checked' : '' }}>
+        <span style="color:#c7a87c;">★★☆☆☆</span>
+    </label>
+</div>
 
-            @foreach (['9ct Yellow Gold','14ct Yellow Gold','18ct Yellow Gold','Sterling Silver','Platinum'] as $metal)
-                <label>
-                    <input type="checkbox" name="metal[]" value="{{ $metal }}"
-                        {{ in_array($metal, request('metal', [])) ? 'checked' : '' }}>
-                    {{ $metal }}
-                </label>
-            @endforeach
-        </div>
+    <button type="submit" class="filter-btn">Apply Filters</button>
 
-        <!-- PRICE -->
-        <div class="filter-group">
-            <div class="filter-header">Price</div>
+    <a href="{{ route('shop') }}" class="clear-btn">Reset All</a>
 
-            <div class="price-inputs">
-                <input type="number" name="min_price" placeholder="£ 0" value="{{ request('min_price') }}">
-                <span>-</span>
-                <input type="number" name="max_price" placeholder="£ 5000" value="{{ request('max_price') }}">
-            </div>
-        </div>
-
-        <button type="submit" class="filter-btn">Apply Filters</button>
-
-    </form>
-
+</form>
 </aside>
 
-    <!-- YOUR EXISTING GRID -->
+    <!-- EXISTING GRID -->
     <div class="shop-grid-wrap">
         @if($products->count())
             <div class="products-grid">

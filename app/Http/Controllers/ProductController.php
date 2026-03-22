@@ -26,21 +26,37 @@ class ProductController extends Controller
     }
 
     public function index(Request $request)
-    {
-        $query = Product::orderBy('ProductID', 'desc');
+{
+    $query = Product::query();
 
-        $query = $this->applyFilters($query, $request);
-
-        $products = $query->get();
-
-        return view('pages.shop', [
-            'products' => $products,
-            'pageTitle' => 'Shop All',
-            'pageDescription' => 'Explore our full handcrafted jewellery collection.',
-            'activeCategory' => 'all',
-            'searchTerm' => null,
-        ]);
+    // SEARCH
+    if ($request->filled('q')) {
+        $query->where('Product_Name', 'LIKE', '%' . $request->q . '%');
     }
+
+    // METAL
+    if ($request->filled('metal')) {
+        $query->where('metal', $request->metal);
+    }
+
+    // PRICE
+    if ($request->filled('min_price')) {
+        $query->where('Price', '>=', $request->min_price);
+    }
+
+    if ($request->filled('max_price')) {
+        $query->where('Price', '<=', $request->max_price);
+    }
+
+    // RATING
+    if ($request->filled('rating')) {
+        $query->where('rating', '>=', $request->rating);
+    }
+
+    $products = $query->get();
+
+    return view('shop', compact('products'));
+}
 
     public function show($id)
     {
