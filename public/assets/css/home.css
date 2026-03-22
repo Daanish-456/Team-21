@@ -340,7 +340,7 @@
     border-radius: 32px;
     background:
         linear-gradient(rgba(36, 25, 20, 0.08), rgba(36, 25, 20, 0.08)),
-        url("../images/necklace-banner-home.png") center/cover no-repeat;
+        url("../images/new-image.jpg") center/cover no-repeat;
     border: 1px solid var(--border-soft);
 }
 
