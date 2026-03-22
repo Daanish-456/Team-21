@@ -85,6 +85,7 @@
         const body = document.querySelector(".chat-body");
         const sendBtn = document.getElementById("send-btn");
 
+<<<<<<< HEAD
         toggle.onclick = () => {
             chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
         };
@@ -92,6 +93,15 @@
         function sendMessage() {
             const msg = input.value.trim();
             if (!msg) return;
+=======
+    toggle.onclick = () => {
+    chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+    };
+
+    function sendMessage() {
+        const msg = input.value.trim();
+        if (!msg) return;
+>>>>>>> parent of 066c594 (Chatbot UI finished)
 
             body.innerHTML += `<div class="user-message">${msg}</div>`;
 
