@@ -84,6 +84,7 @@ Route::get('/shop/earrings', [ProductController::class, 'earrings'])->name('shop
 Route::get('/shop/necklaces', [ProductController::class, 'necklaces'])->name('shop.necklaces');
 Route::get('/shop/bracelets', [ProductController::class, 'bracelets'])->name('shop.bracelets');
 Route::get('/shop/rings', [ProductController::class, 'rings'])->name('shop.rings');
+Route::get('/shop/bestsellers', [ProductController::class, 'bestsellers'])->name('shop.bestsellers');
 
 Route::redirect('/product', '/shop');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product');

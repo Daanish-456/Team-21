@@ -65,6 +65,7 @@
         <a href="{{ route('shop.earrings') }}">Earrings</a>
         <a href="{{ route('shop.bracelets') }}">Bracelets</a>
         <a href="{{ route('shop.rings') }}">Rings</a>
+        <a href="{{ route('shop.bestsellers') }}">Bestsellers</a>
         <a href="{{ route('contact') }}">Contact</a>
     </nav>
 </aside>

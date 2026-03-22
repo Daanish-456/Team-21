@@ -158,6 +158,20 @@ class ProductController extends Controller
         ]);
     }
 
+    public function bestsellers(Request $request)
+    {
+        $query = Product::where('bestseller', 1)->orderBy('ProductID', 'desc');
+        $query = $this->applyFilters($query, $request);
+
+        return view('pages.shop', [
+            'products' => $query->get(),
+            'pageTitle' => 'Bestsellers',
+            'pageDescription' => 'Shop our most loved handcrafted jewellery pieces.',
+            'activeCategory' => 'bestsellers',
+            'searchTerm' => null,
+        ]);
+    }
+
     private function applyFilters($query, Request $request)
     {
         if ($request->has('availability')) {
