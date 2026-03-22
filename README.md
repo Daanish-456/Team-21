@@ -13,6 +13,11 @@ By Team 21
 
 ## Demo
 
+Normal user login is:
+
+- Email: `johnsmith@example.com`
+- Password: `password123`
+
 To login to the admin dashboard use the login:
 
 - Email: `admin@stoneandsoul.com`
