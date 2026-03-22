@@ -45,6 +45,9 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::with([
+            'ringSizes' => function ($query) {
+                $query->orderBy('Size');
+            },
             'reviews' => function ($query) {
                 $query->orderBy('ReviewDate', 'desc');
             },

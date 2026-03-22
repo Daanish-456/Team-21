@@ -9,13 +9,14 @@ class OrderItem extends Model
     protected $table = 'Order_Item';
     public $timestamps = false;
 
-    // composite primary key (OrderID, ProductID)
+    // composite primary key handled at the database level
     protected $primaryKey = null;
     public $incrementing = false;
 
     protected $fillable = [
         'OrderID',
         'ProductID',
+        'Size',
         'Quantity',
         'Price',
     ];

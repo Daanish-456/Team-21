@@ -30,14 +30,30 @@
                 <p class="product-price">£{{ number_format($product->Price, 2) }}</p>
 
                 <div class="product-actions">
-                    <form action="{{ route('cart.add', $product->ProductID) }}" method="POST">
+                    <form action="{{ route('cart.add', $product->ProductID) }}" method="POST" class="product-purchase-form">
                         @csrf
+
+                        @if ($product->ringSizes->isNotEmpty())
+                            <div class="product-size-field">
+                                <label for="product-size">Choose your ring size</label>
+                                <select id="product-size" name="size" class="product-size-select" required>
+                                    <option value="">Select a size</option>
+                                    @foreach ($product->ringSizes as $ringSize)
+                                        <option value="{{ $ringSize->Size }}" {{ old('size') === $ringSize->Size ? 'selected' : '' }}
+                                            {{ $ringSize->Stock < 1 ? 'disabled' : '' }}>
+                                            {{ $ringSize->Size }}{{ $ringSize->Stock < 1 ? ' · Out of stock' : '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
                         <button type="submit" class="product-button product-button-primary">
                             Add to Cart
                         </button>
                     </form>
 
-                    <form action="{{ route('wishlist.add', $product->ProductID) }}" method="POST">
+                    <form action="{{ route('wishlist.add', $product->ProductID) }}" method="POST" class="product-wishlist-form">
                         @csrf
                         <button type="submit" class="product-button product-button-secondary">
                             Add to Wishlist

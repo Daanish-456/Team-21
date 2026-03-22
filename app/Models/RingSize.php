@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartItem extends Model
+class RingSize extends Model
 {
-    protected $table = 'Cart_Item';
+    protected $table = 'Ring_Size';
 
     protected $primaryKey = null;
     public $incrementing = false;
@@ -14,18 +14,10 @@ class CartItem extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'CartID',
         'ProductID',
         'Size',
-        'Quantity',
+        'Stock'
     ];
-
-
-    public function cart()
-    {
-        return $this->belongsTo(Cart::class, 'CartID');
-    }
-
 
     public function product()
     {

@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\RingSize;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -59,11 +60,24 @@ class OrderController extends Controller
             $formattedAddress = $this->formatAddress($validated);
 
             foreach ($cart->items as $item) {
-                $product = Product::where('ProductID', $item->ProductID)
+                $product = Product::with('ringSizes')->where('ProductID', $item->ProductID)
                     ->lockForUpdate()
                     ->first();
 
-                if (! $product || $product->Stock < $item->Quantity) {
+                if (! $product) {
+                    throw new \RuntimeException('insufficient_stock');
+                }
+
+                if ($item->Size !== '') {
+                    $ringSize = RingSize::where('ProductID', $item->ProductID)
+                        ->where('Size', $item->Size)
+                        ->lockForUpdate()
+                        ->first();
+
+                    if (! $ringSize || $ringSize->Stock < $item->Quantity) {
+                        throw new \RuntimeException('insufficient_stock');
+                    }
+                } elseif ($product->Stock < $item->Quantity) {
                     throw new \RuntimeException('insufficient_stock');
                 }
 
@@ -91,11 +105,18 @@ class OrderController extends Controller
                 OrderItem::create([
                     'OrderID' => $order->OrderID,
                     'ProductID' => $item->ProductID,
+                    'Size' => $item->Size,
                     'Quantity' => $item->Quantity,
                     'Price' => $product->Price,
                 ]);
 
-                $product->decrement('Stock', $item->Quantity);
+                if ($item->Size !== '') {
+                    RingSize::where('ProductID', $item->ProductID)
+                        ->where('Size', $item->Size)
+                        ->decrement('Stock', $item->Quantity);
+                } else {
+                    $product->decrement('Stock', $item->Quantity);
+                }
             }
 
             $order->TotalAmount = $total;

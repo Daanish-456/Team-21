@@ -54,6 +54,9 @@
                             <div class="item-info">
                                 <p class="item-name">{{ $item->product->Product_Name }}</p>
                                 <p class="item-qty">Qty: {{ $item->Quantity }}</p>
+                                @if (!empty($item->Size))
+                                    <p class="item-qty">Size: {{ $item->Size }}</p>
+                                @endif
                             </div>
                             <p class="item-price">£{{ number_format($item->Price * $item->Quantity, 2) }}</p>
                         </div>

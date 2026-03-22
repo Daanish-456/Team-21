@@ -33,15 +33,30 @@ class CartController
     public function add($productId, Request $request)
     {
         $cart = $this->getUserCart();
-        $product = Product::where('ProductID', $productId)->firstOrFail();
+        $product = Product::with('ringSizes')->where('ProductID', $productId)->firstOrFail();
+        $selectedSize = trim($request->input('size', ''));
 
-        $quantity = max(1, (int) $request->input('quantity', 1));
-        $existingItem = $cart->items()->where('ProductID', $productId)->first();
+        $quantity = max(1, $request->input('quantity', 1));
+        $ringSize = null;
+
+        if ($product->ringSizes->isNotEmpty()) {
+            $ringSize = $product->ringSizes->firstWhere('Size', $selectedSize);
+
+            if (! $ringSize) {
+                return redirect()->back()->with('error', 'Please select a valid ring size.');
+            }
+        }
+
+        $existingItem = $cart->items()
+            ->where('ProductID', $productId)
+            ->where('Size', $selectedSize)
+            ->first();
         $currentQuantity = $existingItem ? $existingItem->Quantity : 0;
         $newQuantity = $currentQuantity + $quantity;
+        $availableStock = $ringSize ? $ringSize->Stock : $product->Stock;
 
-        if ($newQuantity > $product->Stock) {
-            return redirect()->back()->with('error', "Cannot add more than {$product->Stock} items. You already have {$currentQuantity} in your basket.");
+        if ($newQuantity > $availableStock) {
+            return redirect()->back()->with('error', "Cannot add more than {$availableStock} items. You already have {$currentQuantity} in your basket.");
         }
 
         if ($existingItem) {
@@ -49,6 +64,7 @@ class CartController
         } else {
             $cart->items()->create([
                 'ProductID' => $productId,
+                'Size' => $selectedSize,
                 'Quantity' => $quantity,
             ]);
         }
@@ -59,23 +75,42 @@ class CartController
     public function update($productId, Request $request)
     {
         $cart = $this->getUserCart();
-        $product = Product::where('ProductID', $productId)->firstOrFail();
-        $quantity = max(1, (int) $request->input('quantity', 1));
+        $product = Product::with('ringSizes')->where('ProductID', $productId)->firstOrFail();
+        $selectedSize = trim($request->input('size', ''));
+        $quantity = max(1, $request->input('quantity', 1));
+        $availableStock = $product->Stock;
 
-        if ($quantity > $product->Stock) {
-            return redirect()->route('basket')->with('error', "Cannot set quantity higher than {$product->Stock} available in stock.");
+        if ($product->ringSizes->isNotEmpty()) {
+            $ringSize = $product->ringSizes->firstWhere('Size', $selectedSize);
+
+            if (! $ringSize) {
+                return redirect()->route('basket')->with('error', 'Please select a valid ring size.');
+            }
+
+            $availableStock = $ringSize->Stock;
         }
 
-        $cart->items()->where('ProductID', $productId)->update(['Quantity' => $quantity]);
+        if ($quantity > $availableStock) {
+            return redirect()->route('basket')->with('error', "Cannot set quantity higher than {$availableStock} available in stock.");
+        }
+
+        $cart->items()
+            ->where('ProductID', $productId)
+            ->where('Size', $selectedSize)
+            ->update(['Quantity' => $quantity]);
 
         return redirect()->route('basket')->with('success', 'Basket updated.');
     }
 
-    public function remove($productId)
+    public function remove($productId, Request $request)
     {
         $cart = $this->getUserCart();
+        $selectedSize = trim((string) $request->input('size', ''));
 
-        $cart->items()->where('ProductID', $productId)->delete();
+        $cart->items()
+            ->where('ProductID', $productId)
+            ->where('Size', $selectedSize)
+            ->delete();
 
         return redirect()->route('basket')->with('success', 'Item removed from basket.');
     }

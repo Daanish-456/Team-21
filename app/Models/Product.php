@@ -28,4 +28,9 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'ProductID');
     }
+
+    public function ringSizes()
+    {
+        return $this->hasMany(RingSize::class, 'ProductID', 'ProductID');
+    }
 }

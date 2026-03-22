@@ -46,6 +46,9 @@
                                 <a href="{{ route('product', $item->ProductID) }}">
                                     <strong>{{ $item->product->Product_Name }}</strong>
                                 </a>
+                                @if (!empty($item->Size))
+                                    <div>Size: {{ $item->Size }}</div>
+                                @endif
                             </td>
 
                             <td>£{{ number_format($item->product->Price, 2) }}</td>
@@ -55,6 +58,7 @@
                                 <form action="{{ route('cart.update', $item->ProductID) }}" method="POST"
                                     class="basket-inline-form">
                                     @csrf
+                                    <input type="hidden" name="size" value="{{ $item->Size }}">
                                     <input type="number" name="quantity" min="1" value="{{ $item->Quantity }}"
                                         class="basket-qty-input">
                                     <button type="submit" class="basket-btn basket-btn-secondary">Update</button>
@@ -67,6 +71,7 @@
                             <td>
                                 <form action="{{ route('cart.remove', $item->ProductID) }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="size" value="{{ $item->Size }}">
                                     <button type="submit" class="basket-btn basket-btn-danger">Remove</button>
                                 </form>
                             </td>

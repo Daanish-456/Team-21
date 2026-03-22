@@ -106,21 +106,81 @@
 
 .product-price {
     font-size: 2rem;
-    color: #9b7a54;
+    color: #000000;
     font-weight: 700;
 }
 
+html[data-theme="dark"] .product-price {
+    color: #ffffff;
+}
+
 .product-actions {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+    align-items: stretch;
+    margin-top: 0.8rem;
+    max-width: 420px;
+}
+
+.product-purchase-form {
+    display: grid;
     gap: 0.9rem;
-    flex-wrap: wrap;
-    margin-top: 0.4rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--product-button-border) 70%, transparent);
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--product-panel-bg) 82%, transparent);
+}
+
+.product-wishlist-form {
+    display: grid;
+}
+
+.product-size-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.product-size-field label {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--product-description-color);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.product-size-select {
+    min-width: 220px;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--product-textarea-border);
+    border-radius: 12px;
+    background: var(--product-textarea-bg);
+    color: var(--product-textarea-text);
+    font: inherit;
+    line-height: 1.2;
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(50% - 2px),
+        calc(100% - 14px) calc(50% - 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.product-size-select:focus {
+    outline: none;
+    border-color: var(--product-price-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--product-price-color) 18%, transparent);
 }
 
 .product-button {
     border: 1px solid #d5c2a7;
     border-radius: 999px;
-    padding: 0.75rem 1.4rem;
+    min-height: 52px;
+    padding: 0.85rem 1.5rem;
     font-size: 0.9rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -136,6 +196,7 @@
     background: #3c2f2f;
     color: #ffffff;
     border-color: #3c2f2f;
+    width: 100%;
 }
 
 .product-button-primary:hover {
@@ -146,6 +207,7 @@
 .product-button-secondary {
     background: #fdf7ee;
     color: #5b4538;
+    width: 100%;
 }
 
 .product-button-secondary:hover {
@@ -358,6 +420,21 @@
     .reviews-section {
         padding: 0.9rem;
         border-radius: 16px;
+    }
+
+    .product-purchase-form {
+        padding: 0.9rem;
+    }
+
+    .product-wishlist-form,
+    .product-button-secondary,
+    .product-actions {
+        width: 100%;
+        max-width: none;
+    }
+
+    .product-size-select {
+        min-width: 0;
     }
 
     .review-card-header {

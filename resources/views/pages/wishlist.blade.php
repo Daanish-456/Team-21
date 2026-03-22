@@ -48,13 +48,18 @@
                             </a>
                             <p class="wishlist-product-price">£{{ number_format($item->product->Price, 2) }}</p>
                             
-                            {{-- Add to Cart Button --}}
-                            <form action="{{ route('cart.add', $item->product->ProductID) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="wishlist-add-cart-btn">
-                                    Add to Cart
-                                </button>
-                            </form>
+                            @if ((int) ($item->product->CategoryID ?? 0) === 4)
+                                <a href="{{ route('product', $item->product->ProductID) }}" class="wishlist-shop-btn">
+                                    Choose Size
+                                </a>
+                            @else
+                                <form action="{{ route('cart.add', $item->product->ProductID) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="wishlist-add-cart-btn">
+                                        Add to Cart
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endforeach

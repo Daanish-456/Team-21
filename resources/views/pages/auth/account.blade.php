@@ -171,6 +171,9 @@
                                                 <div class="order-item-copy">
                                                     <p class="item-name">{{ $item->product->Product_Name ?? 'Product' }}</p>
                                                     <p class="item-price">£{{ number_format($item->Price, 2) }}</p>
+                                                    @if (!empty($item->Size))
+                                                        <p class="item-price">Size {{ $item->Size }}</p>
+                                                    @endif
                                                 </div>
                                                 <span class="item-qty">Amount {{ $item->Quantity }}</span>
                                             </div>

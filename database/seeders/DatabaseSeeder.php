@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ReviewSeeder::class,
             ContactTicketSeeder::class,
             WishlistSeeder::class,
+            RingSizeSeeder::class,
         ]);
     }
 }
