@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
                 'Price' => 45.00,
                 'Stock' => 2,
                 'Image_URL' => 'assets/images/products/necklaces/luna-moon.png',
+                'Metal' => 'Gold',
                 'CategoryID' => 1,
             ],
             [
@@ -24,6 +25,7 @@ class ProductSeeder extends Seeder
                 'Price' => 52.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/necklaces/soulstone-bar.png',
+                'Metal' => 'Gold',
                 'CategoryID' => 1,
             ],
             [
@@ -32,6 +34,7 @@ class ProductSeeder extends Seeder
                 'Price' => 60.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/necklaces/aura-coin.jpg',
+                'Metal' => 'Rose Gold',
                 'CategoryID' => 1,
             ],
 
@@ -41,6 +44,7 @@ class ProductSeeder extends Seeder
                 'Price' => 35.00,
                 'Stock' => 12,
                 'Image_URL' => 'assets/images/products/bracelets/harmony-bead.png',
+                'Metal' => 'Gold',
                 'CategoryID' => 3,
             ],
             [
@@ -49,6 +53,7 @@ class ProductSeeder extends Seeder
                 'Price' => 40.00,
                 'Stock' => 17,
                 'Image_URL' => 'assets/images/products/bracelets/serenity-chain.png',
+                'Metal' => 'Gold',
                 'CategoryID' => 3,
             ],
             [
@@ -57,6 +62,7 @@ class ProductSeeder extends Seeder
                 'Price' => 40.00,
                 'Stock' => 17,
                 'Image_URL' => 'assets/images/products/bracelets/soul-cuff.png',
+                'Metal' => 'Gold',
                 'CategoryID' => 3,
             ],
 
@@ -65,6 +71,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Slim band finished with a subtle hammered texture, perfect for stacking.',
                 'Price' => 29.99,
                 'Stock' => 4,
+                'Metal' => 'Gold',
                 'Image_URL' => 'assets/images/products/rings/eclipse-stack.jpg',
                 'CategoryID' => 4,
             ],
@@ -73,6 +80,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Single gemstone ring in a classic claw setting.',
                 'Price' => 55.75,
                 'Stock' => 12,
+                'Metal' => 'Gold',
                 'Image_URL' => 'assets/images/products/rings/solace-gemstone.png',
                 'CategoryID' => 4,
             ],
@@ -81,6 +89,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'A modern signet ring with softly rounded edges.',
                 'Price' => 55.75,
                 'Stock' => 11,
+                'Metal' => 'Gold',
                 'Image_URL' => 'assets/images/products/rings/orbit-signet.jpg',
                 'CategoryID' => 4,
             ],
@@ -90,6 +99,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Handcrafted sterling silver bracelet with intricate design.',
                 'Price' => 35.50,
                 'Stock' => 0,
+                'Metal' => 'Silver',
                 'Image_URL' => 'assets/images/products/bracelet1.jpg',
                 'CategoryID' => 3,
             ],
@@ -98,6 +108,7 @@ class ProductSeeder extends Seeder
                 'Description' => 'Elegant pearl drop earrings for special occasions.',
                 'Price' => 55.00,
                 'Stock' => 12,
+                'Metal' => 'Silver',
                 'Image_URL' => 'assets/images/products/earrings2.jpg',
                 'CategoryID' => 2,
             ],
