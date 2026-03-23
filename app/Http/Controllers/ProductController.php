@@ -190,8 +190,6 @@ public function bestsellers(Request $request)
     $query = Product::whereIn('ProductID', $bestsellerIds)
         ->orderByRaw('FIELD(ProductID, ' . implode(',', $bestsellerIds) . ')');
 
-    $query = $this->applyFilters($query, $request);
-
     return view('pages.shop', [
         'products' => $query->get(),
         'pageTitle' => 'Bestsellers',
