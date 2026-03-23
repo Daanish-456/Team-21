@@ -22,6 +22,7 @@
         @if (isset($items) && !$items->isEmpty())
             <div class="wishlist-grid">
                 @foreach ($items as $item)
+                @if ($item->product != null)
                     <div class="wishlist-card">
                         <div class="wishlist-image-wrapper">
                             <a href="{{ route('product', $item->product->ProductID) }}">
@@ -62,6 +63,8 @@
                             @endif
                         </div>
                     </div>
+                @endif
+        
                 @endforeach
             </div>
         @else
