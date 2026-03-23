@@ -12,7 +12,8 @@ class NewsletterController extends Controller
         DB::table('newsletter_subscribers')->insert([
             'Name' => $request->name,
             'Email' => $request->email,
-            'CreatedAt' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         return back()->with('newsletter_success', 'Thank you for signing up!');
